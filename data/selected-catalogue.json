@@ -1,0 +1,254 @@
+{
+  "provenance": {
+    "repository": "https://github.com/openai/math",
+    "commitSha": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+    "importedAt": "2026-10-08T15:56:56.808Z",
+    "releaseDate": "2026-10-06",
+    "files": [
+      {
+        "path": "overview.tex",
+        "sha256": "aa54c8e14b7647226264045ae846df7ce6803d2ded48aa3183195e45f9f91962"
+      },
+      {
+        "path": "CONTENTS.md",
+        "sha256": "cc7c0b8a1cdedd845a777e77cf682657308503daf8346c1349e06e9259d063c2"
+      },
+      {
+        "path": "README.md",
+        "sha256": "5e8878ee04866f52ec942852552b9c28db278f65691c7ab49a87c9e93a9199fd"
+      },
+      {
+        "path": "history.md",
+        "sha256": "41c2a2d470014b3628695c7aabf5fd0c93f6f687621fca172062f22b59ed6a1e"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      }
+    ],
+    "familyCount": 372,
+    "manuscriptCount": 719
+  },
+  "families": [
+    {
+      "familyId": "004",
+      "title": "Hilbert’s tenth problem over ℚ",
+      "overviewTitleTex": "Hilbert's tenth problem over $\\mathbb Q$",
+      "discipline": "Number theory",
+      "releaseSummary": "Proves that no algorithm decides whether an integer-coefficient polynomial in an arbitrary number of variables has a rational zero, resolving Hilbert's tenth problem over ℚ negatively.",
+      "overviewSummaryTex": "Proves that no algorithm decides whether an integer-coefficient polynomial in an arbitrary number of variables has a rational zero, resolving Hilbert's tenth problem over $\\mathbb Q$ negatively.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "Hilbert’s tenth problem over the rational numbers",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf",
+          "abstract": "We give a negative answer to Hilbert's tenth problem over the rational numbers: no algorithm decides whether a polynomial with integer coefficients has a rational zero. The number of variables is part of the input."
+        },
+        {
+          "title": "A pointwise 2-converse for elliptic curves with rational two-torsion",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-pointwise-2-converse-for-elliptic-curves-with-rational-two-torsion-October-7-2026/paper.pdf",
+          "abstract": "We prove a pointwise 2-converse for elliptic curves over $`\\mathbf Q`$ with nonzero rational two-torsion: if the $`2^\\infty`$-Selmer corank is zero or one, then the analytic rank and Mordell–Weil rank equal that corank, and the Shafarevich–Tate group is finite. The result allows arbitrary reduction at 2."
+        }
+      ]
+    },
+    {
+      "familyId": "084",
+      "title": "The geometric case of the Erdős similarity conjecture",
+      "overviewTitleTex": "The geometric case of the Erd\\H{o}s similarity conjecture",
+      "discipline": "Real and complex analysis",
+      "releaseSummary": "For every fixed $`q\\in(0,1)`$, constructs compact subsets of $`[0,1]`$ with measure arbitrarily close to one containing no translated and nontrivially dilated copy of $`\\{q^n:n\\ge1\\}`$, with dilations of either sign. This resolves the geometric-progression case of the Erdős similarity conjecture for every ratio. ([Lean](lean/docs/084.md))",
+      "overviewSummaryTex": "For every fixed $q\\in(0,1)$, constructs compact subsets of $[0,1]$ with measure arbitrarily close to one containing no translated and nontrivially dilated copy of $\\{q^n:n\\ge1\\}$, with dilations of either sign. This resolves the geometric-progression case of the Erd\\H{o}s similarity conjecture for every ratio.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The geometric case of the Erdős similarity conjecture",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-geometric-case-of-the-Erdos-similarity-conjecture-October-5-2026/geometric-erdos-similarity.pdf",
+          "abstract": "We prove the geometric-progression case of the Erdős similarity conjecture. For every fixed $`q\\in(0,1)`$ and every $`\\eta\\in(0,1)`$, we construct a compact set $`E_{q,\\eta}\\subseteq[0,1]`$ of measure greater than $`1-\\eta`$ containing no nontrivial affine copy of $`\\{q^n:n\\ge1\\}`$, for any translation and either sign of nonzero dilation. The set may depend on <i>q</i>; the result makes no simultaneous assertion for different ratios."
+        },
+        {
+          "title": "The dyadic case of the Erdős similarity conjecture",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-dyadic-case-of-the-Erdos-similarity-conjecture-September-25-2026/paper.pdf",
+          "abstract": "We construct a compact subset of the unit interval, of measure arbitrarily close to one, that contains no affine copy of the dyadic sequence $`\\{2^{-n}:n\\ge1\\}`$. The conclusion holds for every translation and every nonzero real dilation, of either sign, proving the dyadic case of the Erdős similarity conjecture."
+        }
+      ]
+    },
+    {
+      "familyId": "087",
+      "title": "The Mahler conjectures, functional inequalities and polar-product symplectic width",
+      "overviewTitleTex": "The Mahler conjectures and symplectic width",
+      "discipline": "Convex and metric geometry",
+      "releaseSummary": "Resolves the symmetric and nonsymmetric geometric Mahler conjectures in every dimension, with Hanner polytopes and simplices as the respective volume-product minimizers and all equality cases classified. The corresponding sharp functional Mahler inequalities also hold. For <i>n</i> ≥ 2, every symmetric polar product $`K\\times K^\\circ`$ in dimension $`2n`$ has Gromov width 4. ([Lean](lean/docs/087.md))",
+      "overviewSummaryTex": "Resolves the symmetric and nonsymmetric geometric Mahler conjectures in every dimension, with Hanner polytopes and simplices as the respective volume-product minimizers and all equality cases classified. The corresponding sharp functional Mahler inequalities also hold. For $n\\ge2$, every symmetric polar product $K\\times K^\\circ$ in dimension $2n$ has Gromov width $4$.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The symmetric Mahler conjecture and its equality cases",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-symmetric-Mahler-conjecture-and-its-equality-cases-September-22-2026/paper.pdf",
+          "abstract": "We resolve the symmetric Mahler conjecture positively, including its equality classification. Every origin-symmetric convex body in ℝ<sup><i>n</i></sup> has volume product at least $`4^n/n!`$, with equality exactly for invertible linear images of Hanner polytopes."
+        },
+        {
+          "title": "The Mahler Conjecture for General Convex Bodies",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mahler-Conjecture-for-General-Convex-Bodies-September-22-2026/paper.pdf",
+          "abstract": "We resolve the Mahler conjecture for general convex bodies positively. For every convex body $`K\\subset\\mathbb R^n`$, <i>n</i> ≥ 1, with Santaló point $`s(K)`$, $`|K|\\,|(K-s(K))^\\circ|\\ge (n+1)^{n+1}/(n!)^2`$, with equality exactly for simplices."
+        },
+        {
+          "title": "Symplectic Balls in Symmetric Polar Products",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026/paper.pdf",
+          "abstract": "For every integer <i>n</i> ≥ 2 and every origin-symmetric convex body $`K\\subset\\mathbb R^n`$, we prove that the Gromov width of $`\\mathop{\\mathrm{int}}\\nolimits K\\times\\mathop{\\mathrm{int}}\\nolimits K^\\circ`$ is 4. We construct smooth symplectic embeddings of standard balls of every capacity $`0\\lt c\\lt 4`$ into this polar product. Volume preservation then resolves the symmetric Mahler conjecture positively in every dimension."
+        }
+      ]
+    },
+    {
+      "familyId": "102",
+      "title": "The Unique Games Conjecture and optimal approximation thresholds",
+      "overviewTitleTex": "The Unique Games Conjecture and optimal approximation thresholds",
+      "discipline": "Theoretical computer science",
+      "releaseSummary": "Proves Khot's Unique Games Conjecture. Independent direct reductions also establish NP-hardness, on unweighted graphs, of approximation beyond the Goemans–Williamson ratio for Max-Cut, below factor two for Vertex Cover, and within any fixed constant factor for Min-UnCut and directed feedback vertex set. These direct proofs use established PCP and Label Cover hardness results. ([Lean](lean/docs/102.md))",
+      "overviewSummaryTex": "Proves Khot's Unique Games Conjecture. Independent direct reductions also establish NP-hardness, on unweighted graphs, of approximation beyond the Goemans--Williamson ratio for Max-Cut, below factor two for Vertex Cover, and within any fixed constant factor for Min-UnCut and directed feedback vertex set. These direct proofs use established PCP and Label Cover hardness results.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The Unique Games Theorem",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf",
+          "abstract": "We prove the Unique Games Conjecture. For every fixed $`\\varepsilon,\\delta\\in(0,1/2)`$, we give a deterministic polynomial-time reduction from 3SAT to Unique Games over a fixed finite alphabet, with completeness at least $`1-\\varepsilon`$ and soundness at most <i>δ</i>."
+        },
+        {
+          "title": "A Direct Proof of Optimal Max-Cut Hardness",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Direct-Proof-of-Optimal-Max-Cut-Hardness-September-23-2026/paper.pdf",
+          "abstract": "We prove that approximating Max-Cut on simple unweighted graphs within any fixed factor greater than the Goemans–Williamson constant is NP-hard."
+        },
+        {
+          "title": "The Factor-Two Hardness Threshold for Vertex Cover",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Factor-Two-Hardness-Threshold-for-Vertex-Cover-September-23-2026/paper.pdf",
+          "abstract": "We prove that minimum Vertex Cover is NP-hard to approximate within every fixed factor below two, even on simple unweighted graphs."
+        },
+        {
+          "title": "Constant-factor hardness of Min-UnCut",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Constant-factor-hardness-of-Min-UnCut-September-23-2026/paper.pdf",
+          "abstract": "For every fixed <i>C</i> &gt; 1, approximating Min-UnCut within factor <i>C</i> is NP-hard, even on simple undirected unweighted graphs."
+        },
+        {
+          "title": "Constant-factor hardness of directed feedback vertex set",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Constant-factor-hardness-of-directed-feedback-vertex-set-September-23-2026/paper.pdf",
+          "abstract": "Approximating minimum directed feedback vertex set within any fixed constant factor is NP-hard, even on unweighted digraphs."
+        }
+      ]
+    },
+    {
+      "familyId": "158",
+      "title": "The Euclidean plane cannot be colored with five colors",
+      "overviewTitleTex": "The Euclidean plane cannot be colored with five colors",
+      "discipline": "Combinatorics",
+      "releaseSummary": "Proves that every five-coloring of the Euclidean plane has a monochromatic pair at distance one, with no restriction on the color classes. This advances the Hadwiger–Nelson problem: together with the classical seven-coloring, only six and seven remain possible chromatic numbers of the plane. ([Lean](lean/docs/158.md))",
+      "overviewSummaryTex": "Proves that every five-coloring of the Euclidean plane has a monochromatic pair at distance one, with no restriction on the color classes. This advances the Hadwiger--Nelson problem: together with the classical seven-coloring, only six and seven remain possible chromatic numbers of the plane.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The Euclidean plane is not five-colorable",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf",
+          "abstract": "We prove that every coloring of the Euclidean plane with five colors has a monochromatic unit-distance pair, with no regularity assumption on the color classes. Consequently, the chromatic number of the plane is either six or seven."
+        }
+      ]
+    },
+    {
+      "familyId": "159",
+      "title": "Erdős’s reciprocal-sum conjecture and quasipolynomial Szemerédi bounds",
+      "overviewTitleTex": "Erd\\H{o}s's reciprocal-sum conjecture and quasipolynomial Szemer\\'edi bounds",
+      "discipline": "Combinatorics",
+      "releaseSummary": "Proves Erdős's conjecture that every set of positive integers with divergent reciprocal sum contains arithmetic progressions of every finite length. Quantitatively, for each fixed <i>k</i> ≥ 3, every subset of $`\\{1,\\ldots,N\\}`$ with no nonconstant <i>k</i>-term progression has size at most $`C_kN\\exp[-c_k(\\log N)^{\\varepsilon_k}]`$, with positive constants depending only on <i>k</i>. ([Lean](lean/docs/159.md))",
+      "overviewSummaryTex": "Proves Erd\\H{o}s's conjecture that every set of positive integers with divergent reciprocal sum contains arithmetic progressions of every finite length. Quantitatively, for each fixed $k\\ge3$, every subset of $\\{1,\\ldots,N\\}$ with no nonconstant $k$-term progression has size at most $C_kN\\exp[-c_k(\\log N)^{\\varepsilon_k}]$, with positive constants depending only on $k$.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "Quasipolynomial Bounds for Arithmetic Progressions",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/paper.pdf",
+          "abstract": "We prove Erdős's conjecture that every set of positive integers with divergent reciprocal sum contains arithmetic progressions of every finite length. More quantitatively, for every fixed <i>k</i> ≥ 3, we show\n\n$`\\displaystyle r_k(N)\\le C_kN\\exp\\bigl(-c_k(\\log N)^{\\varepsilon_k}\\bigr)`$\n\nwith $`C_k,c_k,\\varepsilon_k\\gt 0`$, where $`r_k(N)`$ is the largest size of a subset of $`\\{1,\\ldots,N\\}`$ with no nonconstant <i>k</i>-term arithmetic progression."
+        }
+      ]
+    },
+    {
+      "familyId": "197",
+      "title": "A torsion-free group algebra that is not directly finite",
+      "overviewTitleTex": "Nonsofic groups and group-ring counterexamples",
+      "discipline": "Algebra",
+      "releaseSummary": "Constructs a finitely presented torsion-free nonsofic group whose group algebra over 𝔽<sub>2</sub> is not directly finite, disproving Kaplansky's conjecture even without torsion. Companion examples give injective nonsurjective cellular automata on all configurations, refuting Gottschalk's surjunctivity conjecture. Another counterexample is an integral group-ring matrix, invertible over the rational group ring, with Fuglede–Kadison determinant strictly between zero and one, disproving the unrestricted Determinant Conjecture. ([Lean](lean/docs/197.md))",
+      "overviewSummaryTex": "Constructs a finitely presented torsion-free nonsofic group whose group algebra over $\\mathbb F_2$ is not directly finite, disproving Kaplansky's conjecture even without torsion. Companion examples give injective nonsurjective cellular automata on all configurations, refuting Gottschalk's surjunctivity conjecture. Another counterexample is an integral group-ring matrix, invertible over the rational group ring, with Fuglede--Kadison determinant strictly between zero and one, disproving the unrestricted Determinant Conjecture.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "A Torsion-Free Group Algebra That Is Not Directly Finite",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Torsion-Free-Group-Algebra-That-Is-Not-Directly-Finite-October-4-2026/direct-finiteness.pdf",
+          "abstract": "We construct a finitely presented torsion-free counterexample to Kaplansky's direct finiteness conjecture over the field of two elements. The group admits a finite two-dimensional classifying complex."
+        },
+        {
+          "title": "A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Characteristic Two",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026/paper.pdf",
+          "abstract": "We disprove Kaplansky's direct-finiteness conjecture by constructing a finite field <i>K</i> of characteristic two, a finitely presented group <i>G</i>, and finite sums $`a,b\\in K[G]`$ with $`ab=1`$ but $`ba\\ne1`$. The group <i>G</i> is nonsofic. The same elements define a cellular automaton on <i>K</i><sup><i>G</i></sup> that is injective but not surjective, disproving Gottschalk's surjunctivity conjecture."
+        },
+        {
+          "title": "A Counterexample to the Group-Ring Determinant Conjecture",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Counterexample-to-the-Group-Ring-Determinant-Conjecture-September-23-2026/paper.pdf",
+          "abstract": "We disprove the unrestricted group-ring Determinant Conjecture. We construct a finitely generated group <i>G</i> and a square matrix over $`\\mathbb Z[G]`$ that is invertible over $`\\mathbb Q[G]`$ and has Fuglede–Kadison determinant strictly between zero and one. The logarithmic integral defining the determinant is finite."
+        },
+        {
+          "title": "A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Odd Characteristic",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Odd-Characteristic-September-26-2026/paper.pdf",
+          "abstract": "We construct a counterexample to Kaplansky's direct-finiteness conjecture in odd characteristic. For one specified odd prime <i>p</i>, we obtain a field <i>K</i> of order <i>p</i><sup>4</sup>, a finitely generated group <i>G</i> containing torsion, and finite sums $`a,b\\in K[G]`$ with $`ab=1`$ but $`ba\\ne1`$. The same elements define a cellular automaton on <i>K</i><sup><i>G</i></sup> that is injective but not surjective."
+        }
+      ]
+    },
+    {
+      "familyId": "221",
+      "title": "The Mézard–Parisi formula for diluted spin glasses",
+      "overviewTitleTex": "The M\\'ezard--Parisi formula for diluted spin glasses",
+      "discipline": "Probability and statistical mechanics",
+      "releaseSummary": "Proves the Mézard–Parisi hierarchical cavity formula for Poisson-diluted even-arity Ising models satisfying the Panchenko–Talagrand factorization and positivity assumptions, with only first-moment integrability. The limiting free energy equals the infimum over finite-depth hierarchical trial laws. This includes the Viana–Bray model, symmetric diluted even-spin models, and weighted soft even-<i>K</i> satisfiability. ([Lean](lean/docs/221.md))",
+      "overviewSummaryTex": "Proves the M\\'ezard--Parisi hierarchical cavity formula for Poisson-diluted even-arity Ising models satisfying the Panchenko--Talagrand factorization and positivity assumptions, with only first-moment integrability. The limiting free energy equals the infimum over finite-depth hierarchical trial laws. This includes the Viana--Bray model, symmetric diluted even-spin models, and weighted soft even-$K$ satisfiability.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The Mézard–Parisi formula for diluted spin glasses",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/paper.pdf",
+          "abstract": "We prove the Mézard–Parisi hierarchical cavity formula for diluted even-arity Ising models in the Panchenko–Talagrand class. This resolves the variational equality conjecture for that class: the limiting pressure equals the infimum of the trial functional over all finite hierarchy depths and trial laws. Only first moments of the interaction and external field are required."
+        }
+      ]
+    },
+    {
+      "familyId": "268",
+      "title": "The spin-one Haldane gap",
+      "overviewTitleTex": "The spin-one Haldane gap",
+      "discipline": "Mathematical physics",
+      "releaseSummary": "Proves the spin-one Haldane gap conjecture for the pure antiferromagnetic Heisenberg chain on even periodic rings: the spectral gap stays uniformly positive as the chain grows. A companion establishes a gap for odd open chains with endpoint field $`h=3/5`$ and gives boundary-selected infinite-volume states with topological index −1.",
+      "overviewSummaryTex": "Proves the spin-one Haldane gap conjecture for the pure antiferromagnetic Heisenberg chain on even periodic rings: the spectral gap stays uniformly positive as the chain grows. A companion establishes a gap for odd open chains with endpoint field $h=3/5$ and gives boundary-selected infinite-volume states with topological index $-1$.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The periodic spin-one Haldane gap",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf",
+          "abstract": "We prove a uniform positive spectral gap for the pure antiferromagnetic spin-one Heisenberg chain on even periodic rings, establishing the positive even-periodic formulation of the spin-one Haldane conjecture."
+        },
+        {
+          "title": "A boundary-field gap for the spin-one Heisenberg chain",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf",
+          "abstract": "We prove a uniform spectral gap for odd open spin-one antiferromagnetic Heisenberg chains with the same fixed magnetic field at both endpoints. The field $`h=3/5`$ gives a gap greater than $`\\log(10)/392`$ on every chain of $`2L+1`$ sites with <i>L</i> ≥ 960. Tasaki's index theorem then gives index −1 for every subsequential local limit of these boundary-selected ground states."
+        }
+      ]
+    },
+    {
+      "familyId": "304",
+      "title": "The Hilbert–Smith conjecture in every dimension",
+      "overviewTitleTex": "The Hilbert--Smith conjecture in every dimension",
+      "discipline": "Topology",
+      "releaseSummary": "Every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected finite-dimensional topological manifold is a Lie group. This proves the Hilbert–Smith conjecture in all finite dimensions, for Hausdorff second-countable manifolds without boundary.",
+      "overviewSummaryTex": "Every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected finite-dimensional topological manifold is a Lie group. This proves the Hilbert--Smith conjecture in all finite dimensions, for Hausdorff second-countable manifolds without boundary.",
+      "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "manuscripts": [
+        {
+          "title": "The Hilbert–Smith conjecture in every finite dimension",
+          "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Hilbert-Smith-conjecture-in-every-finite-dimension-September-23-2026/paper.pdf",
+          "abstract": "We prove the Hilbert–Smith conjecture in every finite dimension: every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected Hausdorff second-countable finite-dimensional topological manifold without boundary is a Lie group."
+        }
+      ]
+    }
+  ]
+}

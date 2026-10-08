@@ -1,0 +1,55 @@
+{
+  "familyId": "268",
+  "status": "research-pending",
+  "displayTitle": null,
+  "discipline": null,
+  "scope": {
+    "types": [
+      "special-case"
+    ],
+    "note": "Reported spin-one gap for even periodic rings, with a companion boundary-field result. This does not characterize every spin or boundary condition.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+    "classificationStatus": "provisional"
+  },
+  "originalQuestion": null,
+  "modernQuestion": null,
+  "questionDifference": null,
+  "conceptualOrigins": null,
+  "firstFormulation": null,
+  "attribution": null,
+  "contributors": [],
+  "tags": [],
+  "confidence": "unresearched",
+  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "sources": [
+    {
+      "id": "openai-catalogue",
+      "title": "OpenAI manuscript map",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "kind": "upstream",
+      "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+    }
+  ],
+  "events": [
+    {
+      "id": "release-2026",
+      "date": {
+        "precision": "exact",
+        "label": "6 October 2026",
+        "year": 2026,
+        "iso": "2026-10-06"
+      },
+      "type": "ai-claim",
+      "title": "The OpenAI release",
+      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "sourceIds": [
+        "openai-catalogue"
+      ],
+      "follows": [],
+      "relationNote": "Connections to earlier work await historical research.",
+      "uncertainty": "This records a reported result, without independent proof assessment."
+    }
+  ],
+  "lastEditorialUpdate": "2026-10-08"
+}

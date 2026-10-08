@@ -1,0 +1,132 @@
+# Before the Proof
+
+A public editorial site for the intellectual histories behind selected result families in OpenAI’s October 6, 2026 mathematics release. React, TypeScript and Vite; Markdown prose and validated JSON records. No runtime API, backend, database or account system.
+
+## Run locally
+
+Use Node.js 22.12+ and npm.
+
+```sh
+npm ci
+npm run dev
+```
+
+The printed local URL opens the landing page. Editing content reloads the preview.
+
+```sh
+npm run validate
+npm test
+npm run build
+npm run preview
+```
+
+Build validates content and upstream checksums, checks TypeScript, bundles assets and prerenders every public route. The generated `dist/` contains HTML for the landing page, explorer, ten problem pages, essay, about page and 404. It can be served with JavaScript disabled; filtering and timeline selection require JavaScript.
+
+## What is included, and what is pending
+
+All **372 families / 719 manuscripts** are imported from a pinned public upstream commit. The site selects families **004, 087, 158, 084, 102, 159, 197, 221, 268, 304**. It preserves original titles, disciplines, release summaries, overview TeX and manuscript-map metadata, abstracts and commit-pinned manuscript links.
+
+Supplied historical accounts for **004, 087 and 158** are included with sources and branching timelines. The remaining **seven** accounts are marked **research pending**. The supplied research limitations are recorded in `research/batch-01.md`. No missing historical narratives, names, early dates or causal relationships have been fabricated. Pending records contain a sourced release milestone and a provisional result classification. Their pale branching diagram is explicitly a conceptual schematic; it becomes a real sourced graph once historical events are added.
+
+Still needed for research-pending cases: 120–200-word historical narratives; original and modern problem statements and their differences; researched conceptual origins and earliest identified formulations; attribution commentary; contributors; historical sources; dated, sourced milestones and their relationships; pattern tags; confidence assessments; scope review. The opening Markdown essay is an editorial draft and can be replaced.
+
+## Edit or add a case (two files)
+
+1. Edit `content/cases/004.json` and `content/cases/004.md`, or copy that pair and name it with another **existing, three-digit** upstream family ID. Keep the JSON `familyId` identical to the filename. Do not edit generated catalogue files to create a history.
+2. Keep `status: "research-pending"` until research is supplied. Use `"draft"` while working. Write the origin story in the Markdown file. Markdown supports links, headings, lists and inline/display LaTeX math. Raw HTML is disabled.
+3. Fill the structured fields, contributors and sources. `displayTitle` and `discipline` may stay `null` to use current imported metadata. All missing researched fields use `null`, not invented text or dates.
+4. Add timeline events referencing source IDs. Connect a successor to zero or more earlier events using `follows`. Multiple predecessors and successors support branching and reformulation. Use `relationNote` to describe why the connection is justified.
+5. Set `lastEditorialUpdate` to the actual YYYY-MM-DD editorial date. Review the result’s precise scope against the manuscripts. Mark the scope classification `"reviewed"` only after that review.
+6. Run `npm run validate` and `npm run build`. Set `status: "published"` only after editorial review. Published records require a 120–200-word narrative, historical sources and events, contributors, assessed confidence and the question/attribution/date fields. Explicit unknown dates remain valid.
+
+In GitHub’s web interface, open the JSON or Markdown file, click the pencil, edit and propose a commit or pull request. One or two files per case are all an editor needs to change. No code edits are needed to add a case to the explorer or generate its route. The build fails with actionable errors if a record is invalid. Never include private notes in content: draft records and Markdown are shipped to visitors.
+
+### Date shapes
+
+```json
+{"precision":"exact","label":"6 October 2026","year":2026,"iso":"2026-10-06"}
+{"precision":"approximate","label":"c. 1950","year":1950}
+{"precision":"range","label":"1950–1960","start":1950,"end":1960}
+{"precision":"unknown","label":"Date not established"}
+```
+
+These examples document the schema; they are not historical claims. An exact year need not include an ISO day. Timelines use a relationship layout with equal spacing, not a numerical age calculation. Events should be listed in the desired reading order.
+
+### Source and timeline event shapes
+
+Add a real source to the `sources` array with a unique ID, title, HTTP(S) URL, full citation, kind (`primary`, `secondary`, `upstream`) and note. Every contributor and event must reference existing source IDs.
+
+```json
+{
+  "id": "formulation",
+  "date": {"precision": "unknown", "label": "Date not established"},
+  "type": "formulation",
+  "title": "Use the sourced formulation title",
+  "description": "Explain what the source establishes.",
+  "sourceIds": ["an-existing-source-id"],
+  "follows": [],
+  "relationNote": "",
+  "uncertainty": "Explain the specific uncertainty."
+}
+```
+
+Event types: `background`, `predecessor`, `formulation`, `reformulation`, `partial-result`, `ai-claim`. Duplicate IDs, dangling references, unsafe URL schemes, impossible calendar dates, reversed ranges and cycles fail validation.
+
+Scope types: `full-resolution`, `special-case`, `quantitative-improvement`, `counterexample`, `other`, `unclassified`. A family may have more than one. Pattern tags are the controlled list in `src/schema.ts`; leave them empty until researched.
+
+## Edit the essay
+
+Edit `content/articles/before-the-proof.md`. Its title, deck and editorial date are currently in `src/pages.tsx`. The prose is authored in Markdown.
+
+## Reproduce or refresh the catalogue
+
+`data/catalogue.json` is imported metadata only. `data/upstream/` stores the original UTF-8 overview source, manuscript map, README, revision history and Apache 2.0 license. The JSON provenance records the full Git SHA, UTC import timestamp, release date and SHA-256 checksums of source files.
+
+Reproduce the pinned import offline, using the exact commit in the JSON provenance:
+
+```sh
+npm run catalogue:import -- --offline --sha fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb
+npm run validate
+```
+
+The import timestamp changes unless you supply `--date` with the existing ISO timestamp. For byte-identical generated JSON, supply the same SHA, date and unchanged raw source files.
+
+Refresh from a particular upstream commit:
+
+```sh
+npm run catalogue:import -- --sha FULL_40_CHARACTER_UPSTREAM_SHA
+npm run validate
+npm run build
+```
+
+Omit `--sha` to resolve upstream main once, then fetch all files at that immutable SHA. This is a local maintenance command, not a visitor-facing network request. It validates the overview/map agreement and declared counts before writing. It aborts if a curated family would disappear. It **never writes `content/`**. Review the generated diff, especially revised summaries and manuscript groupings; review curated scope classifications after an upstream change.
+
+`npm run validate` regenerates the small `data/selected-catalogue.json` used by the browser so it does not download the entire catalogue. Historical sources in curated records retain the snapshot they cited, even after a catalogue refresh.
+
+## Deploy
+
+Upload **the contents of `dist/`** to any static provider. No Node process, Worker, environment secret or backend is needed. The project is also connected to Sites through `.openai/hosting.json`.
+
+- **Cloudflare Pages / Netlify:** build command `npm run build`; publish directory `dist`. Prerendered directory indexes support direct visits and refreshes.
+- **GitHub Pages:** the included `.github/workflows/pages.yml` builds and deploys on pushes to main (or manually). Enable Settings → Pages → Source: GitHub Actions. It supplies the repository base path automatically. Deploying from GitHub requires this project’s source to be in a GitHub repository.
+- **Subdirectory hosting:** build with `BASE_PATH=/repository-name/ npm run build`. The build uses that prefix for assets, prerendered links and client navigation.
+
+When deploying a new edited version, rebuild first so prerendered pages and the bundle contain the same content.
+
+## Tests
+
+`npm test` covers schema rules, date uncertainty, sourced branches, published-account requirements, catalogue parsing and count integrity, and curated-content preservation during import.
+
+Browser checks:
+
+```sh
+npx playwright install chromium
+npm run build
+npm run test:e2e
+```
+
+These tests cover search/filter/reset, URL state, navigation, all initial cases and pinned manuscript links, keyboard timeline selection, mobile layout, direct static pages, per-page metadata and reading without JavaScript.
+
+## Source reuse
+
+Upstream materials are attributed to OpenAI and retain their Apache 2.0 license in `data/upstream/LICENSE`. Summaries are quoted catalogue claims, not this project’s proof assessments. Historical sources should remain individually credited; adding a link does not grant permission to reproduce an entire work.

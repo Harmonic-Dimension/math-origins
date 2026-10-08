@@ -1,0 +1,351 @@
+{
+  "familyId": "087",
+  "status": "published",
+  "displayTitle": "A lattice problem acquired new extremizers—and a life in phase space",
+  "discipline": "Convex geometry, functional analysis and symplectic geometry",
+  "scope": {
+    "types": [
+      "full-resolution"
+    ],
+    "note": "Three OpenAI manuscripts claim the symmetric and general geometric Mahler inequalities in all dimensions with geometric equality cases, their even and general functional inequalities, and Gromov width 4 for symmetric polar products. Functional equality classifications are not claimed.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+    "classificationStatus": "provisional"
+  },
+  "originalQuestion": "How small can the volume of a convex body times the volume of its polar be? Mahler's polygon paper treats planar minima, with parallelograms in the symmetric class and triangles in the general class. His 1939 transference paper explicitly conjectures the symmetric higher-dimensional lower bound 4ⁿ/n!, attained by a parallelotope and its polar cross-polytope.",
+  "modernQuestion": "For origin-symmetric K in Rⁿ, is |K||K°| at least 4ⁿ/n!, with equality exactly for linear images of Hanner polytopes? For arbitrary K, after centering at its Santaló point s(K), is |K||(K−s(K))°| at least (n+1)ⁿ⁺¹/(n!)², with equality exactly for simplices? Related functional questions replace polarity by the Fenchel–Legendre transform. A stronger symplectic question asks whether int(K)×int(K°) has Gromov width 4.",
+  "questionDifference": "The family comprises several statements that should not be collapsed into Mahler's original symmetric inequality. OpenAI's symmetric manuscript claims the sharp bound and the complete Hanner equality classification for every n≥1; its general manuscript separately claims the simplex bound and equality, with no symmetry or boundary regularity assumption. The functional conclusions are (∫e⁻φ)(∫e⁻φ*)≥4ⁿ when φ is even, and ≥eⁿ in general, for proper lower-semicontinuous convex φ with positive finite first integral; the second integral may be infinite. These are inequalities, without full functional equality classifications. The width manuscript claims c_G(int K×int K°)=4 for every symmetric K and n≥2, specifically embeddings of every ball of capacity c<4; it does not require an embedding at c=4 or classify geometric equality. The 2014 computation of Hofer–Zehnder capacity 4 is a different invariant and did not already prove this width statement.",
+  "conceptualOrigins": {
+    "precision": "unknown",
+    "label": "Polarity and Minkowski's geometry of numbers, preceding Mahler's 1930s work"
+  },
+  "firstFormulation": {
+    "precision": "range",
+    "start": 1938,
+    "end": 1939,
+    "label": "1938–1939: planar minima and a printed symmetric conjecture"
+  },
+  "attribution": "Mahler's name fits the core volume-product question, but the modern equality candidates and functional and symplectic versions were developed by others. In particular, Hanner's 1956 bodies arose in a problem about intersections of translates. Classification: gradual crystallization with unexpected connections. The first explicit symmetric all-dimensional formulation located is Mahler's transference paper, p. 96; no corresponding first-priority claim is made here for the general all-dimensional conjecture.",
+  "contributors": [
+    {
+      "name": "Hermann Minkowski and Aleksandr Khintchine",
+      "contribution": "Developed the geometry-of-numbers and transference setting in which Mahler worked.",
+      "sourceIds": [
+        "mahler-transference"
+      ]
+    },
+    {
+      "name": "Kurt Mahler",
+      "contribution": "Proved planar lower bounds and formulated the symmetric higher-dimensional volume-product conjecture.",
+      "sourceIds": [
+        "mahler-polygons",
+        "mahler-transference"
+      ]
+    },
+    {
+      "name": "Olof Hanner",
+      "contribution": "Constructed spaces and bodies through intersection properties; these later supplied the full symmetric extremal family.",
+      "sourceIds": [
+        "hanner-1956",
+        "volume-product-survey"
+      ]
+    },
+    {
+      "name": "Jean Bourgain and Vitali Milman",
+      "contribution": "Proved an exponential-order reverse Santaló lower bound, short of the sharp Mahler constant.",
+      "sourceIds": [
+        "bourgain-milman",
+        "volume-product-survey"
+      ]
+    },
+    {
+      "name": "Matthieu Fradelizi and Mathieu Meyer",
+      "contribution": "Formulated functional inverse Santaló questions using log-concavity and convex duality.",
+      "sourceIds": [
+        "functional-2008"
+      ]
+    },
+    {
+      "name": "Shiri Artstein-Avidan, Roman Karasev and Yaron Ostrover",
+      "contribution": "Connected symmetric Mahler to symplectic capacity and Minkowski billiards.",
+      "sourceIds": [
+        "symplectic-2014"
+      ]
+    },
+    {
+      "name": "Hiroshi Iriyeh and Masataka Shibata",
+      "contribution": "Settled the symmetric three-dimensional inequality and equality cases.",
+      "sourceIds": [
+        "iriyhe-shibata-2020"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "cross-disciplinary",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The polygon paper is dated August 1938 internally and cited as 1938 in the bibliography, while the collected archive groups it under 1939 and other accounts use 1939. The narrative preserves the range. Its approximation argument leaves equality for arbitrary planar convex regions unsettled; later equality work should not be credited wholesale to that paper. This batch has not established the first printed all-dimensional nonsymmetric conjecture or first formulation of the full Hanner equality conjecture. The manuscript-cited January 2026 width question by Alejandro Vicente could not be retrieved independently. OpenAI's proofs are not reviewed here.",
+  "sources": [
+    {
+      "id": "mahler-polygons",
+      "title": "Ein Minimalproblem für konvexe Polygone",
+      "url": "https://carmamaths.org/resources/mahler/docs/059.pdf",
+      "citation": "Kurt Mahler, Mathematica (Zutphen), series B 7, 118–127, cited as 1938; author dateline Montana, August 1938.",
+      "kind": "primary",
+      "note": "Original scan visually inspected, especially final pages: planar polygon equality and extension of inequalities by approximation; equality for general regions explicitly left unsettled. Archive year grouping differs."
+    },
+    {
+      "id": "mahler-transference",
+      "title": "Ein Übertragungsprinzip für konvexe Körper",
+      "url": "https://carmamaths.org/resources/mahler/docs/057.pdf",
+      "citation": "Kurt Mahler, Časopis pro pěstování matematiky a fysiky 68 (1939), 93–102, especially pp. 93–97; DOI 10.21136/CPMF.1939.109441.",
+      "kind": "primary",
+      "note": "Original scan visually inspected. Received 8 August 1938; p. 96 explicitly displays the conjectured symmetric sharp bound. The introduction names Khintchine's 1926 transference result and Minkowski's geometry-of-numbers theorems."
+    },
+    {
+      "id": "mahler-archive",
+      "title": "Kurt Mahler: collected works",
+      "url": "https://carmamaths.org/resources/mahler/collected.html",
+      "citation": "CARMA, curated collected works of Kurt Mahler, entries 057 and 059.",
+      "kind": "secondary",
+      "note": "Useful bibliographic access; entry 059 is grouped under 1939 while its citation says 1938."
+    },
+    {
+      "id": "hanner-1956",
+      "title": "Intersections of translates of convex bodies",
+      "url": "https://journals.msp.org/mscand/article/view/2863",
+      "citation": "Olof Hanner, Mathematica Scandinavica 4 (1956), 65–87; DOI 10.7146/math.scand.a-10456.",
+      "kind": "primary",
+      "note": "Publisher record inspected; mathematical connection checked against the scholarly volume-product survey. Full text was not retrieved in this batch."
+    },
+    {
+      "id": "volume-product-survey",
+      "title": "Volume Product",
+      "url": "https://arxiv.org/html/2301.06131v1",
+      "citation": "Matthieu Fradelizi, Mathieu Meyer and Artem Zvavitch, survey, arXiv:2301.06131v1 (2023), §§3–5 and 7.",
+      "kind": "secondary",
+      "note": "Scholarly account of Hanner bodies, reverse inequalities and later interpretations. One rendered planar constant appears corrupted; the constants used here were checked against primary statements."
+    },
+    {
+      "id": "bourgain-milman",
+      "title": "New volume ratio properties for convex symmetric bodies in Rⁿ",
+      "url": "https://doi.org/10.1007/BF01388911",
+      "citation": "Jean Bourgain and Vitali D. Milman, Inventiones Mathematicae 88(2) (1987), 319–340.",
+      "kind": "primary",
+      "note": "Bibliographic record checked; theorem's significance checked in the volume-product survey. An IHES archive lists a March 1986 preprint, but its full scan was inaccessible."
+    },
+    {
+      "id": "functional-2008",
+      "title": "Some functional inverse Santaló inequalities",
+      "url": "https://doi.org/10.1016/j.aim.2008.03.013",
+      "citation": "Matthieu Fradelizi and Mathieu Meyer, Advances in Mathematics 218(5) (2008), 1430–1452.",
+      "kind": "primary",
+      "note": "Publisher abstract inspected and formulation checked against the scholarly survey; full publisher text was inaccessible. This concerns inverse lower inequalities, distinct from their earlier functional upper Santaló work."
+    },
+    {
+      "id": "symplectic-2014",
+      "title": "From Symplectic Measurements to the Mahler Conjecture",
+      "url": "https://arxiv.org/html/1303.4197v2",
+      "citation": "Shiri Artstein-Avidan, Roman Karasev and Yaron Ostrover, Duke Mathematical Journal 163(11) (2014), 2003–2022; preprint 2013, theorems 1.6–1.7.",
+      "kind": "primary",
+      "note": "Read the capacity calculation and implication from Viterbo's volume–capacity conjecture; Hofer–Zehnder capacity must be distinguished from Gromov width."
+    },
+    {
+      "id": "iriyhe-shibata-2020",
+      "title": "Symmetric Mahler's conjecture in the 3-dimensional case",
+      "url": "https://arxiv.org/abs/1706.01749",
+      "citation": "Hiroshi Iriyeh and Masataka Shibata, Duke Mathematical Journal 169(6) (2020), 1077–1134; first preprint 2017.",
+      "kind": "primary",
+      "note": "Abstract, introduction and theorem 1.1 read from the linked preprint: equality is the linear cube or cross-polytope in dimension three."
+    },
+    {
+      "id": "viterbo-counterexample",
+      "title": "A counterexample to Viterbo's conjecture",
+      "url": "https://annals.math.princeton.edu/2026/203-2/p05",
+      "citation": "Pazit Haim-Kislev and Yaron Ostrover, Annals of Mathematics 203(2) (2026), 603–622; preprint arXiv:2405.16513.",
+      "kind": "primary",
+      "note": "Publisher record inspected. Prevents presenting the unrestricted Viterbo conjecture as an established or still-unrefuted route."
+    },
+    {
+      "id": "openai-catalogue",
+      "title": "OpenAI manuscript map",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "citation": "OpenAI mathematics collection, family 087; snapshot fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "kind": "upstream",
+      "note": "Three related manuscripts dated 22 September 2026, released in the October collection."
+    },
+    {
+      "id": "openai-symmetric",
+      "title": "The symmetric Mahler conjecture and its equality cases",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-symmetric-Mahler-conjecture-and-its-equality-cases-September-22-2026/build/sections/introduction.tex",
+      "citation": "OpenAI, 22 September 2026, introduction, main theorem and functional corollary.",
+      "kind": "upstream",
+      "note": "Introduction and bibliography read; claims all geometric equality cases, not a full functional equality classification."
+    },
+    {
+      "id": "openai-general",
+      "title": "The Mahler Conjecture for General Convex Bodies",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mahler-Conjecture-for-General-Convex-Bodies-September-22-2026/build/sections/00-introduction.tex",
+      "citation": "OpenAI, 22 September 2026, introduction, theorem 1.1 and functional corollary.",
+      "kind": "upstream",
+      "note": "Introduction and bibliography read; Santaló-centered product and simplex equality."
+    },
+    {
+      "id": "openai-width",
+      "title": "Symplectic Balls in Symmetric Polar Products",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026/build/sections/introduction.tex",
+      "citation": "OpenAI, 22 September 2026, introduction and main theorem.",
+      "kind": "upstream",
+      "note": "Introduction, separate history section and bibliography read. The width claim concerns actual symplectic embeddings below capacity 4."
+    }
+  ],
+  "events": [
+    {
+      "id": "transference-context",
+      "date": {
+        "precision": "range",
+        "start": 1926,
+        "end": 1938,
+        "label": "1926–1938"
+      },
+      "type": "background",
+      "title": "Dual convex bodies help transfer lattice estimates",
+      "description": "Mahler's introduction starts from Khintchine's transference principle, relating approximation problems, and seeks a convex-geometric generalization using Minkowski's lattice theorems. The body and its polar provide the dual pair; their volume product is invariant under linear coordinate changes.",
+      "sourceIds": [
+        "mahler-transference"
+      ],
+      "follows": [],
+      "relationNote": "The motivating setting is lattice geometry; the extremal-volume question becomes a problem in its own right.",
+      "uncertainty": ""
+    },
+    {
+      "id": "mahler",
+      "date": {
+        "precision": "range",
+        "start": 1938,
+        "end": 1939,
+        "label": "Written in 1938; publications cited 1938–1939"
+      },
+      "type": "formulation",
+      "title": "Planar theorems accompany a higher-dimensional conjecture",
+      "description": "Mahler's polygon paper proves planar minima with triangle and parallelogram equality among polygons. His transference paper explicitly proposes 4ⁿ/n! as the symmetric sharp lower bound, exhibiting parallelotopes and their polar cross-polytopes.",
+      "sourceIds": [
+        "mahler-polygons",
+        "mahler-transference"
+      ],
+      "follows": [
+        "transference-context"
+      ],
+      "relationNote": "Proved planar cases and conjectured higher-dimensional behavior coexist from the outset.",
+      "uncertainty": "The polygon paper's final paragraph extends inequalities by approximation but leaves general-region equality undecided. Its publication year varies between bibliographic accounts."
+    },
+    {
+      "id": "hanner",
+      "date": {
+        "precision": "exact",
+        "year": 1956,
+        "label": "1956"
+      },
+      "type": "predecessor",
+      "title": "Future extremizers arise from intersections of translates",
+      "description": "Hanner studies convex bodies with special intersection properties. His recursively constructed family mixes Cartesian products and convex-hull sums of intervals, going beyond cubes and cross-polytopes; it later becomes central to the symmetric equality question.",
+      "sourceIds": [
+        "hanner-1956",
+        "volume-product-survey"
+      ],
+      "follows": [],
+      "relationNote": "A separate structural problem supplies the modern candidate equality family; this is not presented as Mahler's original list.",
+      "uncertainty": ""
+    },
+    {
+      "id": "bourgain-milman",
+      "date": {
+        "precision": "exact",
+        "year": 1987,
+        "label": "1987 publication; 1986 preprint listed"
+      },
+      "type": "partial-result",
+      "title": "The correct exponential scale is proved",
+      "description": "Bourgain and Milman obtain |K||K°|≥cⁿ|B₂ⁿ|² for symmetric convex bodies, with c>0 independent of dimension. This reverse Santaló theorem establishes an exponential-order lower bound, without reaching the conjectured sharp constant.",
+      "sourceIds": [
+        "bourgain-milman",
+        "volume-product-survey"
+      ],
+      "follows": [
+        "mahler"
+      ],
+      "relationNote": "Asymptotic progress is substantial even though it does not classify minimizers.",
+      "uncertainty": ""
+    },
+    {
+      "id": "new-interpretations",
+      "date": {
+        "precision": "range",
+        "start": 2008,
+        "end": 2014,
+        "label": "2008–2014"
+      },
+      "type": "reformulation",
+      "title": "Convex duality reaches functions and symplectic billiards",
+      "description": "Fradelizi–Meyer formulate functional lower inequalities for log-concave functions and their Legendre duals. Artstein-Avidan–Karasev–Ostrover then show in 2013–2014 that a symplectic volume–capacity conjecture would imply symmetric Mahler, computing Hofer–Zehnder capacity 4 for K×K° via billiards.",
+      "sourceIds": [
+        "functional-2008",
+        "symplectic-2014"
+      ],
+      "follows": [
+        "mahler"
+      ],
+      "relationNote": "Two distinct branches introduce new objects and stronger questions.",
+      "uncertainty": "The general Viterbo volume–capacity conjecture was subsequently disproved; its conditional historical implication should not be read as a successful general proof route."
+    },
+    {
+      "id": "dimension-three",
+      "date": {
+        "precision": "range",
+        "start": 2017,
+        "end": 2020,
+        "label": "2017 preprint; 2020 publication"
+      },
+      "type": "partial-result",
+      "title": "The symmetric three-dimensional problem is settled",
+      "description": "Iriyeh and Shibata prove the sharp lower bound in dimension three and identify equality as the cube or octahedron up to an invertible linear map.",
+      "sourceIds": [
+        "iriyhe-shibata-2020"
+      ],
+      "follows": [
+        "mahler"
+      ],
+      "relationNote": "A complete fixed-dimensional result includes equality, rather than only an improved universal estimate.",
+      "uncertainty": ""
+    },
+    {
+      "id": "release-2026",
+      "date": {
+        "precision": "exact",
+        "label": "6 October release; manuscripts dated 22 September 2026",
+        "year": 2026,
+        "iso": "2026-10-06"
+      },
+      "type": "ai-claim",
+      "title": "Three manuscripts claim several related endpoints",
+      "description": "OpenAI claims both geometric inequalities in every dimension, with Hanner and simplex equality respectively; functional bounds 4ⁿ for even potentials and eⁿ generally; and Gromov width 4 for symmetric polar products. The width theorem supplies ball embeddings at every capacity below 4 and independently implies the symmetric volume inequality.",
+      "sourceIds": [
+        "openai-catalogue",
+        "openai-symmetric",
+        "openai-general",
+        "openai-width"
+      ],
+      "follows": [
+        "mahler",
+        "hanner",
+        "new-interpretations",
+        "dimension-three"
+      ],
+      "relationNote": "The geometric equality, functional inequality and symplectic-width statements have different scopes.",
+      "uncertainty": "No independent proof review. Functional equality classifications and a general Viterbo theorem are not claimed."
+    }
+  ],
+  "lastEditorialUpdate": "2026-10-08"
+}

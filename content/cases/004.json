@@ -1,0 +1,320 @@
+{
+  "familyId": "004",
+  "status": "published",
+  "displayTitle": "Hilbert asked about integers; the harder inheritance concerned fractions",
+  "discipline": "Number theory and mathematical logic",
+  "scope": {
+    "types": [
+      "full-resolution"
+    ],
+    "note": "OpenAI claims undecidability of rational solvability for arbitrary integer-coefficient polynomials, with the number of variables part of the input. This is the rational variant of Hilbert's tenth problem. The manuscript does not claim an existential definition of the integers in the rationals.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+    "classificationStatus": "provisional"
+  },
+  "originalQuestion": "Hilbert's 1900 tenth problem requested a finite procedure deciding whether a polynomial equation with integer coefficients has an integer solution. His phrase 'rational integers' means ordinary integers, not arbitrary rational numbers.",
+  "modernQuestion": "Is there an algorithm which, given n and f in Z[X₁,…,Xₙ], decides whether f has a zero in Qⁿ? Equivalently, is the existential theory of rational arithmetic decidable? Allowing fractions changes the domain of the unknowns, even when coefficients remain integers.",
+  "questionDifference": "Hilbert's integer problem was negatively resolved in 1970. The October 2026 manuscript claims a negative answer to the rational variant in all numbers of variables. Robinson's 1949 undecidability theorem concerns the full first-order theory, allowing universal as well as existential quantifiers; it does not already settle this question. Diophantine definitions or models of integer arithmetic in Q would be sufficient ways to transfer undecidability, but the 2026 paper instead claims a Turing reduction using a computable sequence of rational-solvability tests. It does not establish either such definition or model. Its arithmetic inputs include a companion pointwise 2-converse for elliptic curves with rational two-torsion, under a 2-primary Selmer corank condition of zero or one; that input is not a claim of the full Birch–Swinnerton-Dyer conjecture.",
+  "conceptualOrigins": {
+    "precision": "exact",
+    "label": "1900: inherited algorithmic question about Diophantine equations",
+    "year": 1900
+  },
+  "firstFormulation": {
+    "precision": "unknown",
+    "label": "Rational variant: explicitly discussed by 2000; first proposer unlocated"
+  },
+  "attribution": "Hilbert names the ancestor, not a located original proposer of the rational variant. Robinson's 1949 paper is an early conceptual precursor. The earliest explicit rational existential-decision discussion located in this batch is Cornelissen–Zahidi's 2000 introduction; Poonen's 2003 paper states the polynomial version directly. Neither is claimed as the historical first formulation. Classification: inherited problem with gradual crystallization through logic and arithmetic geometry.",
+  "contributors": [
+    {
+      "name": "David Hilbert",
+      "contribution": "Posed the integer-solvability decision problem in 1900.",
+      "sourceIds": [
+        "hilbert-1900"
+      ]
+    },
+    {
+      "name": "Julia Robinson",
+      "contribution": "Defined Z in Q with mixed quantifiers in 1949; helped build the later integer representation theorem.",
+      "sourceIds": [
+        "robinson-1949",
+        "davis-1973"
+      ]
+    },
+    {
+      "name": "Martin Davis, Hilary Putnam and Yuri Matiyasevich",
+      "contribution": "With Robinson, developed the representation theorem culminating in integer undecidability in 1970.",
+      "sourceIds": [
+        "davis-1973"
+      ]
+    },
+    {
+      "name": "Barry Mazur",
+      "contribution": "Introduced a geometric conjecture obstructing the usual existential-definition route.",
+      "sourceIds": [
+        "mazur-1995"
+      ]
+    },
+    {
+      "name": "Gunther Cornelissen and Karim Zahidi",
+      "contribution": "Extended the conditional obstruction to Diophantine models of integer arithmetic.",
+      "sourceIds": [
+        "cornelissen-zahidi-2000"
+      ]
+    },
+    {
+      "name": "Bjorn Poonen",
+      "contribution": "Used rank-one elliptic curves to obtain undecidability for large proper subrings of Q.",
+      "sourceIds": [
+        "poonen-2003"
+      ]
+    },
+    {
+      "name": "Jochen Koenigsmann",
+      "contribution": "Found a universal definition of Z in Q, leaving the existential decision question distinct.",
+      "sourceIds": [
+        "koenigsmann-2016"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "cross-disciplinary",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The first proposer and first printed formulation of the rational variant remain unlocated. The 2000 source supplies an explicit discussion, not a priority claim. Choosing 1900 as the conceptual starting point foregrounds the algorithmic question; a longer history of Diophantine equations would begin much earlier. Mazur's conjecture is used here as a conditional obstruction, not an established theorem or a prediction of decidability. OpenAI's claims and dependency statements have been read but their proofs have not been independently assessed.",
+  "sources": [
+    {
+      "id": "hilbert-1900",
+      "title": "Hilbert's Mathematical Problems, problem 10",
+      "url": "https://www.gutenberg.org/cache/epub/71655/pg71655-images.html",
+      "citation": "David Hilbert, Mathematical Problems (1900); English translation by Mary Frances Winston Newson, Bulletin of the AMS 8 (1902), 437–479, problem 10.",
+      "kind": "primary",
+      "note": "Read the English translation. 'Rational integers' denotes Z. The 1900 German original is the underlying formulation."
+    },
+    {
+      "id": "robinson-1949",
+      "title": "Definability and decision problems in arithmetic",
+      "url": "https://www.math.umd.edu/~laskow/713/Spring17/juliarobinson.pdf",
+      "citation": "Julia Robinson, Journal of Symbolic Logic 14(2) (1949), 98–114, especially theorems 3.1 and 4.2.",
+      "kind": "primary",
+      "note": "Read the original paper; received 28 September 1948 and based on her Berkeley thesis under Alfred Tarski."
+    },
+    {
+      "id": "davis-1973",
+      "title": "Hilbert's tenth problem is unsolvable",
+      "url": "https://www.math.umd.edu/~laskow/Pubs/713/Diophantine.pdf",
+      "citation": "Martin Davis, American Mathematical Monthly 80(3) (1973), 233–269.",
+      "kind": "secondary",
+      "note": "A participant's scholarly account of the 1961 exponential representation theorem and Matiyasevich's 1970 completion."
+    },
+    {
+      "id": "poonen-history-2008",
+      "title": "Undecidability in number theory",
+      "url": "https://math.mit.edu/~poonen/papers/h10_notices.pdf",
+      "citation": "Bjorn Poonen, Notices of the AMS 55(3) (2008), 344–350.",
+      "kind": "secondary",
+      "note": "Useful distinction between integer, rational and full first-order decision problems; also explains the need for a precise theory of algorithms."
+    },
+    {
+      "id": "mazur-1995",
+      "title": "Speculations about the topology of rational points: an up-date",
+      "url": "https://numdam.org/item/AST_1995__228__165_0.pdf",
+      "citation": "Barry Mazur, Astérisque 228 (1995), 165–181, conjecture 3 and introductory motivation.",
+      "kind": "primary",
+      "note": "Read the updated formulation. The earlier article The topology of rational points is in Experimental Mathematics 1 (1992), 35–45."
+    },
+    {
+      "id": "cornelissen-zahidi-2000",
+      "title": "Topology of Diophantine Sets: Remarks on Mazur's Conjectures",
+      "url": "https://arxiv.org/html/math/0006140v1",
+      "citation": "Gunther Cornelissen and Karim Zahidi, Contemporary Mathematics 270 (2000), 253–260; author preprint 20 June 2000, §§1 and 3.",
+      "kind": "primary",
+      "note": "Introduction explicitly distinguishes the open rational existential theory from Robinson's theorem; theorem 3.6 gives the conditional model obstruction."
+    },
+    {
+      "id": "poonen-2003",
+      "title": "Hilbert's tenth problem and Mazur's conjecture for large subrings of Q",
+      "url": "https://arxiv.org/html/math/0306277v1",
+      "citation": "Bjorn Poonen, Journal of the AMS 16(4) (2003), 981–990, introduction and theorem 1.3.",
+      "kind": "primary",
+      "note": "Read the polynomial formulation and subring theorem. Density one for inverted primes does not mean the ring equals Q."
+    },
+    {
+      "id": "koenigsmann-2016",
+      "title": "Defining Z in Q",
+      "url": "https://arxiv.org/html/1011.3424v2",
+      "citation": "Jochen Koenigsmann, Annals of Mathematics 183(1) (2016), 73–93; preprint first posted 2010, revised 2013.",
+      "kind": "primary",
+      "note": "Read the universal definition and its distinction from an existential definition. Publication date checked against the Oxford research archive."
+    },
+    {
+      "id": "openai-catalogue",
+      "title": "OpenAI manuscript map",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "citation": "OpenAI mathematics collection, family 004; snapshot fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "kind": "upstream",
+      "note": "Evidence for the reported result, not independent validation."
+    },
+    {
+      "id": "openai-h10",
+      "title": "Hilbert's tenth problem over the rational numbers",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/build/sections/01-introduction.tex",
+      "citation": "OpenAI, manuscript dated 6 October 2026, introduction, main theorem and historical setting.",
+      "kind": "upstream",
+      "note": "Introduction and bibliography read. The negative decision result has n as part of the input."
+    },
+    {
+      "id": "openai-two-converse",
+      "title": "A pointwise 2-converse for elliptic curves with rational two-torsion",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-pointwise-2-converse-for-elliptic-curves-with-rational-two-torsion-October-7-2026/build/sections/introduction.tex",
+      "citation": "OpenAI, companion manuscript dated 7 October 2026, introduction.",
+      "kind": "upstream",
+      "note": "Inspected to distinguish the paper's stated elliptic-curve input from full BSD; included in the post-release pinned snapshot."
+    }
+  ],
+  "events": [
+    {
+      "id": "hilbert",
+      "date": {
+        "precision": "exact",
+        "label": "1900",
+        "year": 1900
+      },
+      "type": "formulation",
+      "title": "An algorithm requested before algorithms had a formal theory",
+      "description": "Hilbert asks for a finite procedure deciding integer solvability of arbitrary polynomial equations. The wording presupposes an effective method, rather than anticipating that impossibility itself could be proved.",
+      "sourceIds": [
+        "hilbert-1900"
+      ],
+      "follows": [],
+      "relationNote": "Conceptual ancestor of the rational question; not the same domain.",
+      "uncertainty": ""
+    },
+    {
+      "id": "robinson",
+      "date": {
+        "precision": "exact",
+        "label": "1949",
+        "year": 1949
+      },
+      "type": "predecessor",
+      "title": "Rational arithmetic is already undecidable—with more quantifiers",
+      "description": "Robinson defines the integers inside the rationals and proves their full first-order arithmetic undecidable. Universal and existential quantifiers both appear: knowing this still leaves the equation-solvability question unanswered.",
+      "sourceIds": [
+        "robinson-1949"
+      ],
+      "follows": [
+        "hilbert"
+      ],
+      "relationNote": "A nearby result makes quantifier complexity central to the inherited problem.",
+      "uncertainty": ""
+    },
+    {
+      "id": "mrdp",
+      "date": {
+        "precision": "range",
+        "label": "1961–1970",
+        "start": 1961,
+        "end": 1970
+      },
+      "type": "partial-result",
+      "title": "From exponential equations to ordinary polynomials",
+      "description": "Davis, Putnam and Robinson represent recursively enumerable relations using exponential Diophantine equations in 1961. Matiyasevich's Fibonacci construction in 1970 removes exponentiation, completing the negative solution over integers.",
+      "sourceIds": [
+        "davis-1973"
+      ],
+      "follows": [
+        "hilbert"
+      ],
+      "relationNote": "Settles the ancestor; transfer to rational unknowns requires another argument.",
+      "uncertainty": ""
+    },
+    {
+      "id": "mazur",
+      "date": {
+        "precision": "range",
+        "label": "1992–2000",
+        "start": 1992,
+        "end": 2000
+      },
+      "type": "reformulation",
+      "title": "Geometry threatens the standard transfer route",
+      "description": "Mazur's topology conjecture predicts finitely many connected components in closures of rational points and would exclude an existential definition of Z in Q. Cornelissen–Zahidi extend this conditional obstruction to Diophantine models in 2000.",
+      "sourceIds": [
+        "mazur-1995",
+        "cornelissen-zahidi-2000"
+      ],
+      "follows": [
+        "robinson",
+        "mrdp"
+      ],
+      "relationNote": "An obstructed construction need not make the decision problem decidable.",
+      "uncertainty": "The original 1992 article was located bibliographically; the 1995 updated formulation was read."
+    },
+    {
+      "id": "subrings",
+      "date": {
+        "precision": "exact",
+        "label": "2003",
+        "year": 2003
+      },
+      "type": "partial-result",
+      "title": "Undecidability reaches rings almost as large as Q",
+      "description": "Poonen constructs proper subrings Z[S⁻¹] with undecidable Diophantine theory even when S has natural density one among primes. The method uses selected multiples of a point on a rank-one elliptic curve.",
+      "sourceIds": [
+        "poonen-2003"
+      ],
+      "follows": [
+        "mrdp"
+      ],
+      "relationNote": "A constructive branch develops alongside the geometric obstruction; density one does not give the whole rational field.",
+      "uncertainty": ""
+    },
+    {
+      "id": "universal",
+      "date": {
+        "precision": "range",
+        "label": "2010 preprint; 2016 publication",
+        "start": 2010,
+        "end": 2016
+      },
+      "type": "partial-result",
+      "title": "The complement of the integers becomes existentially definable",
+      "description": "Koenigsmann gives a universal definition of Z in Q, equivalently a Diophantine definition of Q minus Z. This sharply reduces quantifier complexity without providing the existential definition of Z that would immediately transfer the integer theorem.",
+      "sourceIds": [
+        "koenigsmann-2016"
+      ],
+      "follows": [
+        "robinson"
+      ],
+      "relationNote": "Closer definability results are not interchangeable with rational solvability.",
+      "uncertainty": ""
+    },
+    {
+      "id": "release-2026",
+      "date": {
+        "precision": "exact",
+        "label": "6 October 2026; dependency updated 7 October",
+        "year": 2026,
+        "iso": "2026-10-06"
+      },
+      "type": "ai-claim",
+      "title": "The release claims the rational decision problem is undecidable",
+      "description": "OpenAI claims no algorithm can decide rational zeros of integer-coefficient polynomials, for arbitrary input n. Its proposed reduction uses a sequence of rational-solvability tests and arithmetic control from companion results, rather than asserting a Diophantine model of Z in Q.",
+      "sourceIds": [
+        "openai-catalogue",
+        "openai-h10",
+        "openai-two-converse"
+      ],
+      "follows": [
+        "mrdp",
+        "subrings"
+      ],
+      "relationNote": "These predecessors explain the problem and available methods; timeline links do not certify the new proof.",
+      "uncertainty": "This is a reported theorem, without independent proof review. The source snapshot includes a 7 October companion manuscript."
+    }
+  ],
+  "lastEditorialUpdate": "2026-10-08"
+}

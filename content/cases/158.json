@@ -1,0 +1,333 @@
+{
+  "familyId": "158",
+  "status": "published",
+  "displayTitle": "A failed shortcut to the four-color problem became a problem of its own",
+  "discipline": "Discrete geometry, graph coloring and measure theory",
+  "scope": {
+    "types": [
+      "quantitative-improvement"
+    ],
+    "note": "OpenAI claims that arbitrary five-colorings of the Euclidean plane are impossible in ZFC, raising the unrestricted lower bound from five to six. The exact chromatic number remains six or seven.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+    "classificationStatus": "provisional"
+  },
+  "originalQuestion": "How many colors are needed for all points of the Euclidean plane if any two points at distance exactly one must receive different colors? Nelson's remembered motivation was to place map-coloring problems inside a single infinite unit-distance graph. That proposed shortcut failed, but the distance-coloring question survived.",
+  "modernQuestion": "Determine χ(R²), the least k admitting a function c:R²→{1,…,k} with c(x)≠c(y) whenever |x−y|=1, with arbitrary color classes. This is the chromatic number of the plane's unit-distance graph; edges may cross, so it is not a planar-graph coloring problem. Requiring Lebesgue-measurable classes creates a distinct variant.",
+  "questionDifference": "The OpenAI manuscript addresses the original unrestricted coloring problem, but claims only to exclude five colors: 6≤χ(R²)≤7, not an exact answer. Its stated bridge is an equivalence, in ZFC and for each finite k, between proper arbitrary k-colorings and weak measurable k-colorings. A weak measurable coloring may contain exceptional monochromatic unit pairs, provided their measure is zero when integrating over base points and unit directions. This is weaker than a proper measurable coloring and should not be substituted for it. The second claimed theorem excludes weak measurable five-colorings. Falconer's 1981 five-color lower bound assumed proper measurable color classes; it did not already exclude arbitrary four-colorings, and neither that theorem nor later results for polygonal regions settle the unrestricted version addressed here.",
+  "conceptualOrigins": {
+    "precision": "range",
+    "start": 1945,
+    "end": 1950,
+    "label": "1945 closed-covering precursor; 1950 map-coloring motivation"
+  },
+  "firstFormulation": {
+    "precision": "range",
+    "start": 1950,
+    "end": 1960,
+    "label": "Autumn 1950 in recollections; October 1960 printed formulation"
+  },
+  "attribution": "Soifer's reproduced correspondence supports Nelson as proposer and Isbell as the seven-color constructor. Hadwiger supplied related earlier work and a 1961 publication. The name compresses these roles. Gardner's October 1960 column is the earliest printed formulation located through this historical account, not a proved universal priority claim. Classification: multiple origins and an unexpected offspring of map coloring.",
+  "contributors": [
+    {
+      "name": "Edward Nelson",
+      "contribution": "Proposed the unrestricted question in 1950, according to later correspondence.",
+      "sourceIds": [
+        "soifer-history"
+      ]
+    },
+    {
+      "name": "John Isbell",
+      "contribution": "Found a seven-color hexagonal construction in 1950.",
+      "sourceIds": [
+        "de-grey-2018"
+      ]
+    },
+    {
+      "name": "Hugo Hadwiger",
+      "contribution": "Published a related hexagonal construction in 1945 and the unrestricted question in 1961.",
+      "sourceIds": [
+        "de-grey-2018",
+        "hadwiger-1961"
+      ]
+    },
+    {
+      "name": "Leo Moser and William Moser",
+      "contribution": "Produced the seven-vertex four-chromatic spindle in 1961; Leo also passed the problem to Gardner.",
+      "sourceIds": [
+        "moser-1961",
+        "soifer-history"
+      ]
+    },
+    {
+      "name": "Martin Gardner",
+      "contribution": "Published the problem in Mathematical Games in October 1960.",
+      "sourceIds": [
+        "gardner-1960",
+        "soifer-history"
+      ]
+    },
+    {
+      "name": "Nicolaas de Bruijn and Paul Erdős",
+      "contribution": "Proved finite-subgraph compactness for graph colorings, linking infinite and finite obstructions.",
+      "sourceIds": [
+        "de-bruijn-erdos"
+      ]
+    },
+    {
+      "name": "Kenneth Falconer",
+      "contribution": "Established the five-color lower bound for measurable colorings in 1981.",
+      "sourceIds": [
+        "falconer-1981",
+        "payne-2009"
+      ]
+    },
+    {
+      "name": "Michael S. Payne",
+      "contribution": "Exhibited unit-distance subgraphs separating unrestricted and measurable chromatic numbers.",
+      "sourceIds": [
+        "payne-2009"
+      ]
+    },
+    {
+      "name": "Aubrey D. N. J. de Grey",
+      "contribution": "Constructed a finite non-four-colorable unit-distance graph in 2018.",
+      "sourceIds": [
+        "de-grey-2018"
+      ]
+    }
+  ],
+  "tags": [
+    "multiple-origins",
+    "changing-formulations",
+    "conceptual-development",
+    "stronger-bounds",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The 1950 account is retrospective. Nelson and Isbell differed in recalling Nelson's lower-bound proof; Hadwiger's independent proposal remains uncertain. Gardner's complete column and Hadwiger's original papers were not retrieved. The date and transmission account rely on a scholarly history reproducing letters. No independent assessment of the 2026 proof is supplied.",
+  "sources": [
+    {
+      "id": "soifer-history",
+      "title": "The 50th Anniversary of One Problem: The Chromatic Number of the Plane & Its Relatives. Part 1",
+      "url": "https://www.wfnmc.org/Journal%202003%201.pdf",
+      "citation": "Alexander Soifer, Mathematics Competitions 16(1) (2003), 9–41, especially printed pp. 13–19.",
+      "kind": "secondary",
+      "note": "Read the historical section and reproduced 1991 letters, including Nelson's failed map-coloring motivation."
+    },
+    {
+      "id": "gardner-1960",
+      "title": "Mathematical Games, October 1960",
+      "url": "https://www.scientificamerican.com/article/mathematical-games-1960-10/",
+      "citation": "Martin Gardner, Scientific American 203(4) (October 1960), Mathematical Games column.",
+      "kind": "primary",
+      "note": "Publisher record located; full column not retrieved. Its formulation and acknowledgement of Leo Moser are reported in Soifer's scholarly history."
+    },
+    {
+      "id": "hadwiger-1961",
+      "title": "Ungelöste Probleme",
+      "url": "https://www.e-periodica.ch/cntmng?pid=edm-001%3A1961%3A16%3A%3A215",
+      "citation": "Hugo Hadwiger, Elemente der Mathematik 16 (1961), 103–104.",
+      "kind": "primary",
+      "note": "Direct archive access encountered a verification barrier. The attribution passage is reproduced in Soifer; the OpenAI bibliography identifies this as Nr. 40."
+    },
+    {
+      "id": "moser-1961",
+      "title": "Solution to Problem 10",
+      "url": "https://doi.org/10.1017/S0008439500025765",
+      "citation": "Leo Moser and William Moser, Canadian Mathematical Bulletin 4(2) (1961), 187–189, within Solutions, pp. 187–194.",
+      "kind": "primary",
+      "note": "Bibliographic source for the spindle; its historical role and graph are documented in de Grey's introduction."
+    },
+    {
+      "id": "de-bruijn-erdos",
+      "title": "A colour problem for infinite graphs and a problem in the theory of relations",
+      "url": "https://users.renyi.hu/~p_erdos/1951-01.pdf",
+      "citation": "N. G. de Bruijn and P. Erdős, Indagationes Mathematicae 13 (1951), 371–373, theorem 1.",
+      "kind": "primary",
+      "note": "Read original theorem. The paper adopts the axiom of choice and notes earlier announcements and alternative proofs; this timeline does not claim the principle first appeared only here."
+    },
+    {
+      "id": "falconer-1981",
+      "title": "The Realization of Distances in Measurable Subsets Covering Rⁿ",
+      "url": "https://doi.org/10.1016/0097-3165(81)90014-5",
+      "citation": "K. J. Falconer, Journal of Combinatorial Theory, Series A 31(2) (1981), 184–189.",
+      "kind": "primary",
+      "note": "Author's institutional record verified citation; original full text was not retrieved. The theorem and its density/rotation method are described and adapted in Payne's 2009 paper."
+    },
+    {
+      "id": "payne-2009",
+      "title": "Unit distance graphs with ambiguous chromatic number",
+      "url": "https://arxiv.org/pdf/0707.1177",
+      "citation": "Michael S. Payne, Electronic Journal of Combinatorics 16(1) (2009), N31; arXiv:0707.1177v3.",
+      "kind": "primary",
+      "note": "Read §§2–3: Falconer's measurable lower bound and a graph on R² with rational unit displacement edges, unrestricted chromatic number two but measurable chromatic number at least five."
+    },
+    {
+      "id": "de-grey-2018",
+      "title": "The chromatic number of the plane is at least 5",
+      "url": "https://arxiv.org/html/1804.02385v3",
+      "citation": "Aubrey D. N. J. de Grey, arXiv:1804.02385v3 (30 May 2018), introduction and construction.",
+      "kind": "primary",
+      "note": "Corrected 1,581-vertex version read. Do not confuse this with the 1,585 vertices reported in the initial version."
+    },
+    {
+      "id": "openai-catalogue",
+      "title": "OpenAI manuscript map",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
+      "citation": "OpenAI mathematics collection, family 158; snapshot fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "kind": "upstream",
+      "note": "Catalogue correctly leaves six versus seven unresolved."
+    },
+    {
+      "id": "openai-plane",
+      "title": "The Euclidean plane is not five-colorable",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/build/sections/introduction.tex",
+      "citation": "OpenAI, manuscript dated 23 September 2026, introduction, main theorem, transfer theorem and weak-five theorem.",
+      "kind": "upstream",
+      "note": "Introduction and bibliography read. Weak measurability permits exceptional unit pairs; unrestricted colorings are covered by the claimed transfer in ZFC."
+    }
+  ],
+  "events": [
+    {
+      "id": "hadwiger-precursor",
+      "date": {
+        "precision": "exact",
+        "year": 1945,
+        "label": "1945"
+      },
+      "type": "predecessor",
+      "title": "The seven-color pattern predates the named problem",
+      "description": "Hadwiger publishes the hexagonal seven-color construction in a different, restricted covering problem involving congruent closed sets. It precedes Nelson's unrestricted question rather than being its original formulation.",
+      "sourceIds": [
+        "de-grey-2018",
+        "soifer-history"
+      ],
+      "follows": [],
+      "relationNote": "An earlier construction later supplies an upper bound for a broader question.",
+      "uncertainty": "The 1945 full text was not retrieved; its role is described by de Grey and Soifer."
+    },
+    {
+      "id": "nelson",
+      "date": {
+        "precision": "approximate",
+        "label": "Autumn 1950, recalled in 1991 letters",
+        "year": 1950
+      },
+      "type": "formulation",
+      "title": "A failed map-coloring shortcut leaves a new question",
+      "description": "Nelson recalls seeking one infinite graph that could encompass map-coloring questions. He instead finds the unit-distance problem; Isbell recalls supplying seven colors.",
+      "sourceIds": [
+        "soifer-history",
+        "de-grey-2018"
+      ],
+      "follows": [],
+      "relationNote": "This records a remembered motivation, not a contemporaneous published formulation.",
+      "uncertainty": "No 1950 written statement was located."
+    },
+    {
+      "id": "compactness",
+      "date": {
+        "precision": "exact",
+        "year": 1951,
+        "label": "1951"
+      },
+      "type": "reformulation",
+      "title": "An infinite coloring obstruction must have a finite witness",
+      "description": "De Bruijn and Erdős prove that a graph is k-colorable for finite k if every finite subgraph is k-colorable. In the plane, failure of k colors therefore entails a finite unit-distance obstruction, even if none is explicitly displayed.",
+      "sourceIds": [
+        "de-bruijn-erdos"
+      ],
+      "follows": [],
+      "relationNote": "A general compactness theorem changes how the infinite problem can be attacked; direct historical causation is not asserted.",
+      "uncertainty": ""
+    },
+    {
+      "id": "publication",
+      "date": {
+        "precision": "range",
+        "start": 1960,
+        "end": 1961,
+        "label": "October 1960–1961"
+      },
+      "type": "formulation",
+      "title": "Publication and a small finite obstruction",
+      "description": "Gardner prints the question after hearing it from Leo Moser. Hadwiger publishes it in 1961; the Mosers' spindle gives a seven-vertex obstruction to three colors.",
+      "sourceIds": [
+        "gardner-1960",
+        "hadwiger-1961",
+        "moser-1961",
+        "soifer-history",
+        "de-grey-2018"
+      ],
+      "follows": [
+        "nelson"
+      ],
+      "relationNote": "The printed record follows the remembered formulation by a decade.",
+      "uncertainty": "The earliest printed statement located is Gardner's column as identified by Soifer; the full column was not retrieved."
+    },
+    {
+      "id": "measurable",
+      "date": {
+        "precision": "range",
+        "start": 1981,
+        "end": 2009,
+        "label": "1981 theorem; 2009 contrasting examples"
+      },
+      "type": "partial-result",
+      "title": "Measure theory advances a different version",
+      "description": "Falconer proves at least five colors are needed when all color classes are measurable. Payne later constructs a unit-distance subgraph on all plane points that allows two arbitrary colors but needs at least five measurable colors, showing why regularity cannot simply be discarded.",
+      "sourceIds": [
+        "falconer-1981",
+        "payne-2009"
+      ],
+      "follows": [
+        "nelson"
+      ],
+      "relationNote": "This branch adds assumptions; it is not an earlier proof of the unrestricted five-color lower bound.",
+      "uncertainty": ""
+    },
+    {
+      "id": "de-grey",
+      "date": {
+        "precision": "exact",
+        "year": 2018,
+        "label": "2018"
+      },
+      "type": "partial-result",
+      "title": "A finite graph finally rules out four unrestricted colors",
+      "description": "De Grey constructs a non-four-colorable unit-distance graph, raising the unrestricted lower bound from four to five. The corrected manuscript has a 1,581-vertex example and describes computer search and independent verification using SAT solvers.",
+      "sourceIds": [
+        "de-grey-2018"
+      ],
+      "follows": [
+        "compactness",
+        "publication"
+      ],
+      "relationNote": "Concrete graph construction progresses independently of the measurable restriction.",
+      "uncertainty": ""
+    },
+    {
+      "id": "release-2026",
+      "date": {
+        "precision": "exact",
+        "label": "6 October release; manuscript dated 23 September 2026",
+        "year": 2026,
+        "iso": "2026-10-06"
+      },
+      "type": "ai-claim",
+      "title": "Five colors are claimed impossible; six versus seven remains",
+      "description": "OpenAI claims that unrestricted proper colorings correspond to weak measurable colorings in ZFC and that weak measurable five-colorings cannot exist. This would imply 6≤χ(R²)≤7. The weak condition allows exceptional monochromatic unit pairs of product measure zero.",
+      "sourceIds": [
+        "openai-catalogue",
+        "openai-plane"
+      ],
+      "follows": [
+        "measurable",
+        "de-grey"
+      ],
+      "relationNote": "The claim links the unrestricted and measure-theoretic branches without identifying proper measurable and arbitrary colorings.",
+      "uncertainty": "Reported proof, not independently validated; exact chromatic number remains unclaimed."
+    }
+  ],
+  "lastEditorialUpdate": "2026-10-08"
+}

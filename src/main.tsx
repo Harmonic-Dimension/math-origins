@@ -1,0 +1,13 @@
+import { StrictMode } from 'react';
+import { hydrateRoot, createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-600.css';
+import '@fontsource/libre-caslon-display/latin-400.css';
+import './styles.css';
+import 'katex/dist/katex.min.css';
+const root=document.getElementById('root')!;
+const app=<StrictMode><BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/,'') || '/'}><App/></BrowserRouter></StrictMode>;
+if(root.hasChildNodes()) hydrateRoot(root,app); else createRoot(root).render(app);
