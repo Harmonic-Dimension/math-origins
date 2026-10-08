@@ -32,7 +32,7 @@ export const patternLabels: Record<string,string> = {
 export function filterStudies(studies:Study[], filters:{query:string;field:string;scope:string;tag:string;status:string}) {
   const query=filters.query.trim().toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   return studies.filter(s=>{
-    const haystack=[s.history.familyId,caseTitle(s),caseField(s),s.family.releaseSummary,...s.history.contributors.map(p=>p.name),...s.history.tags.map(t=>patternLabels[t])].join(' ').toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const haystack=[s.history.familyId,caseTitle(s),caseField(s),s.family.releaseSummary,s.history.questionPlainLanguage,s.history.historicalHook,s.history.whatAIClaims,...s.history.contributors.map(p=>p.name),...s.history.tags.map(t=>patternLabels[t])].join(' ').toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     return haystack.includes(query) && (!filters.field || caseField(s)===filters.field) && (!filters.scope || s.history.scope.types.includes(filters.scope as typeof s.history.scope.types[number])) && (!filters.tag || s.history.tags.includes(filters.tag as typeof s.history.tags[number])) && (!filters.status || s.history.status===filters.status);
   });
 }

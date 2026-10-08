@@ -1,7 +1,7 @@
 {
   "familyId": "087",
   "status": "published",
-  "displayTitle": "A lattice problem acquired new extremizers—and a life in phase space",
+  "displayTitle": "Mahler conjectures",
   "discipline": "Convex geometry, functional analysis and symplectic geometry",
   "scope": {
     "types": [
@@ -347,5 +347,25 @@
       "uncertainty": "No independent proof review. Functional equality classifications and a general Viterbo theorem are not claimed."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-08",
+  "questionPlainLanguage": "Take a solid convex shape—a shape containing the straight segment between any two of its points—and construct its polar dual. The dual measures how far the shape extends in each direction, with a reciprocal trade-off: making the shape larger makes its dual smaller. Which shapes make the product of their volumes as small as possible?",
+  "questionFormal": "For a convex body $K\\subset\\mathbb{R}^n$ containing the origin in its interior, define $K^\\circ=\\{y:\\langle x,y\\rangle\\leq 1\\ \\text{for all }x\\in K\\}$. The symmetric conjecture asks whether, for $K=-K$, $$\\lvert K\\rvert\\,\\lvert K^\\circ\\rvert\\geq\\frac{4^n}{n!}.$$ The modern equality candidates are linear images of Hanner polytopes, a recursively constructed family including cubes and cross-polytopes. Without symmetry, choose the Santaló point $s(K)$, the interior point minimizing the polar volume after translation. The general conjecture asks whether $$\\lvert K\\rvert\\,\\lvert(K-s(K))^\\circ\\rvert\\geq\\frac{(n+1)^{n+1}}{(n!)^2},$$ with equality exactly for simplices. Here $\\lvert\\cdot\\rvert$ denotes $n$-dimensional volume.",
+  "whyItMatters": "A change of scale cannot make this product smaller: the body’s volume grows by exactly the factor by which its polar’s volume shrinks. Even stretching in some directions and compressing in others leaves the product unchanged. The puzzle is therefore about shape, rather than size. Smooth, round shapes are familiar optimizers in geometry, yet the proposed minima here are sharply cornered polytopes. Identifying them would give the exact limit of how small a body and its dual can be together. Polarity also connects a norm to its dual norm and links lattice estimates in the geometry of numbers. Convex analysis replaces bodies with functions; symplectic geometry relates certain polar products to billiard trajectories and the size of balls that fit under symplectic transformations.",
+  "illustrativeExample": "In the plane, the square $[-1,1]^2$ has area $4$. Its polar is the diamond $\\{(u,v):|u|+|v|\\leq1\\}$, with area $2$: their product is $8$. A unit disk is its own polar, giving $\\pi^2\\approx9.87$. The square–diamond pair has the smaller product. This comparison illustrates the symmetric planar minimum; it is not a proof of the higher-dimensional conjectures.",
+  "historicalHook": "A question born in lattice geometry eventually reached phase space: polar bodies became linked to symplectic geometry and billiards.",
+  "whatAIClaims": "Three OpenAI manuscripts report several results: the sharp symmetric volume bound with Hanner equality cases; the general bound with simplex equality cases; lower bounds for the corresponding functional products; and Gromov width 4 for symmetric polar products. These are distinct statements. If correct, the geometric results would settle both volume inequalities in every dimension, including their equality cases.",
+  "whatRemainsOpen": "Complete equality classifications for the functional inequalities are not claimed. The width result claims ball embeddings at every capacity below 4, not necessarily an embedding at capacity exactly 4. It is not a general Viterbo volume–capacity theorem; the earlier symplectic connection must retain its historical qualifications. This site has not independently assessed any of the three proofs.",
+  "visualExplainer": "polar-dual",
+  "explanationSourceIds": [
+    "mahler-transference",
+    "functional-2008",
+    "symplectic-2014"
+  ],
+  "claimSourceIds": [
+    "openai-symmetric",
+    "openai-general",
+    "openai-width"
+  ],
+  "questionSummary": "Which convex shapes minimize the volume of a body times the volume of its polar dual?",
+  "claimSummary": "both geometric conjectures, plus functional bounds and symplectic width"
 }

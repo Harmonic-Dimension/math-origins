@@ -28,18 +28,26 @@ All **372 families / 719 manuscripts** are imported from a pinned public upstrea
 
 Supplied historical accounts for **004, 087 and 158** are included with sources and branching timelines. The remaining **seven** accounts are marked **research pending**. The supplied research limitations are recorded in `research/batch-01.md`. No missing historical narratives, names, early dates or causal relationships have been fabricated. Pending records contain a sourced release milestone and a provisional result classification. Their pale branching diagram is explicitly a conceptual schematic; it becomes a real sourced graph once historical events are added.
 
-Still needed for research-pending cases: 120–200-word historical narratives; original and modern problem statements and their differences; researched conceptual origins and earliest identified formulations; attribution commentary; contributors; historical sources; dated, sourced milestones and their relationships; pattern tags; confidence assessments; scope review. The opening Markdown essay is an editorial draft and can be replaced.
+Still needed for research-pending cases: 120–200-word historical narratives; original and modern problem statements and their differences; researched conceptual origins and earliest identified formulations; attribution commentary; contributors; historical sources; dated, sourced milestones and their relationships; pattern tags; confidence assessments; scope review. The opening Markdown essay is retained as a provisional project perspective, not a finished author essay. The explorer defaults to the three researched accounts; its collection filter exposes the upcoming seven.
 
 ## Edit or add a case (two files)
 
 1. Edit `content/cases/004.json` and `content/cases/004.md`, or copy that pair and name it with another **existing, three-digit** upstream family ID. Keep the JSON `familyId` identical to the filename. Do not edit generated catalogue files to create a history.
 2. Keep `status: "research-pending"` until research is supplied. Use `"draft"` while working. Write the origin story in the Markdown file. Markdown supports links, headings, lists and inline/display LaTeX math. Raw HTML is disabled.
-3. Fill the structured fields, contributors and sources. `displayTitle` and `discipline` may stay `null` to use current imported metadata. All missing researched fields use `null`, not invented text or dates.
+3. Fill the mathematical introduction fields described below, contributors and sources. `displayTitle` and `discipline` may stay `null` to use current imported metadata. All missing researched fields use `null`, not invented text or dates.
 4. Add timeline events referencing source IDs. Connect a successor to zero or more earlier events using `follows`. Multiple predecessors and successors support branching and reformulation. Use `relationNote` to describe why the connection is justified.
 5. Set `lastEditorialUpdate` to the actual YYYY-MM-DD editorial date. Review the result’s precise scope against the manuscripts. Mark the scope classification `"reviewed"` only after that review.
 6. Run `npm run validate` and `npm run build`. Set `status: "published"` only after editorial review. Published records require a 120–200-word narrative, historical sources and events, contributors, assessed confidence and the question/attribution/date fields. Explicit unknown dates remain valid.
 
 In GitHub’s web interface, open the JSON or Markdown file, click the pencil, edit and propose a commit or pull request. One or two files per case are all an editor needs to change. No code edits are needed to add a case to the explorer or generate its route. The build fails with actionable errors if a record is invalid. Never include private notes in content: draft records and Markdown are shipped to visitors.
+
+### Mathematical introductions
+
+Each published record also requires `questionPlainLanguage`, `questionFormal`, `whyItMatters` (aim for 80–150 words), `historicalHook`, `whatAIClaims` and `whatRemainsOpen`. These are separate from the preserved `originalQuestion`, `modernQuestion` and `questionDifference` fields. Formal statements, examples and significance prose support Markdown and KaTeX; plain-language questions and hooks are plain text.
+
+Use `illustrativeExample` for an optional caption/explanation and `visualExplainer` for an optional diagram reference (`rational-solutions`, `polar-dual`, or `unit-distance`), rendered by `src/components/VisualExplainer.tsx`. Extend that registry and the schema when adding another diagram. `questionSummary` and `claimSummary` provide concise card text; otherwise cards use the plain-language question and qualified scope label. No CMS or database is involved.
+
+`explanationSourceIds` and `claimSourceIds` link these explanations to the record’s existing sources; both are required for published records and checked for dangling references. Pending records may omit the new fields (parsed as null/empty), so no research is invented for upcoming cases. Published pages read in the order question, significance, historical narrative, timeline, reported claim, attribution and sources. Native disclosure elements keep formal statements readable without JavaScript.
 
 ### Date shapes
 
@@ -76,7 +84,7 @@ Scope types: `full-resolution`, `special-case`, `quantitative-improvement`, `cou
 
 ## Edit the essay
 
-Edit `content/articles/before-the-proof.md`. Its title, deck and editorial date are currently in `src/pages.tsx`. The prose is authored in Markdown.
+Edit `content/articles/before-the-proof.md`. It is labeled as a project perspective and editorial draft. Its title, deck and editorial date are currently in `src/pages.tsx`. The prose is authored in Markdown.
 
 ## Reproduce or refresh the catalogue
 

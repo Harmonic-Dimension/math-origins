@@ -65,3 +65,13 @@ test('an offline refresh is reproducible and never overwrites curated content',(
   assert.deepEqual(paths.map(digest),before);
   assert.deepEqual(JSON.parse(readFileSync('data/catalogue.json','utf8')),cat);
 });
+
+test('published introductions require sourced explanations and valid diagram references',()=>{
+  for(const id of ['004','087','158']){
+    const r=JSON.parse(readFileSync('content/cases/'+id+'.json','utf8'));
+    assert.ok(r.whyItMatters.split(/\s+/).length>=80 && r.whyItMatters.split(/\s+/).length<=150);
+    const missing=structuredClone(r); delete missing.questionPlainLanguage; assert.throws(()=>caseSchema.parse(missing));
+    const bad=structuredClone(r); bad.explanationSourceIds=['missing-source']; assert.throws(()=>caseSchema.parse(bad));
+    const badVisual=structuredClone(r); badVisual.visualExplainer='nonexistent'; assert.throws(()=>caseSchema.parse(badVisual));
+  }
+});

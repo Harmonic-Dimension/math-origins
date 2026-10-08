@@ -29,6 +29,12 @@ export const caseSchema = z.object({
   displayTitle: text.nullable(), discipline: text.nullable(),
   scope: z.object({ types: z.array(z.enum(scopeTypes)).min(1), note: text, sourceUrl: url, classificationStatus: z.enum(['provisional', 'reviewed']) }).strict(),
   originalQuestion: text.nullable(), modernQuestion: text.nullable(), questionDifference: text.nullable(),
+  questionPlainLanguage: text.nullable().default(null), questionFormal: text.nullable().default(null),
+  questionSummary: text.nullable().default(null), claimSummary: text.nullable().default(null),
+  whyItMatters: text.nullable().default(null), illustrativeExample: text.nullable().default(null),
+  historicalHook: text.nullable().default(null), whatAIClaims: text.nullable().default(null), whatRemainsOpen: text.nullable().default(null),
+  visualExplainer: z.enum(['rational-solutions', 'polar-dual', 'unit-distance']).nullable().default(null),
+  explanationSourceIds: z.array(text).default([]), claimSourceIds: z.array(text).default([]),
   conceptualOrigins: dateSchema.nullable(), firstFormulation: dateSchema.nullable(),
   attribution: text.nullable(), contributors: z.array(z.object({ name: text, contribution: text, sourceIds: z.array(text).min(1) }).strict()),
   tags: z.array(z.enum(patternTags)), confidence: z.enum(['unresearched', 'low', 'moderate', 'high']),
@@ -45,6 +51,7 @@ export const caseSchema = z.object({
     for (const parent of event.follows) if (!events.has(parent) || parent === event.id) fail('Invalid predecessor ' + parent);
   }
   for (const p of c.contributors) for (const source of p.sourceIds) if (!sources.has(source)) fail('Unknown contributor source ' + source);
+  for (const source of [...c.explanationSourceIds, ...c.claimSourceIds]) if (!sources.has(source)) fail('Unknown explanation or claim source ' + source);
   const visiting = new Set<string>(), visited = new Set<string>();
   function visit(eventId: string) {
     if (visiting.has(eventId)) { fail('Timeline contains a cycle'); return; }
@@ -55,7 +62,8 @@ export const caseSchema = z.object({
   }
   for (const e of c.events) visit(e.id);
   if (c.status === 'published') {
-    for (const key of ['originalQuestion', 'modernQuestion', 'questionDifference', 'attribution', 'conceptualOrigins', 'firstFormulation'] as const) if (!c[key]) fail('Published cases require ' + key);
+    for (const key of ['originalQuestion', 'modernQuestion', 'questionDifference', 'attribution', 'conceptualOrigins', 'firstFormulation', 'questionPlainLanguage', 'questionFormal', 'whyItMatters', 'historicalHook', 'whatAIClaims', 'whatRemainsOpen'] as const) if (!c[key]) fail('Published cases require ' + key);
+    if (!c.explanationSourceIds.length || !c.claimSourceIds.length) fail('Published cases require sources for explanations and AI claims');
     if (!c.sources.some(s => s.kind !== 'upstream')) fail('Published cases need historical sources');
     if (!c.events.some(e => e.type !== 'ai-claim')) fail('Published cases need historical events');
     if (!c.contributors.length || c.confidence === 'unresearched') fail('Published cases need attribution and assessed confidence');

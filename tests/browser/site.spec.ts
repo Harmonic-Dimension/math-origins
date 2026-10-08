@@ -4,30 +4,58 @@ const records=readdirSync('content/cases').filter(f=>f.endsWith('.json')).map(f=
 const catalogue=JSON.parse(readFileSync('data/catalogue.json','utf8'));
 const total=records.length;
 const combinatoricsCount=records.filter(r=>(r.discipline||catalogue.families.find((f:any)=>f.familyId===r.familyId).discipline)==='Combinatorics').length;
-test('explorer searches, combines filters, preserves URL state and resets',async({page})=>{
+test('explorer prioritizes histories, offers upcoming cases, preserves filters and resets',async({page})=>{
   await page.goto('/explorer');
   await expect(page.locator('main')).toHaveAttribute('data-interactive','true');
-  await expect(page.locator('.case-card')).toHaveCount(total);
-  await page.getByLabel('Search the collection').fill('reciprocal-sum');
+  await expect(page.locator('.case-card')).toHaveCount(3);
+  await expect(page.locator('.case-card').filter({hasText:'History pending'})).toHaveCount(0);
+  await page.getByLabel('Search the collection').fill('fractions');
   await expect(page.locator('.case-card')).toHaveCount(1);
-  await page.getByLabel('Reported result').selectOption('quantitative-improvement');
+  await page.getByLabel('Reported result').selectOption('full-resolution');
   await expect(page.locator('.case-card')).toHaveCount(1);
-  await expect(page).toHaveURL(/scope=quantitative-improvement/);
   await page.reload();
   await expect(page.locator('.case-card')).toHaveCount(1);
   await page.getByRole('button',{name:'Clear filters'}).click();
+  await expect(page.locator('.case-card')).toHaveCount(3);
+  await page.getByRole('button',{name:'Browse upcoming histories'}).click();
+  await expect(page.locator('.case-card')).toHaveCount(total-3);
+  await expect(page).toHaveURL(/status=research-pending/);
+  await page.getByLabel('Search the collection').fill('reciprocal-sum');
+  await expect(page.locator('.case-card')).toHaveCount(1);
+  await page.getByLabel('Collection',{exact:true}).selectOption('');
+  await expect(page).toHaveURL(/status=all/);
+  await page.getByRole('button',{name:'Clear filters'}).click();
+  await expect(page.locator('.case-card')).toHaveCount(3);
+  await page.getByLabel('Collection',{exact:true}).selectOption('');
   await expect(page.locator('.case-card')).toHaveCount(total);
-  await expect(page.getByLabel('Search the collection')).toHaveValue('');
+  await page.reload();
+  await expect(page.locator('.case-card')).toHaveCount(total);
   await page.getByLabel('Discipline',{exact:true}).selectOption('Combinatorics');
   await expect(page.locator('.case-card')).toHaveCount(combinatoricsCount);
   await page.getByLabel('Search the collection').fill('no-such-question-9f308a');
   await expect(page.getByRole('heading',{name:'No questions match these filters.'})).toBeVisible();
-  await page.getByRole('button',{name:'Show all questions'}).click();
-  await expect(page.locator('.case-card')).toHaveCount(total);
+  await page.getByRole('button',{name:'Show researched histories'}).click();
+  await expect(page.locator('.case-card')).toHaveCount(3);
   await page.getByLabel('Historical pattern').selectOption('changing-formulations');
   await expect(page.locator('.case-card').filter({hasText:'№ 004'})).toHaveCount(1);
-  await page.getByLabel('Editorial status').selectOption('published');
-  await expect(page.locator('.case-card').filter({hasText:'History pending'})).toHaveCount(0);
+});
+test('researched cases explain the mathematics before the history and separate claims',async({page},testInfo)=>{
+  for(const id of ['004','087','158']){
+    await page.goto('/problems/'+id);
+    const order=await page.locator('.problem-content > section').evaluateAll(nodes=>nodes.map(n=>n.id));
+    expect(order.slice(0,5)).toEqual(['question','significance','history','timeline','result']);
+    await expect(page.locator('#question .question-lead')).toBeVisible();
+    await expect(page.locator('#question svg[role="img"]')).toBeVisible();
+    await expect(page.locator('#question details')).not.toHaveAttribute('open');
+    await page.locator('#question summary').click();
+    await expect(page.locator('#question .katex').first()).toBeVisible();
+    await expect(page.locator('#significance .prose')).toBeVisible();
+    await expect(page.locator('#result')).toContainText('Independent verification status');
+    await expect(page.locator('.remaining-panel')).toBeVisible();
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1)).toBeTruthy();
+    if(id==='158') await expect(page.locator('.claim-panel')).toContainText('six or seven');
+    if(id==='087') await page.screenshot({path:'test-results/question-'+testInfo.project.name+'.png',fullPage:true});
+  }
 });
 test('all requested cases have usable timelines, provenance and manuscript links',async({page})=>{
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
@@ -53,7 +81,7 @@ test('navigation, essay and unknown routes work',async({page})=>{
   await page.goto('/');
   await page.getByRole('link',{name:'Explore the questions',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Follow the questions.'})).toBeVisible();
-  await page.getByRole('link',{name:'Essay',exact:true}).click();
+  await page.getByRole('link',{name:'Perspective',exact:true}).click();
   await expect(page.getByRole('heading',{name:'A question is not a fixed object'})).toBeVisible();
   await page.getByRole('link',{name:'About & methodology',exact:true}).click();
   await expect(page.locator('.provenance-list')).toContainText('372 families');
@@ -68,6 +96,11 @@ test('static pages have individual metadata and remain readable without JavaScri
   await expect(page.getByRole('heading',{name:record.displayTitle||'Hilbert’s tenth problem over ℚ',exact:true})).toBeVisible();
   await expect(page).toHaveTitle((record.displayTitle||'Hilbert’s tenth problem over ℚ')+' — Before the Proof');
   await expect(page.locator('.manuscript-list a').first()).toBeVisible();
+  await expect(page.locator('#question .question-lead')).toBeVisible();
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex').first()).toBeVisible();
+  await page.goto('http://127.0.0.1:4173/explorer/');
+  await expect(page.locator('.case-card')).toHaveCount(3);
   await page.goto('http://127.0.0.1:4173/article/');
   await expect(page.getByRole('heading',{name:'The work of asking'})).toBeVisible();
   await context.close();

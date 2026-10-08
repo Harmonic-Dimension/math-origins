@@ -1,7 +1,7 @@
 {
   "familyId": "004",
   "status": "published",
-  "displayTitle": "Hilbert asked about integers; the harder inheritance concerned fractions",
+  "displayTitle": "Hilbert’s tenth problem over the rationals",
   "discipline": "Number theory and mathematical logic",
   "scope": {
     "types": [
@@ -172,6 +172,14 @@
       "citation": "OpenAI, companion manuscript dated 7 October 2026, introduction.",
       "kind": "upstream",
       "note": "Inspected to distinguish the paper's stated elliptic-curve input from full BSD; included in the post-release pinned snapshot."
+    },
+    {
+      "id": "local-global-survey",
+      "title": "A survey of local-global methods for Hilbert’s Tenth Problem",
+      "url": "https://arxiv.org/abs/2309.14987v1",
+      "citation": "Sylvy Anscombe, Valentijn Karemaker, Zeynep Kisakürek, Vlerë Mehmeti, Margherita Pagano and Laura Paladino, arXiv:2309.14987v1 (26 September 2023).",
+      "kind": "secondary",
+      "note": "Supports the explanation of the decision problem and its interaction with logic and arithmetic geometry. Its statement that the rational problem was open describes the 2023 context."
     }
   ],
   "events": [
@@ -316,5 +324,22 @@
       "uncertainty": "This is a reported theorem, without independent proof review. The source snapshot includes a 7 October companion manuscript."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-08",
+  "questionPlainLanguage": "Could a single algorithm decide whether any polynomial equation has a solution made of fractions? It must always finish and correctly answer yes or no, however many unknowns the equation contains.",
+  "questionFormal": "Given $n\\geq 1$ and $f\\in\\mathbb{Z}[X_1,\\ldots,X_n]$, is there an algorithm that always terminates and decides whether there exists $x\\in\\mathbb{Q}^n$ with $f(x)=0$? The number of variables is part of the input. Undecidability means that no such algorithm exists; it does not mean that every individual equation is unanswerable.",
+  "whyItMatters": "Finding a solution and certifying that none exists are very different tasks. We can systematically enumerate rational tuples and test them: if a solution exists, this search eventually finds one. If none exists, it runs forever. The question asks whether another procedure can always recognize both outcomes. Over integers, polynomial equations can encode arbitrary computation, which explains why a universal decision procedure is impossible. Fractions add solutions and remove the integer domain that this encoding relies on; clearing denominators introduces a requirement to find integer solutions and does not supply a rational decision algorithm. Understanding whether computation can still be encoded links mathematical logic to the arithmetic geometry of rational points on curves and higher-dimensional varieties.",
+  "illustrativeExample": "For $2x-1=0$, there is **no integer solution**, but there is the **rational solution $x=\\frac12$**. This illustrates the change of domain; it is not evidence for undecidability. The challenge is one procedure for every polynomial, rather than solving this easy example.",
+  "historicalHook": "Hilbert’s name survives on a question he did not formulate in its modern form: his 1900 problem asked about integers, not fractions.",
+  "whatAIClaims": "OpenAI reports a proof that no algorithm can decide rational solvability for every integer-coefficient polynomial, with no fixed limit on the number of variables. If correct, this would give a negative answer to the modern rational decision problem. The manuscript claims a reduction using sequences of rational-solvability tests, rather than an existential definition of the integers inside the rationals.",
+  "whatRemainsOpen": "The manuscript does not claim an existential definition or Diophantine model of the integers in the rationals; those stronger encoding questions remain outside its result. Its companion elliptic-curve input is not the full Birch–Swinnerton-Dyer conjecture. This site has not independently assessed the proof, so the rational decision problem is presented here as a claimed resolution pending independent assessment.",
+  "visualExplainer": "rational-solutions",
+  "explanationSourceIds": [
+    "poonen-2003",
+    "local-global-survey"
+  ],
+  "claimSourceIds": [
+    "openai-catalogue"
+  ],
+  "questionSummary": "Can an algorithm always decide whether a polynomial equation has a rational solution?",
+  "claimSummary": "rational undecidability; full resolution of the decision problem"
 }
