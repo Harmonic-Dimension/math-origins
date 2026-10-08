@@ -138,3 +138,13 @@ These tests cover search/filter/reset, URL state, navigation, all initial cases 
 ## Source reuse
 
 Upstream materials are attributed to OpenAI and retain their Apache 2.0 license in `data/upstream/LICENSE`. Summaries are quoted catalogue claims, not this project’s proof assessments. Historical sources should remain individually credited; adding a link does not grant permission to reproduce an entire work.
+
+## Illustrated histories
+
+The three completed cases use original, analytically constructed React/SVG explainers. The unit-distance patch computes every distance-one edge from triangular-lattice coordinates and offers a valid/conflicting coloring comparison. The polar example switches between an exact square–diamond pair and a self-polar unit disk, always at identical coordinate scales. The rational example distinguishes a single equation from a universal decision algorithm. The mathematical examples and date-position calculations have independent checks in `tests/geometry.test.ts`.
+
+Each researched timeline now includes a year-scaled overview, separate from the relationship diagram and detailed event interface. Ranges are drawn from their supplied start/end dates; approximate dates retain “c.”; unknown dates remain unplaced. Range bars describe the recorded interval, never uninterrupted research activity. All milestones and sources are also available in a native disclosure for reading without JavaScript.
+
+Optional `historicalImages` entries record `src`, `alt`, `caption`, `credit`, `sourceUrl`, `originalUrl`, `license`, and `licenseUrl`. Hilbert’s 1907 portrait is reproduced from Wikimedia Commons, which records its US public-domain status; visible attribution accompanies the image. Other cases use meaningful original geometry rather than unsourced archival images.
+
+Browser checks run at 390, 768 and 1440 pixels and include WCAG 2.1 AA automated axe checks, keyboard interactions, 200% text enlargement and reduced motion. Screenshot captures are kept in the ignored local `screenshots/` directory, outside the production bundle.

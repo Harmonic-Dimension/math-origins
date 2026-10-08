@@ -34,6 +34,7 @@ export const caseSchema = z.object({
   whyItMatters: text.nullable().default(null), illustrativeExample: text.nullable().default(null),
   historicalHook: text.nullable().default(null), whatAIClaims: text.nullable().default(null), whatRemainsOpen: text.nullable().default(null),
   visualExplainer: z.enum(['rational-solutions', 'polar-dual', 'unit-distance']).nullable().default(null),
+  historicalImages: z.array(z.object({src:text,alt:text,caption:text,credit:text,sourceUrl:url,originalUrl:url,license:text,licenseUrl:url}).strict()).default([]),
   explanationSourceIds: z.array(text).default([]), claimSourceIds: z.array(text).default([]),
   conceptualOrigins: dateSchema.nullable(), firstFormulation: dateSchema.nullable(),
   attribution: text.nullable(), contributors: z.array(z.object({ name: text, contribution: text, sourceIds: z.array(text).min(1) }).strict()),

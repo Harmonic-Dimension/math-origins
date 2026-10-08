@@ -341,5 +341,17 @@
     "openai-catalogue"
   ],
   "questionSummary": "Can an algorithm always decide whether a polynomial equation has a rational solution?",
-  "claimSummary": "rational undecidability; full resolution of the decision problem"
+  "claimSummary": "rational undecidability; full resolution of the decision problem",
+  "historicalImages": [
+    {
+      "src": "images/david-hilbert-1907.jpg",
+      "alt": "Black-and-white portrait of David Hilbert in 1907, wearing spectacles and looking to the right.",
+      "caption": "The name belongs to the ancestor. Hilbert’s 1900 tenth problem asked for a procedure over integers; the modern rational question changes the domain.",
+      "credit": "David Hilbert, 1907. Unknown photographer; American Journal of Mathematics 29(1), via Wikimedia Commons.",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:David_Hilbert,_1907.jpg",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/David_Hilbert%2C_1907.jpg",
+      "license": "Public domain (United States: published in 1907)",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:David_Hilbert,_1907.jpg#Licensing"
+    }
+  ]
 }

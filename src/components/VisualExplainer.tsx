@@ -1,33 +1,60 @@
+import { useState } from 'react';
 import type { CaseRecord } from '../schema';
-
-const descriptions = {
-  'rational-solutions': 'On a number line, one half lies between the integers zero and one. It solves 2x minus 1 equals zero over the rationals, but no integer does.',
-  'polar-dual': 'A square of side two and area four has a polar diamond with diagonals of length two and area two. Their area product is eight.',
-  'unit-distance': 'An equilateral triangle with all sides one unit long. Its three vertices have different colors, illustrating a finite constraint rather than a coloring of the entire plane.',
-};
-
-export default function VisualExplainer({kind, thumbnail=false}:{kind:NonNullable<CaseRecord['visualExplainer']>;thumbnail?:boolean}) {
-  return <svg className={'visual-explainer'+(thumbnail?' visual-thumbnail':'')} viewBox="0 0 480 220" role={thumbnail?undefined:'img'} aria-label={thumbnail?undefined:descriptions[kind]} aria-hidden={thumbnail?true:undefined}>
-    {kind==='rational-solutions' && <>
-      <text x="240" y="40" textAnchor="middle" className="visual-equation">2x − 1 = 0</text>
-      <path d="M65 116H415M85 106V126M395 106V126" className="visual-line"/>
-      <circle cx="85" cy="116" r="5" className="visual-integer"/><circle cx="395" cy="116" r="5" className="visual-integer"/>
-      <circle cx="240" cy="116" r="9" className="visual-solution"/>
-      <text x="85" y="151" textAnchor="middle">0</text><text x="395" y="151" textAnchor="middle">1</text><text x="240" y="151" textAnchor="middle">½</text>
-      <text x="240" y="194" textAnchor="middle" className="visual-label">A rational solution between two integers</text>
-    </>}
-    {kind==='polar-dual' && <>
-      <path d="M60 108H190M125 43V173M290 108H420M355 43V173" className="visual-axis"/>
-      <path d="M75 58H175V158H75Z" className="visual-body"/>
-      <path d="M355 58L405 108L355 158L305 108Z" className="visual-polar"/>
-      <path d="M220 108H260M252 102L260 108L252 114" className="visual-line"/>
-      <text x="125" y="30" textAnchor="middle">K</text><text x="355" y="30" textAnchor="middle">K°</text>
-      <text x="125" y="193" textAnchor="middle" className="visual-label">Area 4</text><text x="355" y="193" textAnchor="middle" className="visual-label">Area 2</text>
-    </>}
-    {kind==='unit-distance' && <>
-      <path d="M155 170L325 170L240 22.776Z" className="visual-line"/>
-      <circle cx="155" cy="170" r="12" fill="#18528a"/><circle cx="325" cy="170" r="12" fill="#b65d28"/><circle cx="240" cy="22.776" r="12" fill="#507554"/>
-      <text x="178" y="93" textAnchor="middle">1</text><text x="302" y="93" textAnchor="middle">1</text><text x="240" y="200" textAnchor="middle">1</text>
-    </>}
+import { useClientReady } from '../useClientReady';
+import { latticePoints, unitEdges, squareVertices, polarVertices } from './geometry';
+type Kind=NonNullable<CaseRecord['visualExplainer']>;
+const colors=['#18528a','#a34e25','#47694d'];
+const names=['A','B','C'];
+function ColoringGraphic({conflict=false,thumbnail=false}) {
+  const point=(i:number)=>({x:105+latticePoints[i].x*90,y:210-latticePoints[i].y*90});
+  const color=(i:number)=>conflict&&i===1?0:latticePoints[i].color;
+  return <svg className="visual-explainer" viewBox="0 0 480 285" role={thumbnail?undefined:'img'} aria-hidden={thumbnail||undefined} aria-label={thumbnail?undefined:`Nine points on a triangular lattice. Every drawn edge is exactly one unit long. ${conflict?'Dashed edges join matching A colors and violate the rule.':'Letters A, B and C identify three colors; connected endpoints always differ.'} This finite example does not color the entire plane.`}>
+    <path d="M65 244H423M65 244V28" className="visual-axis"/>
+    {unitEdges.map(([i,j])=>{const a=point(i),b=point(j),bad=color(i)===color(j);return <line key={`${i}-${j}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={bad?'visual-edge conflict-edge':'visual-edge'}/>;})}
+    {latticePoints.map((_,i)=>{const p=point(i);return <g key={i}><circle cx={p.x} cy={p.y} r="17" fill={colors[color(i)]}/><text x={p.x} y={p.y+6} textAnchor="middle" className="point-letter">{names[color(i)]}</text></g>;})}
+    <path d="M105 259H195M105 253V265M195 253V265" className="visual-line"/><text x="150" y="282" textAnchor="middle" className="visual-label">1 unit</text>
   </svg>;
+}
+function PolarGraphic({disk=false,thumbnail=false}) {
+  const shape=(cx:number,polar:boolean)=>disk?<circle cx={cx} cy="133" r="62" className={polar?'visual-polar':'visual-body'}/>:<polygon points={(polar?polarVertices:squareVertices).map(([x,y])=>`${cx+x*62},${133-y*62}`).join(' ')} className={polar?'visual-polar':'visual-body'}/>;
+  return <svg className="visual-explainer polar-graphic" viewBox="0 0 480 270" role={thumbnail?undefined:'img'} aria-hidden={thumbnail||undefined} aria-label={thumbnail?undefined:disk?'Two unit disks on identically scaled coordinate axes. The unit disk is its own polar. Both areas are pi; the area product is pi squared.':'A centered square from minus one to one in each coordinate, and its exact polar diamond, whose vertices are plus or minus one on the coordinate axes. Both use the same scale. Their areas are four and two, with product eight.'}>
+    {[122,358].map((cx,i)=><g key={cx}>
+      <text x={cx} y="30" textAnchor="middle" className="visual-equation">{i?'K° · the polar':'K · the body'}</text>
+      {[-1,0,1].map(v=><path key={v} d={`M${cx-80} ${133-v*62}H${cx+80} M${cx+v*62} 53V213`} className="visual-grid"/>)}
+      {shape(cx,Boolean(i))}<path d={`M${cx-86} 133H${cx+86} M${cx} 47V219`} className="visual-axis"/>
+      <text x={cx-62} y="156" textAnchor="middle" className="coordinate-label">−1</text><text x={cx+62} y="156" textAnchor="middle" className="coordinate-label">1</text><text x={cx+10} y="69" className="coordinate-label">1</text><text x={cx+10} y="207" className="coordinate-label">−1</text>
+      <text x={cx} y="249" textAnchor="middle" className="visual-label">Area {disk?'π':i?'2':'4'}</text>
+    </g>)}
+  </svg>;
+}
+function RationalGraphic({thumbnail=false}) {
+  return <svg className="visual-explainer rational-graphic" viewBox="0 0 480 250" role={thumbnail?undefined:'img'} aria-hidden={thumbnail||undefined} aria-label={thumbnail?undefined:'The equation 2x minus 1 equals zero has exactly one solution: x equals one half. The number line shows one half between zero and one. No integer solves it, but a rational number does.'}>
+    <text x="240" y="65" textAnchor="middle" className="rational-equation">2x − 1 = 0</text><path d="M42 151H438" className="visual-line"/>
+    {[60,180,300,420].map((x,i)=><g key={x}><path d={`M${x} 142V160`} className="visual-line"/><circle cx={x} cy="151" r="5" className="visual-integer"/><text x={x} y="193" textAnchor="middle" className="visual-label">{i-1}</text></g>)}
+    <circle cx="240" cy="151" r="11" className="visual-solution"/><path d="M240 96V134" className="visual-axis"/><text x="258" y="115" className="visual-label">x = ½</text><text x="240" y="233" textAnchor="middle" className="visual-label">Fractions add a solution.</text>
+  </svg>;
+}
+export default function VisualExplainer({kind,thumbnail=false}:{kind:Kind;thumbnail?:boolean}) {
+  const ready=useClientReady();
+  const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false);
+  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
+  if(thumbnail)return <div className={`visual-thumbnail motif-${kind}`}>{graphic}</div>;
+  return <div className={`explainer motif-${kind}`}>
+    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    {kind==='unit-distance'&&<>
+      <div className="figure-controls" role="group" aria-label="Compare color assignments"><button disabled={!ready} aria-pressed={!conflict} onClick={()=>setConflict(false)}>Valid coloring</button><button disabled={!ready} aria-pressed={conflict} onClick={()=>setConflict(true)}>Introduce a conflict</button></div>
+      <p className="figure-feedback" aria-live="polite">{conflict?'The dashed edges join two A points. Equal colors one unit apart break the rule.':'Every edge has length 1. Its endpoints have different colors, also marked A, B and C.'}</p>
+      <div className="figure-insight"><strong>From a patch to a plane</strong><p>Here, three colors work. The real question asks for a coloring of <em>every point</em> in the plane: every pair exactly one unit apart must differ. This patch does not determine how many colors the whole plane needs.</p></div>
+    </>}
+    {kind==='polar-dual'&&<>
+      <div className="figure-controls" role="group" aria-label="Compare exact polar pairs"><button disabled={!ready} aria-pressed={!disk} onClick={()=>setDisk(false)}>Square & diamond</button><button disabled={!ready} aria-pressed={disk} onClick={()=>setDisk(true)}>Unit disk</button></div>
+      <div className="area-product" aria-live="polite"><span>Area(K) × Area(K°)</span><strong>{disk?'π × π = π² ≈ 9.87':'4 × 2 = 8'}</strong></div>
+      <div className="figure-insight"><strong>What makes this the polar?</strong><p>{disk?'A vector belongs to the polar if its dot product with every point of the body is at most 1. For the unit disk, this is exactly another unit disk.':'For a vector (u, v), the largest dot product with the square is |u| + |v|. Requiring it to be at most 1 gives the diamond: |u| + |v| ≤ 1.'} Both drawings use the same coordinate scale.</p><p>In higher dimensions, replace area with volume. How small can the product be for an origin-symmetric convex body?</p></div>
+    </>}
+    {kind==='rational-solutions'&&<>
+      <div className="domain-comparison"><div><span className="eyebrow">Integer unknowns · ℤ</span><strong>No solution</strong><p>½ is not an integer.</p></div><div><span className="eyebrow">Rational unknowns · ℚ</span><strong>One solution: ½</strong><p>2 × ½ − 1 = 0.</p></div></div>
+      <div className="figure-insight"><strong>One easy equation → a universal decision question</strong><p>Could one algorithm always finish with “yes” or “no” for <em>any</em> integer-coefficient polynomial, in any number of variables? This example only shows why the domain matters.</p></div>
+      <p className="domain-history">1900: Hilbert asks about integers. 1970: that problem is proved undecidable. The rational descendant asks a separate question.</p>
+    </>}
+  </div>;
 }

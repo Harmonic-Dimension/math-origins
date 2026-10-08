@@ -2,27 +2,26 @@ import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { cases } from './data';
 import CaseCard from './components/CaseCard';
-import { Schematic, HistoryPreview } from './components/Timeline';
+import HistoryHero from './components/HistoryHero';
 import { Explorer, Problem, Article, About, NotFound } from './pages';
 import { pageMetadata } from './metadata';
 import { useClientReady } from './useClientReady';
 
 function Home() {
   const featured=['004','087','158'].map(id=>cases.find(s=>s.history.familyId===id)!);
-  const example=cases.find(s=>s.history.status==='published' && s.history.events.some(e=>e.type!=='ai-claim'));
   return <>
     <section className="hero page-width">
       <div className="hero-copy"><p className="eyebrow">The histories behind mathematical questions</p>
-        <h1>Every proof has<br/>a <em>before.</em></h1>
+        <h1><span>Every proof</span><span>has a <em>before.</em></span></h1>
         <p className="hero-intro">A result can arrive in hours. The question behind it belongs to a much longer conversation.</p>
-        <p>OpenAI’s 6 October 2026 release reports new mathematical results. Before the Proof follows the questions behind three of them. A manuscript’s claim and an independently confirmed solution are different kinds of evidence.</p>
-        <div className="hero-links"><Link className="button" to="/explorer">Explore the questions</Link><Link className="text-link" to="/about">How we trace a history</Link></div>
+        <div className="hero-links"><Link className="button" to="/problems/158">Read the first story</Link><Link className="text-link" to="/explorer">Explore the questions</Link></div>
       </div>
-      <div className="hero-diagram">{example?<HistoryPreview study={example}/>:<Schematic/>}<div className="diagram-caption"><span className="eyebrow">{example?example.family.title:'The shape of an inquiry'}</span><p>{example?'A question inherited, reformulated and approached along different paths.':'Ideas branch. Questions change. A new result joins an existing conversation.'}</p></div></div>
+      <div className="hero-diagram"><HistoryHero/></div>
     </section>
+    <div className="page-width opening-note"><p>OpenAI’s 6 October 2026 release reports new mathematical results. Follow the questions behind three of them, from a rule about colors to the limits of computation. A manuscript’s claim and an independently confirmed solution are different kinds of evidence.</p></div>
     <section className="page-width history-findings" aria-labelledby="findings-heading">
       <p className="eyebrow">Three discoveries from the histories</p><h2 id="findings-heading">The question has a past.</h2>
-      <div className="findings-grid">{featured.map(study=><Link key={study.history.familyId} to={'/problems/'+study.history.familyId+'#history'}><span className="eyebrow">Family {study.history.familyId}</span><h3>{study.history.historicalHook}</h3><span className="text-link">Follow the story →</span></Link>)}</div>
+      <div className="findings-grid">{featured.map(study=><Link key={study.history.familyId} to={'/problems/'+study.history.familyId+'#history'}><span className="eyebrow">Family {study.history.familyId}</span><h3>{study.history.historicalHook}</h3><span className="text-link">Follow the story</span></Link>)}</div>
     </section>
     <section className="page-width featured-section">
       <div className="section-heading"><div><p className="eyebrow">Three researched histories</p><h2>Questions worth looking back at.</h2></div><Link className="text-link" to="/explorer">Explore the histories</Link></div>

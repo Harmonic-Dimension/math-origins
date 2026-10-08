@@ -4,6 +4,7 @@ import type { Study } from '../data';
 import { eventLabels } from '../data';
 import type { TimelineEvent } from '../schema';
 import { useClientReady } from '../useClientReady';
+import { Chronology } from './Chronology';
 
 export function HistoryPreview({study}:{study:Study}) {
   const events=study.history.events;
@@ -77,7 +78,7 @@ export function Timeline({study}:{study:Study}) {
   }));
   return <div className="timeline">
     {!hasHistory && <><Schematic compact/><p className="empty-note">Earlier milestones have not been researched yet. The schematic above illustrates possible relationships, without asserting a history for this problem.</p></>}
-    {hasHistory && <><p className="small">Connections show documented relationships. Equal spacing does not represent elapsed time. Use Tab and Enter to select an event.</p><div className="graph-scroll"><svg viewBox={'0 0 '+width+' '+height} style={{minWidth:width}} role="group" aria-label="Historical relationships">
+    {hasHistory && <><Chronology study={study} selectedId={selectedId} onSelect={ready?setSelectedId:undefined}/><details className="disclosure relationship-disclosure"><summary>Explore the branches and relationships</summary><p className="small">Connections show documented relationships. Equal spacing does not represent elapsed time. Use Tab and Enter to select an event; on touch screens, scroll within the diagram.</p><div className="graph-scroll" tabIndex={0} role="region" aria-label="Scrollable historical relationship diagram"><svg viewBox={'0 0 '+width+' '+height} style={{minWidth:width}} role="group" aria-label="Historical relationships">
       {events.flatMap(e=>e.follows.map(parent=>{
         const a=positions.get(parent)!,b=positions.get(e.id)!;
         return <path key={parent+'-'+e.id} d={'M'+a.x+','+a.y+' C'+(a.x+100)+','+a.y+' '+(b.x-100)+','+b.y+' '+b.x+','+b.y} fill="none" stroke="#97a8b9" strokeWidth="2"/>;
@@ -86,10 +87,10 @@ export function Timeline({study}:{study:Study}) {
         <circle cx={p.x} cy={p.y} r={selectedId===e.id?10:7} fill={e.type==='ai-claim'?'#18528a':'#fff'} stroke="#18528a" strokeWidth="2"/>
         <text x={p.x} y={p.y+30} textAnchor="middle">{e.date.precision==='exact'||e.date.precision==='approximate'?(e.date.precision==='approximate'?'c. ':'')+e.date.year:e.date.precision==='range'?e.date.start+'–'+e.date.end:e.date.label}</text><foreignObject x={p.x-98} y={p.y+40} width="196" height={rowHeight-64}><div className="graph-title">{e.title}</div></foreignObject>
       </g>})}
-    </svg></div></>}
+    </svg></div></details></>}
     <div className="timeline-detail-layout">
       <div className="event-list" aria-label="Select a timeline event">
-        {events.map(e=><button disabled={!ready} key={e.id} aria-pressed={e.id===selectedId} onClick={()=>{if(ready)setSelectedId(e.id)}} className={e.id===selectedId?'selected':''}><span className="event-date">{e.date.label}</span><span>{e.title}</span><span className="small">{eventLabels[e.type]}</span></button>)}
+        {events.map(e=><button id={'event-'+e.id} disabled={!ready} key={e.id} aria-pressed={e.id===selectedId} onClick={()=>{if(ready)setSelectedId(e.id)}} className={e.id===selectedId?'selected':''}><span className="event-date">{e.date.label}</span><span>{e.title}</span><span className="small">{eventLabels[e.type]}</span></button>)}
         {!events.length && <p>No sourced milestones yet.</p>}
       </div>
       {selected && <article className="event-detail" aria-live="polite">
@@ -99,5 +100,6 @@ export function Timeline({study}:{study:Study}) {
         <div className="event-sources"><span className="small">Supporting sources</span>{selected.sourceIds.map(id=>{const s=study.history.sources.find(s=>s.id===id)!;return <a key={id} href={s.url}>{s.title}</a>})}</div>
       </article>}
     </div>
+    <details className="disclosure"><summary>Read all milestones and their sources</summary>{events.map(e=><article className="static-milestone" key={e.id}><span className="event-date">{e.date.label} · {eventLabels[e.type]}</span><h3>{e.title}</h3><p>{e.description}</p>{e.relationNote&&<p className="small">{e.relationNote}</p>}{e.uncertainty&&<p className="uncertainty">{e.uncertainty}</p>}<div className="event-sources">{e.sourceIds.map(id=>{const s=study.history.sources.find(s=>s.id===id)!;return <a key={id} href={s.url}>{s.title}</a>})}</div></article>)}</details>
   </div>;
 }
