@@ -1,6 +1,26 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test('geometric copies preserve a common ratio under translation and reflection',async({page},testInfo)=>{
+  await page.goto('/problems/084');
+  const placements=[{label:'Original sequence',limit:0,first:0.5},{label:'Move & shrink',limit:0.25,first:0.5},{label:'Reflect',limit:0.75,first:0.5}];
+  for(const placement of placements){
+    const button=page.getByRole('button',{name:placement.label,exact:true});
+    await button.focus();await page.keyboard.press('Enter');
+    await expect(button).toHaveAttribute('aria-pressed','true');
+    const points=await page.locator('.geometric-graphic circle').evaluateAll(nodes=>nodes.map(n=>(Number(n.getAttribute('cx'))-48)/384));
+    expect(points).toHaveLength(5);
+    expect(points[0]).toBe(placement.first);
+    for(let i=1;i<points.length;i++) expect((points[i]-placement.limit)/(points[i-1]-placement.limit)).toBeCloseTo(0.5);
+    const limit=page.locator('.geometric-graphic .sequence-limit');
+    expect((Number(await limit.getAttribute('x'))+3-48)/384).toBe(placement.limit);
+  }
+  await expect(page.locator('.figure-feedback')).toContainText('negative scale reflects');
+  await page.getByRole('button',{name:'Original sequence',exact:true}).click();
+  await page.evaluate(()=>{if(document.activeElement instanceof HTMLElement)document.activeElement.blur();});
+  await page.screenshot({path:'screenshots/erdos-similarity-'+testInfo.project.name+'.png',fullPage:true});
+});
+
 test('exact examples are operable by keyboard and chronology reveals sources',async({page})=>{
   await page.goto('/problems/158');
   const conflict=page.getByRole('button',{name:'Introduce a conflict',exact:true});
@@ -32,7 +52,7 @@ test('exact examples are operable by keyboard and chronology reveals sources',as
 
 test('main pages and expanded explanations pass automated accessibility checks',async({page})=>{
   test.setTimeout(90000);
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/about','/article']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/about','/article']){
     await page.goto(route);await page.evaluate(()=>document.fonts.ready);
     if(route.startsWith('/problems/')){
       await page.locator('#question summary').click();
@@ -46,7 +66,7 @@ test('main pages and expanded explanations pass automated accessibility checks',
 
 test('enlarged text and reduced motion remain usable',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084']){
     await page.goto(route);
     await page.evaluate(()=>document.documentElement.style.fontSize='200%');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route).toBeTruthy();

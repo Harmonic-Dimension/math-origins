@@ -34,13 +34,33 @@ function RationalGraphic({thumbnail=false}) {
     <circle cx="240" cy="151" r="11" className="visual-solution"/><path d="M240 96V134" className="visual-axis"/><text x="258" y="115" className="visual-label">x = ½</text><text x="240" y="233" textAnchor="middle" className="visual-label">Fractions add a solution.</text>
   </svg>;
 }
+function GeometricGraphic({placement=0,thumbnail=false}:{placement?:number;thumbnail?:boolean}) {
+  const center=placement===0?0:placement===1?0.25:0.75;
+  const scale=placement===0?1:placement===1?0.5:-0.5;
+  const x=(value:number)=>48+384*value;
+  const limit=x(center);
+  return <svg className="visual-explainer geometric-graphic" viewBox="0 0 480 250" role={thumbnail?undefined:'img'} aria-hidden={thumbnail||undefined} aria-label={thumbnail?undefined:`The dyadic sequence one half, one quarter, one eighth, and so on, ${placement===0?'approaches zero':placement===1?'is moved and shrunk to approach one quarter from the right':'is reflected and shrunk to approach three quarters from the left'}. Five terms are drawn; the sequence continues forever. The hollow square marks the limit, which is not a term.`}>
+    <text x="240" y="42" textAnchor="middle" className="visual-equation">{placement===0?'½, ¼, ⅛, …':placement===1?'¼ + ½ × 2⁻ⁿ':'¾ − ½ × 2⁻ⁿ'}</text>
+    <path d="M48 155H432" className="visual-line"/>
+    {[0,0.25,0.5,0.75,1].map(value=><g key={value}><path d={`M${x(value)} 148V162`} className="visual-axis"/><text x={x(value)} y="190" textAnchor="middle" className="visual-label">{value===0?'0':value===0.25?'¼':value===0.5?'½':value===0.75?'¾':'1'}</text></g>)}
+    <path d={`M${limit} 97V140`} className="visual-axis"/><text x={limit} y="85" textAnchor="middle" className="visual-label">limit</text>
+    <rect x={limit-3} y="152" width="6" height="6" className="sequence-limit"/>
+    {Array.from({length:5},(_,i)=>{const n=i+1;return <circle key={n} cx={x(center+scale*2**-n)} cy="155" r={n<3?6:n===3?4:n===4?2.5:1.5} className="visual-solution"/>;})}
+    <text x="240" y="231" textAnchor="middle" className="visual-label">One translation. One scale. Infinitely many terms.</text>
+  </svg>;
+}
 export default function VisualExplainer({kind,thumbnail=false}:{kind:Kind;thumbnail?:boolean}) {
   const ready=useClientReady();
-  const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false);
-  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
+  const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false),[placement,setPlacement]=useState(0);
+  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
   if(thumbnail)return <div className={`visual-thumbnail motif-${kind}`}>{graphic}</div>;
   return <div className={`explainer motif-${kind}`}>
-    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    {kind==='geometric-sequence'&&<>
+      <div className="figure-controls" role="group" aria-label="Move the same infinite pattern">{['Original sequence','Move & shrink','Reflect'].map((label,i)=><button key={label} disabled={!ready} aria-pressed={placement===i} onClick={()=>setPlacement(i)}>{label}</button>)}</div>
+      <p className="figure-feedback" aria-live="polite">{placement===0?'Each term is half the previous one. The hollow square marks 0, the limit; 0 is not part of this sequence.':placement===1?'Every term moves by the same rule: x ↦ ¼ + ½x. The sequence now approaches ¼.': 'Every term moves by the same rule: x ↦ ¾ − ½x. A negative scale reflects the pattern; its limit is now ¾.'}</p>
+      <div className="figure-insight"><strong>Every finite piece fits. Must the whole pattern?</strong><p>Every measurable set of positive measure contains a scaled, translated copy of any finite selection of these points. The infinite question demands one placement that works for all terms at once.</p><p>This drawing shows the pattern and its transformations. The reported construction of a set avoiding every placement requires infinitely many scales; it is not pictured here.</p></div>
+    </>}
     {kind==='unit-distance'&&<>
       <div className="figure-controls" role="group" aria-label="Compare color assignments"><button disabled={!ready} aria-pressed={!conflict} onClick={()=>setConflict(false)}>Valid coloring</button><button disabled={!ready} aria-pressed={conflict} onClick={()=>setConflict(true)}>Introduce a conflict</button></div>
       <p className="figure-feedback" aria-live="polite">{conflict?'The dashed edges join two A points. Equal colors one unit apart break the rule.':'Every edge has length 1. Its endpoints have different colors, also marked A, B and C.'}</p>

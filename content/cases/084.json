@@ -1,26 +1,84 @@
 {
   "familyId": "084",
-  "status": "research-pending",
-  "displayTitle": null,
-  "discipline": null,
+  "status": "published",
+  "displayTitle": "The Erdős similarity conjecture: geometric patterns",
+  "discipline": "Real and complex analysis",
   "scope": {
     "types": [
       "special-case"
     ],
-    "note": "Reported resolution for geometric progressions of every fixed ratio in (0,1). This is a special case of the wider similarity conjecture.",
-    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-    "classificationStatus": "provisional"
+    "note": "Reviewed against the October 5 introduction, theorem 1: for every fixed q in (0,1) and η in (0,1), a compact subset of [0,1] of measure greater than 1−η avoids x+s{qⁿ:n≥1} for every x and every nonzero signed s. The set may depend on q. This resolves the reported geometric-progression case, not the full conjecture for arbitrary infinite sets or a simultaneous all-ratios statement. The September 25 companion is the dyadic instance. Scope review does not assess the proof.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-geometric-case-of-the-Erdos-similarity-conjecture-October-5-2026/build/sections/01-introduction.tex",
+    "classificationStatus": "reviewed"
   },
-  "originalQuestion": null,
-  "modernQuestion": null,
-  "questionDifference": null,
-  "conceptualOrigins": null,
-  "firstFormulation": null,
-  "attribution": null,
-  "contributors": [],
-  "tags": [],
-  "confidence": "unresearched",
-  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "originalQuestion": "Given any infinite set E of real numbers, can one find a set S of positive measure containing no similar copy of E? Erdős states this as Problem 4.33.7* in his 1974 congress problem list and reduces attention to countable sets whose sole limit point is 0, with 0 itself excluded.",
+  "modernQuestion": "A set A is measure universal if every Lebesgue-measurable set of positive measure contains x+sA for some real x and nonzero real s. The full conjecture says no infinite A is measure universal. The geometric case asks whether, for each fixed q in (0,1), the sequence G_q={qⁿ:n≥1} is nonuniversal.",
+  "questionDifference": "The 1974 question already concerns all infinite real sets and geometric similarity; affine notation makes the quantifiers explicit. Family 084 treats geometric null sequences only. Its reported conclusion strengthens positive measure to a compact subset of [0,1] of measure arbitrarily close to one, excludes every translation and every nonzero scale of either sign, and allows the avoiding set to depend on q. Avoiding almost every placement, avoiding a two-fold sumset, or allowing bi-Lipschitz distortion answers a different question.",
+  "conceptualOrigins": {
+    "precision": "unknown",
+    "label": "Finite-pattern embedding in positive-measure sets; predates the 1974 question (exact priority not established here)"
+  },
+  "firstFormulation": {
+    "precision": "exact",
+    "year": 1974,
+    "iso": "1974-06-28",
+    "label": "28 June 1974: congress presentation recorded in the published problem list"
+  },
+  "attribution": "Erdős explicitly posed the general avoidance problem in his 1974 congress problem list. The name identifies its proposer, rather than every ingredient in the later geometric case. Falconer and Eigen independently settled slowly decaying sequences; Bourgain supplied an additive branch; Kolountzakis developed probabilistic avoidance and almost-everywhere results. Feng, Lai and Xiong showed how changing the allowed maps changes the answer. This account identifies a printed 1974 formulation, not the earliest private discussion. The finite-pattern precursor is often attributed to Steinhaus, but the precise original scope has not been independently checked here.",
+  "contributors": [
+    {
+      "name": "Paul Erdős",
+      "contribution": "Posed the general infinite-set avoidance problem and recorded its reduction to sequences approaching zero.",
+      "sourceIds": [
+        "erdos-1974"
+      ]
+    },
+    {
+      "name": "Kenneth Falconer and Stanley Eigen",
+      "contribution": "Independently proved nonuniversality for positive decreasing sequences whose consecutive-term ratio tends to one.",
+      "sourceIds": [
+        "falconer-1984",
+        "eigen-1985",
+        "feng-lai-xiong"
+      ]
+    },
+    {
+      "name": "Jean Bourgain",
+      "contribution": "Proved nonuniversality for sums of three infinite sets, opening a branch based on additive structure.",
+      "sourceIds": [
+        "bourgain-1987",
+        "kolountzakis-1997"
+      ]
+    },
+    {
+      "name": "Mihail N. Kolountzakis",
+      "contribution": "Developed probabilistic avoidance criteria and sets excluding almost every affine placement of any infinite pattern.",
+      "sourceIds": [
+        "kolountzakis-1997"
+      ]
+    },
+    {
+      "name": "De-Jun Feng, Chun-Kit Lai and Ying Xiong",
+      "contribution": "Showed that fast-decaying sequences embed into every positive-measure set if bi-Lipschitz maps are allowed.",
+      "sourceIds": [
+        "feng-lai-xiong"
+      ]
+    },
+    {
+      "name": "N. Mora Cuellar, A. Iosevich, N. Kulkarni, I. Rojas Aravena and A. Yavicoli",
+      "contribution": "Reported nonuniversality for sums or differences of a geometric null sequence and any infinite set in a 2026 preprint.",
+      "sourceIds": [
+        "twofold-2026"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The 1974 archive scan contains two neighboring papers: the similarity problem is in Problems, pp. 203–204, specifically Problem 4.33.7* on p. 204, not in the preceding Remarks on some problems in number theory. Its footnote dates the problem-session presentation to 28 June 1974; the publication gives no exact publication day. No first-private-formulation claim is made. The 1920 Steinhaus attribution is common in later research, but the original paper was not retrieved, so conceptual origins remain undated. Falconer and Eigen were checked through an institutional bibliographic record and the later primary Feng–Lai–Xiong paper; their original full texts were unavailable. The 2026 two-fold-sumset result is a preprint. The OpenAI introduction and history section were read for scope and context; proofs and independent acceptance were not assessed.",
   "sources": [
     {
       "id": "openai-catalogue",
@@ -29,27 +87,260 @@
       "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
       "kind": "upstream",
       "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+    },
+    {
+      "id": "erdos-1974",
+      "title": "Problems, Problem 4.33.7*",
+      "url": "https://users.renyi.hu/~p_erdos/1974-27.pdf",
+      "citation": "Paul Erdős, Mathematica Balkanica 4 (1974), 203–204, p. 204; presented at the Fifth Balkan Mathematical Congress, Belgrade, 28 June 1974.",
+      "kind": "primary",
+      "note": "Original scan inspected. The archive file includes the preceding paper, pp. 197–202; the relevant problem is on its final page. The preceding page footnote records the presentation date."
+    },
+    {
+      "id": "falconer-1984",
+      "title": "On a problem of Erdős on sequences and measurable sets",
+      "url": "https://research-portal.st-andrews.ac.uk/en/publications/on-a-problem-of-erdos-on-sequences-and-measurable-sets",
+      "citation": "K. J. Falconer, Proceedings of the American Mathematical Society 90(1) (1984), 77–78; DOI 10.1090/S0002-9939-1984-0722418-0.",
+      "kind": "primary",
+      "note": "Author-institution bibliographic record inspected; original full text was inaccessible. The ratio-limit theorem was checked in the introduction of Feng–Lai–Xiong."
+    },
+    {
+      "id": "eigen-1985",
+      "title": "Putting convergent sequences into measurable sets",
+      "url": "https://arxiv.org/html/2312.01319v1",
+      "citation": "S. J. Eigen, Studia Scientiarum Mathematicarum Hungarica 20 (1985), 411–412; cited and discussed by Feng–Lai–Xiong.",
+      "kind": "primary",
+      "note": "Original text not retrieved. This link points to the later primary paper documenting the independent result and giving the bibliographic citation."
+    },
+    {
+      "id": "bourgain-1987",
+      "title": "Construction of sets of positive measure not containing an affine image of a given infinite structure",
+      "url": "https://doi.org/10.1007/BF02780397",
+      "citation": "Jean Bourgain, Israel Journal of Mathematics 60(3) (1987), 333–344.",
+      "kind": "primary",
+      "note": "Original publisher text inaccessible. The three-infinite-sumset conclusion was checked against §0.3 of Kolountzakis’s original author-archive paper, visually inspected."
+    },
+    {
+      "id": "kolountzakis-1997",
+      "title": "Infinite patterns that can be avoided by measure",
+      "url": "https://eigen-space.org/mk/ps/universal.pdf",
+      "citation": "Mihail N. Kolountzakis, Bulletin of the London Mathematical Society 29(4) (1997), 415–424; author manuscript dated June 1996; DOI 10.1112/S0024609397003056.",
+      "kind": "primary",
+      "note": "Author manuscript, abstract and introductory sections visually inspected because PDF text extraction was corrupted. Almost-everywhere avoidance is weaker than exclusion of every affine copy."
+    },
+    {
+      "id": "feng-lai-xiong",
+      "title": "Erdős similarity problem via bi-Lipschitz embedding",
+      "url": "https://arxiv.org/html/2312.01319v1",
+      "citation": "De-Jun Feng, Chun-Kit Lai and Ying Xiong, International Mathematics Research Notices 2024(17), 12327–12342; preprint 3 December 2023; DOI 10.1093/imrn/rnae167.",
+      "kind": "primary",
+      "note": "Introduction and theorems 1.1–1.2 read. Geometric sequences satisfy the fast-decay hypothesis; a bi-Lipschitz image is more flexible than a single affine image."
+    },
+    {
+      "id": "twofold-2026",
+      "title": "The Erdős similarity conjecture for two-fold sumsets with a geometric summand",
+      "url": "https://arxiv.org/html/2607.03584v2",
+      "citation": "N. Mora Cuellar, A. Iosevich, N. Kulkarni, I. Rojas Aravena and A. Yavicoli, arXiv:2607.03584v2, 1 August 2026; first submitted 3 July 2026.",
+      "kind": "primary",
+      "note": "Introduction and theorem 2 read. Excluding the larger sumset pattern does not exclude the geometric sequence by itself; the result is treated as a preprint."
+    },
+    {
+      "id": "openai-geometric",
+      "title": "The geometric case of the Erdős similarity conjecture: introduction",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-geometric-case-of-the-Erdos-similarity-conjecture-October-5-2026/build/sections/01-introduction.tex",
+      "citation": "OpenAI, manuscript dated 5 October 2026, theorem 1 and introduction; catalogue snapshot fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "kind": "upstream",
+      "note": "Introduction and separate background/history section read. Scope classification reviewed against the displayed quantifiers; mathematical proof not assessed."
+    },
+    {
+      "id": "openai-geometric-history",
+      "title": "The geometric case: background and related work",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-geometric-case-of-the-Erdos-similarity-conjecture-October-5-2026/build/sections/01-history.tex",
+      "citation": "OpenAI, 5 October 2026, §1, Background and related work; same pinned snapshot.",
+      "kind": "upstream",
+      "note": "Used to locate references and distinguish related statements, with historical claims checked against independently retrieved historical sources."
     }
   ],
   "events": [
     {
+      "id": "finite-patterns",
+      "date": {
+        "precision": "unknown",
+        "label": "Finite-pattern background; predates the 1974 formulation"
+      },
+      "type": "background",
+      "title": "Positive measure forces every finite pattern",
+      "description": "Near a density point, a positive-measure set is sufficiently full to contain a small affine copy of any prescribed finite set. This is the finite principle whose infinite extension becomes the question.",
+      "sourceIds": [
+        "kolountzakis-1997"
+      ],
+      "follows": [],
+      "relationNote": "A conceptual precursor, not an infinite-set theorem.",
+      "uncertainty": "Later accounts often credit Steinhaus’s 1920 paper; its original scope was not checked, so this milestone is undated."
+    },
+    {
+      "id": "erdos",
+      "date": {
+        "precision": "exact",
+        "year": 1974,
+        "iso": "1974-06-28",
+        "label": "28 June 1974: congress presentation recorded in the published problem list"
+      },
+      "type": "formulation",
+      "title": "Erdős asks whether every infinite pattern can be avoided",
+      "description": "Problem 4.33.7* asks for a positive-measure set containing no similar copy of a prescribed infinite real set. The printed problem already notes the reduction to a countable set approaching zero.",
+      "sourceIds": [
+        "erdos-1974"
+      ],
+      "follows": [
+        "finite-patterns"
+      ],
+      "relationNote": "The shift is from a theorem about finite patterns to a proposed obstruction for infinite patterns.",
+      "uncertainty": "The exact day dates the presentation recorded in a footnote, not publication or the first private discussion."
+    },
+    {
+      "id": "slow-decay",
+      "date": {
+        "precision": "range",
+        "start": 1984,
+        "end": 1985,
+        "label": "1984–1985 publications"
+      },
+      "type": "partial-result",
+      "title": "Slowly decreasing sequences can be excluded",
+      "description": "Falconer and Eigen independently prove nonuniversality when a positive decreasing sequence tends to zero with consecutive-term ratio tending to one. A fixed geometric ratio q<1 lies outside this hypothesis.",
+      "sourceIds": [
+        "falconer-1984",
+        "eigen-1985",
+        "feng-lai-xiong"
+      ],
+      "follows": [
+        "erdos"
+      ],
+      "relationNote": "This settles a class of sequences while leaving the geometric benchmark separate.",
+      "uncertainty": "Original full texts unavailable; the theorem and independent attribution were checked in the later primary Feng–Lai–Xiong paper."
+    },
+    {
+      "id": "additive-structure",
+      "date": {
+        "precision": "exact",
+        "year": 1987,
+        "label": "1987"
+      },
+      "type": "partial-result",
+      "title": "Adding infinite sets supplies another route",
+      "description": "Bourgain proves that the sum of three infinite real sets is not measure universal. This exploits additive structure rather than a slow-decay condition on a single sequence.",
+      "sourceIds": [
+        "bourgain-1987",
+        "kolountzakis-1997"
+      ],
+      "follows": [
+        "erdos"
+      ],
+      "relationNote": "An additive branch addresses a different class of infinite patterns.",
+      "uncertainty": ""
+    },
+    {
+      "id": "probabilistic-avoidance",
+      "date": {
+        "precision": "exact",
+        "year": 1997,
+        "label": "1997 publication; author manuscript dated June 1996"
+      },
+      "type": "partial-result",
+      "title": "Almost every placement can be blocked",
+      "description": "Kolountzakis constructs positive-measure sets avoiding almost every affine placement of any infinite pattern and proves additional gap criteria for total avoidance. A measure-zero collection of surviving parameters may still contain placements.",
+      "sourceIds": [
+        "kolountzakis-1997"
+      ],
+      "follows": [
+        "erdos"
+      ],
+      "relationNote": "Probabilistic avoidance supplies substantial progress; almost everywhere is weaker than everywhere.",
+      "uncertainty": ""
+    },
+    {
+      "id": "flexible-copies",
+      "date": {
+        "precision": "range",
+        "start": 2023,
+        "end": 2024,
+        "label": "2023 preprint; 2024 publication"
+      },
+      "type": "reformulation",
+      "title": "Allowing controlled distortion reverses the geometric answer",
+      "description": "Feng, Lai and Xiong prove that fast-decaying sequences, including every G_q, embed into any positive-measure set by a bi-Lipschitz map. The map need not apply one constant scale to all points.",
+      "sourceIds": [
+        "feng-lai-xiong"
+      ],
+      "follows": [
+        "erdos"
+      ],
+      "relationNote": "A parallel variant shows why the rigidity of similarity matters.",
+      "uncertainty": ""
+    },
+    {
+      "id": "twofold-sumsets",
+      "date": {
+        "precision": "exact",
+        "year": 2026,
+        "label": "July 2026 preprint; August revision"
+      },
+      "type": "partial-result",
+      "title": "A geometric summand helps exclude larger patterns",
+      "description": "Mora Cuellar and collaborators report that sums or differences of a geometric null sequence and any infinite set are nonuniversal. Avoiding these larger patterns does not imply avoidance of the single geometric sequence.",
+      "sourceIds": [
+        "twofold-2026"
+      ],
+      "follows": [
+        "additive-structure",
+        "probabilistic-avoidance"
+      ],
+      "relationNote": "The preprint extends the additive branch to two summands, one geometric.",
+      "uncertainty": "Preprint result; this account does not independently assess its proof."
+    },
+    {
       "id": "release-2026",
       "date": {
         "precision": "exact",
-        "label": "6 October 2026",
+        "label": "6 October 2026 release; geometric manuscript dated 5 October",
         "year": 2026,
         "iso": "2026-10-06"
       },
       "type": "ai-claim",
-      "title": "The OpenAI release",
-      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "title": "The release reports avoidance for each geometric ratio",
+      "description": "OpenAI reports compact subsets of [0,1] with measure arbitrarily close to one avoiding every translation and nonzero signed dilation of G_q, for each fixed q. The set may depend on q. The companion manuscript handles q=1/2.",
       "sourceIds": [
-        "openai-catalogue"
+        "openai-catalogue",
+        "openai-geometric"
       ],
-      "follows": [],
-      "relationNote": "Connections to earlier work await historical research.",
-      "uncertainty": "This records a reported result, without independent proof assessment."
+      "follows": [
+        "slow-decay",
+        "probabilistic-avoidance"
+      ],
+      "relationNote": "The reported claim addresses the single-sequence gap; neither the sumset nor bi-Lipschitz branch is asserted to be equivalent.",
+      "uncertainty": "Reported mathematical claim; no independent proof assessment. The full conjecture for arbitrary infinite sets is outside its scope."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-09",
+  "questionPlainLanguage": "Can a set occupy almost all of an interval yet contain no translated or scaled copy of an infinite geometric pattern, such as ½, ¼, ⅛, …? One placement must fit every term, however far down the sequence it lies.",
+  "questionSummary": "Can almost a whole interval avoid an infinite geometric pattern?",
+  "claimSummary": "the geometric case, for every fixed ratio",
+  "questionFormal": "Write $G_q=\\{q^n:n\\geq1\\}$, where $0<q<1$. An affine copy is $x+sG_q$ with $x\\in\\mathbb R$ and $s\\ne0$; negative $s$ allows reflection. The geometric case asks for a positive-measure set containing no such copy.\n\nThe stronger statement reported by OpenAI is: for every $q,\\eta\\in(0,1)$, there exists compact $E_{q,\\eta}\\subseteq[0,1]$ with\n\n$$m(E_{q,\\eta})>1-\\eta$$\n\nsuch that\n\n$$\\forall x\\in\\mathbb R\\;\\forall s\\ne0\\;\\exists n\\geq1:\\quad x+sq^n\\notin E_{q,\\eta}.$$\n\nHere $m$ is Lebesgue measure. The order of the quantifiers matters: $E_{q,\\eta}$ may depend on $q$. The full Erdős similarity conjecture replaces $G_q$ by any infinite subset of $\\mathbb R$.",
+  "whyItMatters": "Positive measure expresses size without requiring a set to contain an interval. Even a fragmented set of positive measure contains a translated, scaled copy of every finite pattern of real points. Asking for an infinite pattern tests how far this powerful finite principle extends. Fitting longer and longer pieces does not automatically provide a single translation and scale fitting every point.\n\nGeometric sequences make the boundary especially sharp: their points approach a limit at a fixed ratio, unlike the slowly decaying sequences covered by early results. Moreover, permitting a bi-Lipschitz deformation makes geometric sequences unavoidable again. The problem therefore probes both what “large” means and how rigidly a “copy” must preserve the pattern.",
+  "illustrativeExample": "For $q=1/2$, the pattern is $G_{1/2}=\\{1/2,1/4,1/8,\\ldots\\}$. Moving, shrinking or reflecting it preserves one common ratio. Only five terms are drawn. The hollow square marks the limit, which is not itself a term.",
+  "visualExplainer": "geometric-sequence",
+  "historicalImages": [],
+  "historicalHook": "A set can contain every finite piece of a pattern without admitting the whole infinite pattern.",
+  "whatAIClaims": "OpenAI reports compact sets $E_{q,\\eta}\\subseteq[0,1]$ of measure greater than $1-\\eta$ that avoid every affine copy of $G_q$, for each fixed $q\\in(0,1)$ and each $\\eta\\in(0,1)$. Translations are arbitrary; dilations may be positive or negative. The October 5 manuscript treats all fixed geometric ratios, while the September 25 companion treats the dyadic case $q=1/2$.\n\nThe introduction describes an open complement of small measure that meets every placement. Its proposed probabilistic mechanism uses a finite routing tree to control the number of scale tests. This is the manuscript's reported approach, not a proof assessment by this site.",
+  "whatRemainsOpen": "The claim does not resolve the conjecture for arbitrary infinite sets, including general rapidly decaying sequences. Nor does it assert one positive-measure set avoiding all geometric ratios simultaneously: a different set may be constructed for each ratio. Bi-Lipschitz copies remain possible by the earlier Feng–Lai–Xiong theorem, because those maps can distort the pattern rather than apply one common scale. Independent assessment of the 2026 proofs and their acceptance is outside this historical account.",
+  "explanationSourceIds": [
+    "erdos-1974",
+    "kolountzakis-1997",
+    "feng-lai-xiong"
+  ],
+  "claimSourceIds": [
+    "openai-catalogue",
+    "openai-geometric"
+  ]
 }

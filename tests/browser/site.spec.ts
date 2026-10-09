@@ -3,11 +3,13 @@ import { test, expect } from '@playwright/test';
 const records=readdirSync('content/cases').filter(f=>f.endsWith('.json')).map(f=>JSON.parse(readFileSync('content/cases/'+f,'utf8')));
 const catalogue=JSON.parse(readFileSync('data/catalogue.json','utf8'));
 const total=records.length;
+const published=records.filter(r=>r.status==='published');
+const pendingCount=records.filter(r=>r.status==='research-pending').length;
 const combinatoricsCount=records.filter(r=>(r.discipline||catalogue.families.find((f:any)=>f.familyId===r.familyId).discipline)==='Combinatorics').length;
 test('explorer prioritizes histories, offers upcoming cases, preserves filters and resets',async({page})=>{
   await page.goto('/explorer');
   await expect(page.locator('main')).toHaveAttribute('data-interactive','true');
-  await expect(page.locator('.case-card')).toHaveCount(3);
+  await expect(page.locator('.case-card')).toHaveCount(published.length);
   await expect(page.locator('.case-card').filter({hasText:'History pending'})).toHaveCount(0);
   await page.getByLabel('Search the collection').fill('fractions');
   await expect(page.locator('.case-card')).toHaveCount(1);
@@ -16,16 +18,16 @@ test('explorer prioritizes histories, offers upcoming cases, preserves filters a
   await page.reload();
   await expect(page.locator('.case-card')).toHaveCount(1);
   await page.getByRole('button',{name:'Clear filters'}).click();
-  await expect(page.locator('.case-card')).toHaveCount(3);
+  await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.getByRole('button',{name:'Browse upcoming histories'}).click();
-  await expect(page.locator('.case-card')).toHaveCount(total-3);
+  await expect(page.locator('.case-card')).toHaveCount(pendingCount);
   await expect(page).toHaveURL(/status=research-pending/);
   await page.getByLabel('Search the collection').fill('reciprocal-sum');
   await expect(page.locator('.case-card')).toHaveCount(1);
   await page.getByLabel('Collection',{exact:true}).selectOption('');
   await expect(page).toHaveURL(/status=all/);
   await page.getByRole('button',{name:'Clear filters'}).click();
-  await expect(page.locator('.case-card')).toHaveCount(3);
+  await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.getByLabel('Collection',{exact:true}).selectOption('');
   await expect(page.locator('.case-card')).toHaveCount(total);
   await page.reload();
@@ -35,12 +37,12 @@ test('explorer prioritizes histories, offers upcoming cases, preserves filters a
   await page.getByLabel('Search the collection').fill('no-such-question-9f308a');
   await expect(page.getByRole('heading',{name:'No questions match these filters.'})).toBeVisible();
   await page.getByRole('button',{name:'Show researched histories'}).click();
-  await expect(page.locator('.case-card')).toHaveCount(3);
+  await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.getByLabel('Historical pattern').selectOption('changing-formulations');
   await expect(page.locator('.case-card').filter({hasText:'№ 004'})).toHaveCount(1);
 });
 test('researched cases explain the mathematics before the history and separate claims',async({page},testInfo)=>{
-  for(const id of ['004','087','158']){
+  for(const {familyId:id} of published){
     await page.goto('/problems/'+id);
     const order=await page.locator('.problem-content > section').evaluateAll(nodes=>nodes.map(n=>n.id));
     expect(order.slice(0,5)).toEqual(['question','significance','history','timeline','result']);
@@ -99,8 +101,17 @@ test('static pages have individual metadata and remain readable without JavaScri
   await expect(page.locator('#question .question-lead')).toBeVisible();
   await page.locator('#question summary').click();
   await expect(page.locator('#question .katex').first()).toBeVisible();
+  await page.goto('http://127.0.0.1:4173/problems/084/');
+  await expect(page.locator('h1')).toHaveText('The Erdős similarity conjecture: geometric patterns');
+  await expect(page.locator('#history')).toContainText('Infinity changes the question');
+  await expect(page.locator('#question .geometric-graphic')).toBeVisible();
+  await expect(page.getByRole('button',{name:'Move & shrink',exact:true})).toBeDisabled();
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex').first()).toBeVisible();
+  await page.getByText('Read all milestones and their sources',{exact:true}).click();
+  await expect(page.locator('.static-milestone').nth(1)).toContainText('Erdős asks whether every infinite pattern can be avoided');
   await page.goto('http://127.0.0.1:4173/explorer/');
-  await expect(page.locator('.case-card')).toHaveCount(3);
+  await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.goto('http://127.0.0.1:4173/article/');
   await expect(page.getByRole('heading',{name:'The work of asking'})).toBeVisible();
   await context.close();
