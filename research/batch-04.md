@@ -1,0 +1,25 @@
+# Before the Proof — batch 04 research note
+
+Research date: 9 October 2026. Family **221**, the Mézard–Parisi formula for diluted spin glasses. Six accounts now have researched histories; four remain pending. The paired content uses the existing editorial layout and a new exact React/SVG spin illustration. Local `published` status includes the account in the researched collection; it does not validate the reported proof.
+
+## Evidence inspected
+
+- [Mézard–Parisi](https://arxiv.org/html/cond-mat/0009418v1): introduction, model and description of the one-step cavity method. First archive posting: 27 September 2000; journal publication: 2001. The HTML conversion displays a spurious 2026 document date; the archive and journal record supply the historical dates. Fixed-connectivity predictions are distinguished from the later Poisson equality.
+- [Franz–Leone](https://arxiv.org/html/cond-mat/0208280v1): introduction and conclusions. First posted 14 August 2002; journal 2003. Proves replica-symmetric and one-step variational bounds in even-arity diluted systems. Sign conventions are reconciled: physical free-energy lower bounds are pressure upper bounds.
+- [Panchenko–Talagrand](https://arxiv.org/html/math/0405357v1): model assumptions and Section 5. Theorem 4 is followed by an explicit prediction of equality with the infimum over finite depths. First posted 18 May 2004. This is the precise formulation identified here; earliest private priority is not established.
+- [Panchenko’s spin distributions](https://arxiv.org/html/1005.2720v2): introduction and Theorem 2. First posted 16 May 2010, journal 2013. Exact variational characterization over invariant spin distributions, distinct from the finite cavity trial class.
+- [Panchenko’s finite-RSB structure](https://arxiv.org/html/1406.4702v2): abstract, introduction and Theorem 2. First posted 18 June 2014, journal 2016. The representation applies to suitably modified models under finite-RSB conditions; general-state approximation remains separate in this work.
+- [Biswas–Chen–Sen](https://arxiv.org/html/2410.15599v1): introduction, model assumptions and main statements. First posted 21 October 2024, journal 2025. Replica-symmetric high-temperature and critical/subcritical regimes use their own regularity and moment assumptions. Their introduction and bibliography identify the Viana–Bray model and the 1985 paper. The original Viana–Bray text was not retrieved; this limitation is visible in the account.
+- OpenAI’s pinned [introduction](https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/introduction.tex), [model](https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/model.tex), consequences and bibliography retrieved through the GitHub connector. The theorem and named-model corollaries were reviewed for scope, without proof assessment.
+
+## Scope and limits
+
+The reported theorem treats Poisson-diluted Ising models at fixed even arity, with interaction factorization, the specified positivity condition and first-moment integrability. It identifies limiting pressure with the infimum over all finite hierarchy depths and laws. The statement does not assume a minimizing finite hierarchy or construct an infinite-depth physical Gibbs state. Named examples include symmetric even-spin models, Viana–Bray and independently weighted soft even-K SAT. The ground-state corollary takes the thermodynamic limit before zero temperature. Odd-K SAT, including 3-SAT, is outside this formula.
+
+The 1985 date marks a selected model precursor, not the beginning of all spin-glass theory. Timeline relations describe methodological connections and changed graph ensembles explicitly. The simpler-regime branch does not merge into the release claim as though it directly implied the full equality. The history is selective and does not enumerate all regular-graph or related variational results.
+
+## Illustration and verification
+
+The fixed three-spin triangle has J=-1 on each bond and zero external field. Flipping any spin recomputes the energy and bond satisfaction. An odd cycle cannot satisfy all three opposite-sign preferences. Direct enumeration yields six assignments at energy -1 and two at energy 3, hence Z(β)=6 exp(β)+2 exp(-3β). The example illustrates frustration and weighted counting; it neither simulates a typical Poisson graph nor depicts a replica hierarchy.
+
+Unit checks independently enumerate all assignments and check the partition sum. Browser checks traverse all eight configurations by keyboard, compare the rendered spins, satisfied bonds and energy, and inspect the formal statement and sourced release milestone. The page is included in desktop/tablet/mobile layout, accessibility, enlarged-text and reduced-motion checks, as well as static reading without JavaScript. Build validation checks narrative length, source references and timeline integrity.

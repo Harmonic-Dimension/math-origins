@@ -1,7 +1,23 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {latticePoints,unitEdges,squareVertices,polarVertices} from '../src/components/geometry.ts';
+import {latticePoints,unitEdges,squareVertices,polarVertices,triangleEnergy} from '../src/components/geometry.ts';
 import {dateExtent,datePosition} from '../src/components/date-scale.ts';
+
+test('the frustrated triangle has six low-energy states and the displayed partition function',()=>{
+  const energies=Array.from({length:8},(_,bits)=>{
+    const spins=Array.from({length:3},(_,i)=>bits&(1<<i)?1:-1);
+    const conflicts=Number(spins[0]===spins[1])+Number(spins[1]===spins[2])+Number(spins[2]===spins[0]);
+    assert.ok(conflicts>=1); // An odd cycle cannot have every pair opposite.
+    assert.equal(triangleEnergy(spins),2*conflicts-3);
+    return triangleEnergy(spins);
+  });
+  assert.equal(energies.filter(h=>h===-1).length,6);
+  assert.equal(energies.filter(h=>h===3).length,2);
+  for(const beta of [0,0.5,1,2]){
+    const enumerated=energies.reduce((z,h)=>z+Math.exp(-beta*h),0);
+    assert.ok(Math.abs(enumerated-(6*Math.exp(beta)+2*Math.exp(-3*beta)))<1e-10);
+  }
+});
 
 test('all and only unit-distance pairs are drawn, and the displayed coloring is valid',()=>{
   for(let i=0;i<latticePoints.length;i++)for(let j=i+1;j<latticePoints.length;j++){

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { CaseRecord } from '../schema';
 import { useClientReady } from '../useClientReady';
-import { latticePoints, unitEdges, squareVertices, polarVertices } from './geometry';
+import { latticePoints, unitEdges, squareVertices, polarVertices, spinBonds, triangleEnergy } from './geometry';
 type Kind=NonNullable<CaseRecord['visualExplainer']>;
 const colors=['#18528a','#a34e25','#47694d'];
 const names=['A','B','C'];
@@ -65,13 +65,28 @@ function ProgressionGraphic({longer=false,thumbnail=false}) {
     <text x="240" y="239" textAnchor="middle" className="visual-label">Primes up to 24 · a finite example</text>
   </svg>;
 }
+function SpinGraphic({spins,thumbnail=false}:{spins:readonly number[];thumbnail?:boolean}) {
+  const points=[{x:240,y:63},{x:91,y:218},{x:389,y:218}];
+  const satisfied=spinBonds.filter(([i,j])=>spins[i]!==spins[j]).length;
+  return <svg className="visual-explainer spin-graphic" viewBox="0 0 480 310" role={thumbnail?undefined:'img'} aria-hidden={thumbnail||undefined} aria-label={thumbnail?undefined:`Three spins A, B, C have values ${spins.join(', ')}. Each bond prefers opposite signs. ${satisfied} of three bonds are satisfied. Solid bonds are satisfied; dashed bonds are frustrated. Energy H equals ${triangleEnergy(spins)}.`}>
+    {spinBonds.map(([i,j])=>{const a=points[i],b=points[j],ok=spins[i]!==spins[j];return <line key={`${i}-${j}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} className={ok?'visual-edge spin-bond':'visual-edge spin-bond conflict-edge'} data-satisfied={ok}/>;})}
+    {points.map((p,i)=><g key={i}><circle cx={p.x} cy={p.y} r="25" fill={spins[i]===1?colors[0]:colors[1]}/><text x={p.x} y={p.y+7} textAnchor="middle" className="point-letter" data-spin={spins[i]}>{spins[i]===1?'+1':'−1'}</text><text x={p.x} y={p.y+(i===0?-36:48)} textAnchor="middle" className="visual-label">{names[i]}</text></g>)}
+    <text x="240" y="299" textAnchor="middle" className="visual-label">{satisfied}/3 bonds satisfied · H = {triangleEnergy(spins)}</text>
+  </svg>;
+}
 export default function VisualExplainer({kind,thumbnail=false}:{kind:Kind;thumbnail?:boolean}) {
   const ready=useClientReady();
   const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false),[placement,setPlacement]=useState(0),[longer,setLonger]=useState(true);
-  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:kind==='arithmetic-progressions'?<ProgressionGraphic longer={longer} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
+  const [spins,setSpins]=useState([1,-1,1]);
+  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:kind==='arithmetic-progressions'?<ProgressionGraphic longer={longer} thumbnail={thumbnail}/>:kind==='spin-glass'?<SpinGraphic spins={spins} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
   if(thumbnail)return <div className={`visual-thumbnail motif-${kind}`}>{graphic}</div>;
   return <div className={`explainer motif-${kind}`}>
-    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':kind==='arithmetic-progressions'?'Equal spacing in an irregular set':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':kind==='arithmetic-progressions'?'Equal spacing in an irregular set':kind==='spin-glass'?'Competing local preferences':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    {kind==='spin-glass'&&<>
+      <div className="figure-controls" role="group" aria-label="Change individual spins">{names.map((name,i)=><button key={name} disabled={!ready} aria-pressed={spins[i]===1} onClick={()=>setSpins(current=>current.map((value,j)=>j===i?-value:value))}>Spin {name}: {spins[i]===1?'+1':'−1'}</button>)}</div>
+      <p className="figure-feedback" aria-live="polite">{triangleEnergy(spins)===-1?'Two bonds are satisfied; one is frustrated. Flipping a spin can move the conflict, but no assignment satisfies all three.':'All three bonds are frustrated. Flipping any one spin satisfies two bonds and lowers the energy from 3 to −1.'} Solid lines connect opposite signs; dashed lines connect equal signs.</p>
+      <div className="figure-insight"><strong>Count the competing arrangements</strong><p>Six of the eight assignments have energy −1; two have energy 3. At inverse temperature β, the partition function is Z = 6eᵝ + 2e⁻³ᵝ. It counts every assignment, weighted by its energy.</p><p>The full problem takes the expected log of this weighted count per spin as a random sparse system grows. Cavity messages describe local spin preferences; a hierarchy describes how those preferences vary between competing states. This triangle illustrates frustration, without modeling that hierarchy or the random graph limit.</p></div>
+    </>}
     {kind==='arithmetic-progressions'&&<>
       <div className="figure-controls" role="group" aria-label="Compare finite arithmetic progressions"><button disabled={!ready} aria-pressed={!longer} onClick={()=>setLonger(false)}>Three terms</button><button disabled={!ready} aria-pressed={longer} onClick={()=>setLonger(true)}>Four terms</button></div>
       <p className="figure-feedback" aria-live="polite">{longer?'5, 11, 17, 23: add 6 each time. The intervening primes do not need to belong to this progression.':'3, 5, 7: add 2 each time. An arithmetic progression preserves one common difference.'}</p>

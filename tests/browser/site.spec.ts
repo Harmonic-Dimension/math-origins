@@ -121,6 +121,14 @@ test('static pages have individual metadata and remain readable without JavaScri
   await expect(page.locator('#question .katex-display')).toHaveCount(2);
   await page.getByText('Read all milestones and their sources',{exact:true}).click();
   await expect(page.locator('.static-milestone')).toHaveCount(11);
+  await page.goto('http://127.0.0.1:4173/problems/221/');
+  await expect(page.locator('h1')).toHaveText('The Mézard–Parisi formula for diluted spin glasses');
+  await expect(page.locator('.spin-graphic')).toBeVisible();
+  await expect(page.getByRole('button',{name:'Spin A: +1',exact:true})).toBeDisabled();
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-error')).toHaveCount(0);
+  await page.getByText('Read all milestones and their sources',{exact:true}).click();
+  await expect(page.locator('.static-milestone')).toHaveCount(8);
   await page.goto('http://127.0.0.1:4173/explorer/');
   await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.goto('http://127.0.0.1:4173/article/');

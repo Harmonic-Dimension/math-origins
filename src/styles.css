@@ -40,3 +40,4 @@
 @media(min-width:1050px){.story-card .card-top{min-height:3em}}
 .sequence-limit{fill:white;stroke:#18528a;stroke-width:2}.story-card.motif-geometric-sequence .visual-thumbnail{background:#eef2ed}
 .story-card.motif-arithmetic-progressions .visual-thumbnail{background:#f2f0e9}
+.story-card.motif-spin-glass .visual-thumbnail{background:#f0eeeb}.spin-bond{stroke-width:3}.spin-bond.conflict-edge{stroke-width:3}

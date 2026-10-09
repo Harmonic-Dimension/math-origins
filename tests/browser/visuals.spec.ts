@@ -1,6 +1,34 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test('spin controls show every assignment and keep the energy and bonds consistent',async({page},testInfo)=>{
+  await page.goto('/problems/221');
+  let previous=[1,-1,1];
+  for(const bits of [0,1,2,3,4,5,6,7]){
+    const spins=Array.from({length:3},(_,i)=>bits&(1<<i)?1:-1);
+    for(let i=0;i<3;i++)if(spins[i]!==previous[i]){
+      const button=page.getByRole('button',{name:new RegExp('^Spin '+['A','B','C'][i]+':')});
+      await button.focus();await page.keyboard.press('Enter');
+      await expect(button).toHaveAttribute('aria-pressed',String(spins[i]===1));
+    }
+    previous=spins;
+    const drawn=await page.locator('.spin-graphic [data-spin]').evaluateAll(nodes=>nodes.map(n=>Number(n.getAttribute('data-spin'))));
+    expect(drawn).toEqual(spins);
+    const satisfied=Number(spins[0]!==spins[1])+Number(spins[1]!==spins[2])+Number(spins[2]!==spins[0]);
+    const energy=3-2*satisfied;
+    await expect(page.locator('.spin-bond[data-satisfied="true"]')).toHaveCount(satisfied);
+    await expect(page.locator('.spin-bond.conflict-edge')).toHaveCount(3-satisfied);
+    await expect(page.locator('.spin-graphic')).toContainText(`${satisfied}/3 bonds satisfied · H = ${energy}`);
+  }
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-error')).toHaveCount(0);
+  await expect(page.locator('#question .katex-display')).toHaveCount(2);
+  await page.locator('.time-row').last().click();
+  await expect(page.locator('.event-detail')).toContainText('Poisson even-arity');
+  await expect(page.locator('.event-detail .event-sources a')).toHaveCount(2);
+  await page.screenshot({path:'screenshots/spin-glass-'+testInfo.project.name+'.png',fullPage:true});
+});
+
 test('prime progressions keep equal integer gaps and explain their finite scope',async({page},testInfo)=>{
   await page.goto('/problems/159');
   const drawn=await page.locator('.progression-graphic circle').evaluateAll(nodes=>nodes.map(n=>Number(n.getAttribute('data-value'))));
@@ -79,7 +107,7 @@ test('exact examples are operable by keyboard and chronology reveals sources',as
 
 test('main pages and expanded explanations pass automated accessibility checks',async({page})=>{
   test.setTimeout(90000);
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/about','/article']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/221','/about','/article']){
     await page.goto(route);await page.evaluate(()=>document.fonts.ready);
     if(route.startsWith('/problems/')){
       await page.locator('#question summary').click();
@@ -93,7 +121,7 @@ test('main pages and expanded explanations pass automated accessibility checks',
 
 test('enlarged text and reduced motion remain usable',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/221']){
     await page.goto(route);
     await page.evaluate(()=>document.documentElement.style.fontSize='200%');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route).toBeTruthy();

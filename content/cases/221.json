@@ -1,55 +1,358 @@
 {
   "familyId": "221",
-  "status": "research-pending",
-  "displayTitle": null,
-  "discipline": null,
+  "status": "published",
+  "displayTitle": "The Mézard–Parisi formula for diluted spin glasses",
+  "discipline": "Mathematical physics",
   "scope": {
     "types": [
       "special-case"
     ],
-    "note": "Reported formula for Poisson-diluted even-arity Ising models under stated factorization, positivity and integrability assumptions. The breadth of the named conjecture needs editorial review.",
-    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-    "classificationStatus": "provisional"
+    "note": "Statement scope reviewed against the pinned main theorem and corollaries: Poisson-diluted Ising models of fixed even arity with factorization, positivity and first-moment integrability. The limiting expected log partition function per spin equals the infimum over all finite hierarchy depths and trial laws. Includes Viana–Bray, symmetric even-spin interactions and weighted soft even-K SAT. Resolves the Panchenko–Talagrand equality conjecture for this class; does not cover every diluted model or odd-K SAT. No attainment or physical Gibbs-state hierarchy is asserted. This is a statement review, not proof verification.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/model.tex",
+    "classificationStatus": "reviewed"
   },
-  "originalQuestion": null,
-  "modernQuestion": null,
-  "questionDifference": null,
-  "conceptualOrigins": null,
-  "firstFormulation": null,
-  "attribution": null,
-  "contributors": [],
-  "tags": [],
-  "confidence": "unresearched",
-  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "originalQuestion": "Mézard and Parisi proposed a one-step cavity description for the fixed-connectivity Bethe-lattice spin glass. Panchenko and Talagrand subsequently asked whether the infimum of their finite-level trial pressure bounds equals the thermodynamic pressure in their Poisson even-arity class.",
+  "modernQuestion": "For the specified Poisson-diluted Ising models, does lim_{N→∞} N⁻¹ E log Z_N equal inf_{r≥0} Φ_r, with Φ_r optimizing the cavity functional at finite hierarchy depth r?",
+  "questionDifference": "The 2000–2001 cavity picture concerns fixed connectivity and a one-step approximation. The 2004 equality conjecture supplies a precise Poisson model and optimization over every finite depth. The reported theorem retains that class with only first moments. An exact formula over general invariant spin distributions is distinct from reduction to this specific hierarchy.",
+  "conceptualOrigins": {
+    "precision": "exact",
+    "year": 1985,
+    "label": "1985: Viana–Bray dilute-model precursor"
+  },
+  "firstFormulation": {
+    "precision": "exact",
+    "year": 2004,
+    "label": "18 May 2004: explicit variational equality in the inspected preprint",
+    "iso": "2004-05-18"
+  },
+  "attribution": "The name credits Marc Mézard and Giorgio Parisi’s physical cavity picture. The precise equality studied here is printed after Theorem 4 of Panchenko and Talagrand’s 2004 paper. Viana and Bray supplied an earlier diluted model; Franz and Leone proved selected interpolation bounds. Panchenko later developed the spin-distribution and finite-hierarchy branches. Biswas, Chen and Sen obtained formulas in replica-symmetric regimes. These contributions address different models or steps; this is a selected history, without an exhaustive priority claim.",
+  "contributors": [
+    {
+      "name": "L. Viana and A. J. Bray",
+      "contribution": "Introduced the 1985 dilute model used as a classical two-spin example.",
+      "sourceIds": [
+        "viana-bray-1985",
+        "biswas-chen-sen-2024"
+      ]
+    },
+    {
+      "name": "Marc Mézard and Giorgio Parisi",
+      "contribution": "Developed a cavity description using distributions of local-field distributions.",
+      "sourceIds": [
+        "mezard-parisi-2000"
+      ]
+    },
+    {
+      "name": "Silvio Franz and Michele Leone",
+      "contribution": "Adapted Guerra’s interpolation to prove replica-symmetric and one-step bounds for diluted even-arity models.",
+      "sourceIds": [
+        "franz-leone-2002"
+      ]
+    },
+    {
+      "name": "Dmitry Panchenko and Michel Talagrand",
+      "contribution": "Established finite-level pressure bounds and conjectured exactness of their all-depth infimum.",
+      "sourceIds": [
+        "panchenko-talagrand-2004"
+      ]
+    },
+    {
+      "name": "Dmitry Panchenko",
+      "contribution": "Obtained an invariant spin-distribution formula and a finite-RSB representation for suitably modified models.",
+      "sourceIds": [
+        "panchenko-spins-2010",
+        "panchenko-finite-2014"
+      ]
+    },
+    {
+      "name": "Ratul Biswas, Wei-Kuo Chen and Arnab Sen",
+      "contribution": "Proved replica-symmetric formulas in high-temperature and critical/subcritical regimes under their own model assumptions.",
+      "sourceIds": [
+        "biswas-chen-sen-2024"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "cross-disciplinary",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The 2004 equality following Theorem 4 was inspected in the original preprint’s HTML transcription. The cavity, spin-distribution and finite-RSB introductions and relevant statements were checked. Timeline dates use first preprint postings, with journal years noted. The 1985 Viana–Bray full text was unavailable; its citation and role were checked in later primary literature. This is a selected model precursor, not the first origin of spin-glass theory. The branches do not exhaust subsequent work on regular graphs or other model classes. The pinned 2026 introduction, model theorem and consequences were reviewed for statement scope; the proof and independent acceptance were not assessed.",
   "sources": [
     {
       "id": "openai-catalogue",
       "title": "OpenAI manuscript map",
       "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-      "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
-      "kind": "upstream",
-      "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+      "citation": "OpenAI, mathematics manuscript collection, commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "note": "Evidence of a reported release claim, not independent verification.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-introduction",
+      "title": "The Mézard–Parisi formula: introduction",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/introduction.tex",
+      "citation": "OpenAI, manuscript dated 23 September 2026; pinned introduction.",
+      "note": "Historical connections, multioverlap obstacle and distinctions between trial classes inspected.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-model",
+      "title": "The model and the variational principle",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/model.tex",
+      "citation": "OpenAI, The Mézard–Parisi formula for diluted spin glasses, model section and main theorem; pinned release commit.",
+      "note": "Model, hypotheses, first moments and infimum inspected. Physical free energy is minus pressure divided by inverse temperature.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-consequences",
+      "title": "Named models and the zero-temperature limit",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/consequences.tex",
+      "citation": "OpenAI, The Mézard–Parisi formula for diluted spin glasses, named-model corollaries; pinned release commit.",
+      "note": "Even-spin and soft even-K SAT corollaries inspected. The ground-state limit takes system size to infinity first; 3-SAT is excluded.",
+      "kind": "upstream"
+    },
+    {
+      "id": "viana-bray-1985",
+      "title": "Phase diagrams for dilute spin glasses",
+      "url": "https://doi.org/10.1088/0022-3719/18/15/013",
+      "citation": "L. Viana and A. J. Bray, Journal of Physics C: Solid State Physics 18 (1985), 3037–3051.",
+      "note": "Original full text unavailable. Citation and role checked through the later primary Biswas–Chen–Sen introduction and bibliography.",
+      "kind": "primary"
+    },
+    {
+      "id": "mezard-parisi-2000",
+      "title": "The Bethe lattice spin glass revisited",
+      "url": "https://arxiv.org/html/cond-mat/0009418v1",
+      "citation": "Marc Mézard and Giorgio Parisi, arXiv:cond-mat/0009418, 27 September 2000; European Physical Journal B 20 (2001), 217–233.",
+      "note": "Introduction and model inspected: fixed connectivity and a one-step approximation. Generated HTML shows a spurious 2026 document date; archive posting and journal record establish the historical date.",
+      "kind": "primary"
+    },
+    {
+      "id": "franz-leone-2002",
+      "title": "Replica bounds for optimization problems and diluted spin systems",
+      "url": "https://arxiv.org/html/cond-mat/0208280v1",
+      "citation": "Silvio Franz and Michele Leone, arXiv:cond-mat/0208280, 14 August 2002; Journal of Statistical Physics 111 (2003), 535–564.",
+      "note": "Introduction and conclusions inspected: replica-symmetric and one-step bounds for even arity. Physical free-energy lower bounds correspond to pressure upper bounds.",
+      "kind": "primary"
+    },
+    {
+      "id": "panchenko-talagrand-2004",
+      "title": "Bounds for diluted mean-fields spin glass models",
+      "url": "https://arxiv.org/html/math/0405357v1",
+      "citation": "Dmitry Panchenko and Michel Talagrand, arXiv:math/0405357, 18 May 2004; Probability Theory and Related Fields 130 (2004), 319–336.",
+      "note": "Model assumptions, Section 5, Theorem 4 and the equality conjecture immediately following it inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "panchenko-spins-2010",
+      "title": "Spin glass models from the point of view of spin distributions",
+      "url": "https://arxiv.org/html/1005.2720v2",
+      "citation": "Dmitry Panchenko, arXiv:1005.2720, first posted 16 May 2010; Annals of Probability 41(3A) (2013), 1315–1361; inspected version 2.",
+      "note": "Introduction and Theorem 2 inspected. Exact variational principle over invariant spin distributions; a different trial class from finite cavity hierarchies.",
+      "kind": "primary"
+    },
+    {
+      "id": "panchenko-finite-2014",
+      "title": "Structure of finite-RSB asymptotic Gibbs measures in the diluted spin glass models",
+      "url": "https://arxiv.org/html/1406.4702v2",
+      "citation": "Dmitry Panchenko, arXiv:1406.4702, first posted 18 June 2014; Journal of Statistical Physics 162 (2016), 1–42; inspected version 2.",
+      "note": "Abstract, introduction and Theorem 2 inspected. Finite-RSB structure for suitably modified models; general-state approximation is separate.",
+      "kind": "primary"
+    },
+    {
+      "id": "biswas-chen-sen-2024",
+      "title": "On the Replica Symmetric Solution in General Diluted Spin Glasses",
+      "url": "https://arxiv.org/html/2410.15599v1",
+      "citation": "Ratul Biswas, Wei-Kuo Chen and Arnab Sen, arXiv:2410.15599, 21 October 2024; Random Structures & Algorithms 66(4) (2025), e70013.",
+      "note": "Introduction, assumptions, main results and Viana–Bray bibliography entry inspected. High-temperature and critical/subcritical regimes under their compact-spin, moment and regularity assumptions.",
+      "kind": "primary"
     }
   ],
   "events": [
     {
+      "id": "dilute-model",
+      "date": {
+        "precision": "exact",
+        "year": 1985,
+        "label": "1985"
+      },
+      "type": "predecessor",
+      "title": "Viana and Bray study a diluted model",
+      "description": "The Viana–Bray model supplies a classical sparse two-spin setting, with a finite mean number of interactions per spin.",
+      "sourceIds": [
+        "viana-bray-1985",
+        "biswas-chen-sen-2024"
+      ],
+      "follows": [],
+      "relationNote": "A model precursor to the thermodynamic question.",
+      "uncertainty": "Original full text unavailable; role checked through later primary literature."
+    },
+    {
+      "id": "cavity-picture",
+      "date": {
+        "precision": "exact",
+        "year": 2000,
+        "label": "27 September 2000 · preprint; journal 2001",
+        "iso": "2000-09-27"
+      },
+      "type": "formulation",
+      "title": "Mézard and Parisi organize local preferences",
+      "description": "Their fixed-connectivity cavity approach uses distributions of local-field distributions to account for competing states at one step of replica symmetry breaking.",
+      "sourceIds": [
+        "mezard-parisi-2000"
+      ],
+      "follows": [
+        "dilute-model"
+      ],
+      "relationNote": "Related sparse-model picture; its graph ensemble differs from the later Poisson class.",
+      "uncertainty": "A physical approximation, not the all-depth equality."
+    },
+    {
+      "id": "interpolation",
+      "date": {
+        "precision": "exact",
+        "year": 2002,
+        "label": "14 August 2002 · preprint; journal 2003",
+        "iso": "2002-08-14"
+      },
+      "type": "partial-result",
+      "title": "Franz and Leone turn predictions into bounds",
+      "description": "Interpolation proves replica-symmetric and one-step pressure bounds for diluted even-arity models, linking statistical physics to random constraint problems.",
+      "sourceIds": [
+        "franz-leone-2002"
+      ],
+      "follows": [
+        "cavity-picture"
+      ],
+      "relationNote": "Gives selected cavity predictions a rigorous variational footing.",
+      "uncertainty": ""
+    },
+    {
+      "id": "equality-conjecture",
+      "date": {
+        "precision": "exact",
+        "year": 2004,
+        "label": "18 May 2004",
+        "iso": "2004-05-18"
+      },
+      "type": "formulation",
+      "title": "Every finite depth—and a precise conjecture",
+      "description": "Theorem 4 gives arbitrary finite-level pressure bounds. Immediately afterwards, Panchenko and Talagrand predict that their infimum equals the limiting pressure.",
+      "sourceIds": [
+        "panchenko-talagrand-2004"
+      ],
+      "follows": [
+        "interpolation"
+      ],
+      "relationNote": "States the equality targeted by the release.",
+      "uncertainty": "First explicit formulation identified here, without exhaustive priority research."
+    },
+    {
+      "id": "spin-distributions",
+      "date": {
+        "precision": "exact",
+        "year": 2010,
+        "label": "16 May 2010 · preprint; journal 2013",
+        "iso": "2010-05-16"
+      },
+      "type": "reformulation",
+      "title": "Panchenko describes the full spin distribution",
+      "description": "An exact formula optimizes over invariant exchangeable spin distributions, retaining the joint information carried by multioverlaps.",
+      "sourceIds": [
+        "panchenko-spins-2010"
+      ],
+      "follows": [
+        "equality-conjecture"
+      ],
+      "relationNote": "An alternative description of the variational problem.",
+      "uncertainty": "Exactness for this trial class does not establish the finite-hierarchy formula."
+    },
+    {
+      "id": "finite-rsb",
+      "date": {
+        "precision": "exact",
+        "year": 2014,
+        "label": "18 June 2014 · preprint; journal 2016",
+        "iso": "2014-06-18"
+      },
+      "type": "partial-result",
+      "title": "A hierarchy emerges in the finite-RSB case",
+      "description": "Suitably modified models admit a hierarchical single-site representation for finite-RSB asymptotic Gibbs measures. Approximating general states remains separate.",
+      "sourceIds": [
+        "panchenko-finite-2014"
+      ],
+      "follows": [
+        "spin-distributions",
+        "equality-conjecture"
+      ],
+      "relationNote": "Links the spin-distribution and cavity branches under additional conditions.",
+      "uncertainty": "Does not by itself remove the modification or prove the general approximation."
+    },
+    {
+      "id": "replica-symmetric",
+      "date": {
+        "precision": "exact",
+        "year": 2024,
+        "label": "21 October 2024 · preprint; journal 2025",
+        "iso": "2024-10-21"
+      },
+      "type": "partial-result",
+      "title": "Exact formulas in simpler regimes",
+      "description": "Biswas, Chen and Sen obtain replica-symmetric formulas in high-temperature and critical/subcritical regimes using distributional fixed points.",
+      "sourceIds": [
+        "biswas-chen-sen-2024"
+      ],
+      "follows": [
+        "spin-distributions"
+      ],
+      "relationNote": "A separate branch establishes exactness where a simpler description suffices.",
+      "uncertainty": "Uses its own moment, regularity and graph-sampling assumptions."
+    },
+    {
       "id": "release-2026",
       "date": {
         "precision": "exact",
-        "label": "6 October 2026",
         "year": 2026,
+        "label": "6 October 2026 · public release",
         "iso": "2026-10-06"
       },
       "type": "ai-claim",
-      "title": "The OpenAI release",
-      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "title": "OpenAI reports the hierarchical equality",
+      "description": "The manuscript dated 23 September reports equality with the infimum over all finite trial hierarchies in the Poisson even-arity Panchenko–Talagrand class, requiring only first moments.",
       "sourceIds": [
-        "openai-catalogue"
+        "openai-catalogue",
+        "openai-model"
       ],
-      "follows": [],
-      "relationNote": "Connections to earlier work await historical research.",
-      "uncertainty": "This records a reported result, without independent proof assessment."
+      "follows": [
+        "equality-conjecture",
+        "finite-rsb"
+      ],
+      "relationNote": "Reports the missing variational equality for the stated class.",
+      "uncertainty": "Statement scope reviewed; proof and independent acceptance not assessed."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-09",
+  "questionPlainLanguage": "Imagine many two-state spins connected by a sparse random network. Some interactions favor agreement, others favor opposition. Can a hierarchy of local spin preferences give the exact weighted count of all arrangements per spin as the network grows?",
+  "questionSummary": "Can local preferences describe a whole disordered system?",
+  "claimSummary": "the hierarchical formula for a stated even-arity class",
+  "questionFormal": "For spins $\\sigma_i\\in\\{-1,+1\\}$, let $M_N\\sim\\operatorname{Poisson}(\\alpha N)$ and sample interaction indices independently and uniformly from $\\{1,\\ldots,N\\}$, with replacement. Fix even $p\\ge2$ and independent interaction and field copies:\n\n$$\n\\begin{aligned}\n-H_N(\\sigma)&=\\sum_{k=1}^{M_N}\\theta_k(\\sigma_{i_{1,k}},\\ldots,\\sigma_{i_{p,k}})\\\\\n&\\quad+\\sum_{i=1}^{N}h_i\\sigma_i,\\\\\nZ_N&=\\sum_{\\sigma\\in\\{-1,+1\\}^N}e^{-H_N(\\sigma)}.\n\\end{aligned}\n$$\n\nAssume $\\mathbb E\\max_s|\\theta(s)|+\\mathbb E|h|<\\infty$ and $e^{\\theta(s)}=a(1+b\\prod_{\\ell=1}^p f_\\ell(s_\\ell))$, with $a>0$, independent identically distributed $f_\\ell$, $b$ independent of them, $|b\\prod f_\\ell(s_\\ell)|<1$ almost surely, and finite $\\mathbb E(-b)^n\\ge0$ for every $n\\ge1$. The claimed equality is\n\n$$\n\\lim_{N\\to\\infty}\\frac1N\\mathbb E\\log Z_N\n=\\inf_{r\\ge0}\\Phi_r.\n$$\n\nHere $\\Phi_r$ is the optimized cavity trial pressure at finite depth $r$, including zero. The trial functional combines a new-site term with an interaction correction. Higher levels sample distributions of message distributions, with parameters $0<m_1<\\cdots<m_r<1$. The [model section](https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/build/sections/model.tex) defines it completely.\n\nThe left side is **pressure**. With inverse temperature $\\beta$ included in the interactions, physical free energy per spin is its negative divided by $\\beta$. The infimum need not be attained at finite depth.",
+  "whyItMatters": "A spin glass turns simple local rules into a difficult global counting problem. Some spins prefer to align; others prefer to oppose one another. Loops can make these preferences incompatible, leaving many competing arrangements. The partition function weights every arrangement by its energy, and its logarithm per spin controls the thermodynamic description.\n\nDilution keeps the average number of interactions per spin finite. Local randomness persists as the system grows, so a single average preference can miss important structure. The cavity method encodes local preferences as messages and lets their distributions vary between states. Establishing an exact formula would turn this physical description into a mathematical characterization. Related sparse interaction models also describe random constraint problems, connecting the question to combinatorial optimization.",
+  "illustrativeExample": "This fixed triangle has three spins and three antiferromagnetic bonds of strength $J=-1$, with no external field. Every bond prefers opposite signs. Its energy is $H=\\sigma_A\\sigma_B+\\sigma_B\\sigma_C+\\sigma_C\\sigma_A$, so its eight assignments give $Z(\\beta)=6e^\\beta+2e^{-3\\beta}$. It illustrates frustration and weighted counting, not the Poisson model or its limiting formula.",
+  "visualExplainer": "spin-glass",
+  "historicalImages": [],
+  "historicalHook": "Knowing what every neighbor wants still may not tell you how the whole system behaves.",
+  "whatAIClaims": "OpenAI reports the exact equality\n\n$$\n\\lim_{N\\to\\infty}\\frac1N\\mathbb E\\log Z_N\n=\\inf_{r\\ge0}\\Phi_r\n$$\n\nfor the Poisson-diluted even-arity Ising class defined above. It identifies the optimal hierarchical trial pressure with the thermodynamic pressure, resolving the Panchenko–Talagrand equality for this class. Only first moments of the interaction and external field are required.\n\nExamples include Viana–Bray, symmetric diluted even-spin interactions, and weighted soft even-$K$ SAT at positive temperature. The consequences section also reports a ground-state variational limit, taking system size to infinity before inverse temperature tends to infinity.\n\nThe manuscript uses auxiliary finite trees and averaged control of multioverlaps. It does not assume a hierarchical organization of physical Gibbs states.",
+  "whatRemainsOpen": "The claim requires the specified factorization, positivity and even arity. It does not give a formula for every diluted spin glass, every graph ensemble, or odd-K SAT such as 3-SAT. Optimizing over all finite depths does not assert a minimizer at one finite depth or construct a limiting infinite-depth Gibbs state. An exact characterization also does not by itself supply an efficient numerical algorithm. Independent assessment and acceptance of the proof are outside this historical account.",
+  "explanationSourceIds": [
+    "mezard-parisi-2000",
+    "franz-leone-2002",
+    "panchenko-spins-2010"
+  ],
+  "claimSourceIds": [
+    "openai-catalogue",
+    "openai-model",
+    "openai-consequences"
+  ]
 }
