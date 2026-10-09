@@ -3,6 +3,25 @@ import assert from 'node:assert/strict';
 import {latticePoints,unitEdges,squareVertices,polarVertices,triangleEnergy} from '../src/components/geometry.ts';
 import {dateExtent,datePosition} from '../src/components/date-scale.ts';
 import {insertZero,removeFirst} from '../src/components/DirectFinitenessGraphic.tsx';
+import {spinOneBondLevels} from '../src/components/HaldaneGapGraphic.tsx';
+
+test('the two-spin spectrum matches the independent spin-one matrix interaction',()=>{
+  const basis=Array.from({length:9},(_,i)=>[Math.floor(i/3)-1,i%3-1]);
+  // In the Sᶻ basis, the ladder contribution to an allowed exchange is 1.
+  const q=basis.map(([m,n],i)=>basis.map(([a,b],j)=>i===j?m*n:
+    Math.abs(a-m)===1 && a-m===n-b?1:0));
+  const multiply=(a:number[][],b:number[][])=>a.map(row=>b[0].map((_,j)=>row.reduce((sum,x,k)=>sum+x*b[k][j],0)));
+  const identity=basis.map((_,i)=>basis.map((_,j)=>Number(i===j)));
+  const shift=(offset:number)=>q.map((row,i)=>row.map((v,j)=>v+offset*Number(i===j)));
+  const polynomial=multiply(multiply(shift(2),shift(1)),shift(-1));
+  assert.ok(polynomial.every(row=>row.every(x=>x===0)));
+  let power=identity;
+  for(let k=0;k<=4;k++){
+    const trace=power.reduce((sum,row,i)=>sum+row[i],0);
+    assert.equal(trace,spinOneBondLevels.reduce((sum,l)=>sum+l.multiplicity*l.energy**k,0));
+    power=multiply(power,q);
+  }
+});
 
 test('infinite sequence shifts have a left inverse and a reverse defect on the first basis vector',()=>{
   // Test basis vectors at different positions, including beyond the five drawn

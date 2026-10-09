@@ -137,6 +137,14 @@ test('static pages have individual metadata and remain readable without JavaScri
   await expect(page.locator('#question .katex-error')).toHaveCount(0);
   await page.getByText('Read all milestones and their sources',{exact:true}).click();
   await expect(page.locator('.static-milestone')).toHaveCount(11);
+  await page.goto('http://127.0.0.1:4173/problems/268/');
+  await expect(page.locator('h1')).toHaveText('The spin-one Haldane gap');
+  await expect(page.locator('.haldane-graphic')).toBeVisible();
+  await expect(page.getByRole('button',{name:'AKLT bond',exact:true})).toBeDisabled();
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-error')).toHaveCount(0);
+  await page.getByText('Read all milestones and their sources',{exact:true}).click();
+  await expect(page.locator('.static-milestone')).toHaveCount(11);
   await page.goto('http://127.0.0.1:4173/explorer/');
   await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.goto('http://127.0.0.1:4173/article/');

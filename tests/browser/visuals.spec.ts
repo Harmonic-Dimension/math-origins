@@ -127,7 +127,7 @@ test('exact examples are operable by keyboard and chronology reveals sources',as
 
 test('main pages and expanded explanations pass automated accessibility checks',async({page})=>{
   test.setTimeout(90000);
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/about','/article']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/problems/268','/about','/article']){
     await page.goto(route);await page.evaluate(()=>document.fonts.ready);
     if(route.startsWith('/problems/')){
       await page.locator('#question summary').click();
@@ -141,7 +141,7 @@ test('main pages and expanded explanations pass automated accessibility checks',
 
 test('enlarged text and reduced motion remain usable',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/problems/268']){
     await page.goto(route);
     await page.evaluate(()=>document.documentElement.style.fontSize='200%');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route).toBeTruthy();
@@ -149,4 +149,29 @@ test('enlarged text and reduced motion remain usable',async({page})=>{
   }
   await page.goto('/');
   expect(await page.locator('.case-card').first().evaluate(n=>getComputedStyle(n).transitionDuration)).toBe('0s');
+});
+
+test('Haldane bond spectra preserve energies and counts and state the chain-level limitation',async({page},testInfo)=>{
+  await page.goto('/problems/268');
+  const levels=()=>page.locator('.haldane-graphic [data-energy]').evaluateAll(nodes=>nodes.map(n=>({energy:Number(n.getAttribute('data-energy')),multiplicity:Number(n.getAttribute('data-multiplicity'))})));
+  expect(await levels()).toEqual([{energy:-2,multiplicity:1},{energy:-1,multiplicity:3},{energy:1,multiplicity:5}]);
+  await expect(page.locator('.haldane-state')).toHaveCount(9);
+  const aklt=page.getByRole('button',{name:'AKLT bond',exact:true});
+  await aklt.focus();await page.keyboard.press('Enter');
+  await expect(aklt).toHaveAttribute('aria-pressed','true');
+  expect(await levels()).toEqual([{energy:-2/3,multiplicity:4},{energy:4/3,multiplicity:5}]);
+  await expect(page.locator('.haldane-state')).toHaveCount(9);
+  expect(Number(await page.locator('.haldane-gap-band').getAttribute('height'))).toBeCloseTo(120);
+  await expect(page.locator('.figure-insight')).toContainText('do not generally commute');
+  await expect(page.locator('#question figcaption')).toContainText('Neither two-site gap determines');
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-error')).toHaveCount(0);
+  await expect(page.locator('#question .katex-display')).toHaveCount(2);
+  await page.locator('.time-row').last().click();
+  await expect(page.locator('.event-detail .event-sources a')).toHaveCount(4);
+  await expect(page.locator('.claim-panel')).toContainText('2304');
+  await expect(page.locator('.remaining-panel')).toContainText('arbitrary endpoint fields');
+  await page.getByRole('button',{name:'Heisenberg bond',exact:true}).click();
+  expect(Number(await page.locator('.haldane-gap-band').getAttribute('height'))).toBe(60);
+  await page.screenshot({path:'screenshots/haldane-gap-'+testInfo.project.name+'.png',fullPage:true});
 });

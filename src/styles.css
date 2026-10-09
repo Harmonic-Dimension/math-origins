@@ -41,3 +41,4 @@
 .sequence-limit{fill:white;stroke:#18528a;stroke-width:2}.story-card.motif-geometric-sequence .visual-thumbnail{background:#eef2ed}
 .story-card.motif-arithmetic-progressions .visual-thumbnail{background:#f2f0e9}
 .story-card.motif-spin-glass .visual-thumbnail{background:#f0eeeb}.spin-bond{stroke-width:3}.spin-bond.conflict-edge{stroke-width:3}
+.story-card.motif-haldane-gap .visual-thumbnail{background:#edf2f7}.haldane-level{stroke:var(--blue);stroke-width:3}.haldane-state{fill:var(--blue)}.haldane-sector{fill:var(--ink);font-size:18px}.haldane-gap-band{fill:#ebe2d3}.haldane-gap-bracket{stroke:#8b653d;stroke-width:2;fill:none}

@@ -1,55 +1,467 @@
 {
   "familyId": "268",
-  "status": "research-pending",
-  "displayTitle": null,
-  "discipline": null,
+  "status": "published",
+  "displayTitle": "The spin-one Haldane gap",
+  "discipline": "Mathematical physics",
   "scope": {
     "types": [
       "special-case"
     ],
-    "note": "Reported spin-one gap for even periodic rings, with a companion boundary-field result. This does not characterize every spin or boundary condition.",
-    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-    "classificationStatus": "provisional"
+    "note": "Statement scope reviewed against the pinned main theorems: the pure spin-one antiferromagnetic Heisenberg model with coupling one on even periodic rings; a separate theorem covers odd open chains with equal endpoint fields h = 3/5. The topological conclusion concerns boundary-selected subsequential local limits, without asserting global uniqueness of all infinite-chain ground states. This is a statement review, not proof verification.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/build/introduction.tex",
+    "classificationStatus": "reviewed"
   },
-  "originalQuestion": null,
-  "modernQuestion": null,
-  "questionDifference": null,
-  "conceptualOrigins": null,
-  "firstFormulation": null,
-  "attribution": null,
-  "contributors": [],
-  "tags": [],
-  "confidence": "unresearched",
-  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "originalQuestion": "Haldane’s 1981 preprint predicted a qualitative split: isotropic antiferromagnetic Heisenberg chains with integer spin have a positive excitation gap, while half-odd-integer chains are gapless. Spin one is the smallest positive integer-spin case.",
+  "modernQuestion": "For the pure spin-one Hamiltonian on even periodic rings, does the gap between the ground energy and the next distinct energy have a strictly positive lower limit as the number of sites tends to infinity? A separate formulation fixes positive magnetic fields at the endpoints of odd open chains.",
+  "questionDifference": "The early continuum argument predicted behavior across spin values. The reported periodic theorem fixes spin one, a pure bilinear interaction, coupling one and even rings. The boundary companion fixes h = 3/5 on odd open chains. A gap for the AKLT interaction, which adds a squared interaction term, does not by itself answer either question for the pure model.",
+  "questionPlainLanguage": "A chain of quantum spins has a lowest possible energy. Does exciting a spin-one antiferromagnetic chain always cost a minimum amount of energy, even as the chain becomes arbitrarily long?",
+  "questionSummary": "Can a quantum chain grow forever without its energy gap closing?",
+  "claimSummary": "a spin-one gap for even rings and fixed boundary fields",
+  "questionFormal": "At each site, take the standard spin-one operators, with $\\mathbf S_j^2=2I$. In units where the antiferromagnetic coupling is one, the pure periodic Hamiltonian is\n\n$$\n\\begin{aligned}\nH_N&=\\sum_{j=0}^{N-1}\\mathbf S_j\\cdot\\mathbf S_{j+1},\\\\\n\\mathbf S_N&=\\mathbf S_0.\n\\end{aligned}\n$$\n\nTake even $N\\ge4$. Let $E_0(N)$ be its ground energy and $E_1(N)$ the next distinct energy. Write $\\gamma_N=E_1(N)-E_0(N)$. The question is\n\n$$\n\\Delta_1=\\liminf_{\\substack{N\\to\\infty\\\\N\\text{ even}}}\\gamma_N>0.\n$$\n\nA positive gap at each fixed size does not establish this uniform limit. For odd open chains, the companion instead studies $H_L(h)=\\sum_{j=-L}^{L-1}\\mathbf S_j\\cdot\\mathbf S_{j+1}-h(S^z_{-L}+S^z_L)$ on $2L+1$ sites at the single field $h=3/5$, with no bond joining the endpoints.",
+  "whyItMatters": "A spectral gap describes the energy needed to leave the ground state. The difficult word is **uniform**: a positive gap in every finite chain can still shrink to zero as the chain grows. Haldane’s prediction showed that changing the spin from a half-integer to an integer could change this large-system behavior, even with the same nearest-neighbor interaction.\n\nThe question also connects to how quantum phases are distinguished. A solvable spin-one model supplied a rigorous gapped example; later work identified symmetries that protect its topological character. For the pure Heisenberg chain, proving the gap and proving a topological implication are separate tasks. Boundary conditions specify which question each theorem addresses.",
+  "illustrativeExample": "For **two spin-one sites**, the total spin $s$ is $0$, $1$ or $2$, and $q=\\mathbf S_1\\cdot\\mathbf S_2$ has eigenvalue $[s(s+1)-4]/2$. The AKLT bond adds $q^2/3$. The diagram gives these exact local spectra, using the same energy scale and no added constant. Neither two-site gap determines the gap of an arbitrarily long chain.",
+  "historicalHook": "An unpublished 1981 prediction became a question about an energy gap that must survive every larger chain.",
+  "visualExplainer": "haldane-gap",
+  "explanationSourceIds": [
+    "haldane-1981",
+    "aklt-1988",
+    "pollmann-2012",
+    "openai-periodic-model"
+  ],
+  "claimSourceIds": [
+    "openai-periodic",
+    "openai-boundary",
+    "openai-topology"
+  ],
+  "whatAIClaims": "The periodic manuscript reports a unique ground state for every even $N\\ge60$ and an explicit positive lower bound on its gap. For every even $N\\ge2304$, it reports $\\gamma_N>\\log(20)/784$, hence $\\Delta_1\\ge\\log(20)/784>0$. This concerns the pure bilinear spin-one model.\n\nThe companion treats $2L+1$ open sites with equal endpoint fields $h=3/5$. It reports $E_1(L,3/5)-E_0(L,3/5)>\\log(10)/392$ for every $L\\ge960$. Applying Tasaki’s theorem, it then obtains index $-1$ for every boundary-selected subsequential local limit.",
+  "whatRemainsOpen": "These statements do not cover every spin, odd periodic rings or arbitrary endpoint fields. The lower bounds do not determine the exact bulk gap; White and Huse’s familiar estimate near $0.4105$ is numerical. Free open ends have their own low-energy behavior.\n\nThe boundary corollary does not establish convergence of the entire ground-state sequence, uniqueness among all infinite-volume ground states, or the additional global uniqueness assumption used in Tasaki’s half-chain corollary. The reported proofs and finite computational certificates have not been independently assessed by this project.",
+  "conceptualOrigins": {
+    "precision": "exact",
+    "year": 1961,
+    "label": "1961: a spin-one-half low-energy precursor"
+  },
+  "firstFormulation": {
+    "precision": "exact",
+    "year": 1981,
+    "label": "July 1981: Haldane’s preserved preprint"
+  },
+  "attribution": "F. D. M. Haldane formulated the integer versus half-integer prediction. Lieb, Schultz and Mattis supplied the earlier spin-one-half obstruction; Affleck and Lieb extended the half-odd-integer branch. Affleck, Kennedy, Lieb and Tasaki proved a gapped example with a different interaction. Numerical evidence, perturbative stability and topological classification developed alongside the pure-model gap question. These are distinct contributions in a selected history, without an exhaustive priority claim.",
+  "contributors": [
+    {
+      "name": "Elliott H. Lieb, Theodore Schultz and Daniel Mattis",
+      "contribution": "Established the 1961 spin-one-half low-energy result that forms a precursor to the integer versus half-integer distinction.",
+      "sourceIds": [
+        "lsm-1961"
+      ]
+    },
+    {
+      "name": "F. D. M. Haldane",
+      "contribution": "Predicted the contrasting low-energy behavior in a 1981 preprint and the 1983 published field-theory papers.",
+      "sourceIds": [
+        "haldane-1981",
+        "haldane-1983"
+      ]
+    },
+    {
+      "name": "Ian Affleck and Elliott H. Lieb",
+      "contribution": "Proved the half-odd-integer obstruction in their 1986 class of antiferromagnetic chains.",
+      "sourceIds": [
+        "affleck-lieb-1986"
+      ]
+    },
+    {
+      "name": "Ian Affleck, Tom Kennedy, Elliott H. Lieb and Hal Tasaki",
+      "contribution": "Constructed a valence-bond spin-one model with a rigorously established spectral gap.",
+      "sourceIds": [
+        "aklt-1987",
+        "aklt-1988"
+      ]
+    },
+    {
+      "name": "Steven R. White and David A. Huse",
+      "contribution": "Used density-matrix renormalization to estimate the pure-model gap and characterize effective spin-one-half degrees of freedom at open ends.",
+      "sourceIds": [
+        "white-huse-1993"
+      ]
+    },
+    {
+      "name": "Dmitry A. Yarotsky",
+      "contribution": "Established perturbative stability around the AKLT interaction.",
+      "sourceIds": [
+        "yarotsky-2006"
+      ]
+    },
+    {
+      "name": "Frank Pollmann, Erez Berg, Ari M. Turner and Masaki Oshikawa",
+      "contribution": "Explained the symmetry protection of the odd-spin Haldane phase.",
+      "sourceIds": [
+        "pollmann-2012"
+      ]
+    },
+    {
+      "name": "Hal Tasaki",
+      "contribution": "Developed a local-twist index and proved the pure Heisenberg chain’s nontrivial index conditional on a uniform boundary-field gap.",
+      "sourceIds": [
+        "tasaki-2018",
+        "tasaki-2024"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "cross-disciplinary",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The 1981 date comes from Haldane’s preserved transcription, uploaded in 2016; it is the earliest explicit prediction identified here, not a claim about the first circulation day. Publisher abstracts and bibliographic records were inspected for the 1961, 1983, 1986, AKLT and 1993 milestones; those full original proofs were not reviewed. Topological introductions and statements were inspected. The 2026 main theorems and boundary corollary were reviewed for scope, without executing their certificates or assessing their proofs or independent acceptance. This selected account omits many experimental, numerical and rigorous developments.",
   "sources": [
     {
       "id": "openai-catalogue",
       "title": "OpenAI manuscript map",
       "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-      "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
-      "kind": "upstream",
-      "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+      "citation": "OpenAI, mathematics manuscript collection, commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "note": "Release metadata; not independent validation.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-periodic",
+      "title": "The periodic gap: introduction and main theorem",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/build/introduction.tex",
+      "citation": "OpenAI, The periodic spin-one Haldane gap, manuscript dated 24 September 2026; pinned introduction.",
+      "note": "Hamiltonian, gap convention and explicit bounds inspected.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-periodic-model",
+      "title": "The periodic chain: spin normalization and bond spectrum",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/build/model.tex",
+      "citation": "OpenAI, The periodic spin-one Haldane gap, model section; pinned release commit.",
+      "note": "Standard spin-one normalization and two-site eigenvalues inspected.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-boundary",
+      "title": "The boundary-field gap: main theorem",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/build/main.tex",
+      "citation": "OpenAI, A boundary-field gap for the spin-one Heisenberg chain, manuscript dated 24 September 2026; pinned main TeX.",
+      "note": "Fixed field, sign convention, chain length and lower bound inspected.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-topology",
+      "title": "The boundary-selected infinite-volume state",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/build/sections/topology.tex",
+      "citation": "OpenAI, boundary-field companion, topological corollary; pinned release commit.",
+      "note": "Subsequential limits, local gap, index and limits of the conclusion inspected.",
+      "kind": "upstream"
+    },
+    {
+      "id": "lsm-1961",
+      "title": "Two soluble models of an antiferromagnetic chain",
+      "url": "https://collaborate.princeton.edu/en/publications/two-soluble-models-of-an-antiferromagnetic-chain/",
+      "citation": "Elliott Lieb, Theodore Schultz and Daniel Mattis, Annals of Physics 16 (1961), 407–466; doi:10.1016/0003-4916(61)90115-4.",
+      "note": "Institutional publication record and original abstract inspected; full proof not reviewed.",
+      "kind": "primary"
+    },
+    {
+      "id": "haldane-1981",
+      "title": "Haldane’s 1981 preprint, preserved in transcription",
+      "url": "https://arxiv.org/html/1612.00076v1",
+      "citation": "F. D. M. Haldane, Ground State Properties of Antiferromagnetic Chains with Unrestricted Spin, ILL preprint SP-81/95, July 1981; transcribed as arXiv:1612.00076 in 2016.",
+      "note": "Opening prediction, historical note and original month inspected; archive posting date is not the formulation date.",
+      "kind": "primary"
+    },
+    {
+      "id": "haldane-1983",
+      "title": "Nonlinear field theory of large-spin Heisenberg antiferromagnets",
+      "url": "https://doi.org/10.1103/PhysRevLett.50.1153",
+      "citation": "F. D. M. Haldane, Physical Review Letters 50 (1983), 1153–1156; published 11 April 1983.",
+      "note": "Publisher abstract and bibliography inspected; companion Physics Letters A 93 (1983), 464–468 is cited there.",
+      "kind": "primary"
+    },
+    {
+      "id": "affleck-lieb-1986",
+      "title": "A proof of part of Haldane’s conjecture on spin chains",
+      "url": "https://doi.org/10.1007/BF00400304",
+      "citation": "Ian Affleck and Elliott H. Lieb, Letters in Mathematical Physics 12 (1986), 57–69.",
+      "note": "Publisher abstract inspected: half-odd-integer obstruction under stated symmetries, not an integer-spin gap proof.",
+      "kind": "primary"
+    },
+    {
+      "id": "aklt-1987",
+      "title": "Rigorous results on valence-bond ground states in antiferromagnets",
+      "url": "https://doi.org/10.1103/PhysRevLett.59.799",
+      "citation": "Ian Affleck, Tom Kennedy, Elliott H. Lieb and Hal Tasaki, Physical Review Letters 59 (1987), 799–802; published 17 August 1987.",
+      "note": "Publisher abstract and date inspected; a related model with a rigorously proved gap.",
+      "kind": "primary"
+    },
+    {
+      "id": "aklt-1988",
+      "title": "Valence bond ground states in isotropic quantum antiferromagnets",
+      "url": "https://doi.org/10.1007/BF01218021",
+      "citation": "Ian Affleck, Tom Kennedy, Elliott H. Lieb and Hal Tasaki, Communications in Mathematical Physics 115 (1988), 477–528.",
+      "note": "Publisher abstract inspected; interaction comparison corroborated by the pinned periodic introduction and later primary literature. Full proof not reviewed.",
+      "kind": "primary"
+    },
+    {
+      "id": "white-huse-1993",
+      "title": "Numerical study of low-lying eigenstates of the spin-one chain",
+      "url": "https://doi.org/10.1103/PhysRevB.48.3844",
+      "citation": "Steven R. White and David A. Huse, Physical Review B 48 (1993), 3844–3852; published 1 August 1993.",
+      "note": "Original abstract inspected: gap estimate 0.41050(2) and effective endpoint spins; numerical evidence, not a uniform rigorous bound.",
+      "kind": "primary"
+    },
+    {
+      "id": "yarotsky-2006",
+      "title": "Ground states in relatively bounded quantum perturbations",
+      "url": "https://arxiv.org/abs/math-ph/0412040",
+      "citation": "Dmitry A. Yarotsky, arXiv:math-ph/0412040, posted 13 December 2004; Communications in Mathematical Physics 261 (2006), 799–819.",
+      "note": "Primary abstract inspected; small-perturbation scope corroborated by the pinned periodic introduction. Full proof not reviewed.",
+      "kind": "primary"
+    },
+    {
+      "id": "pollmann-2012",
+      "title": "Symmetry protection of topological phases in quantum spin systems",
+      "url": "https://arxiv.org/html/0909.4059v3",
+      "citation": "Frank Pollmann, Erez Berg, Ari M. Turner and Masaki Oshikawa, arXiv:0909.4059 (first posted 2009); Physical Review B 85 (2012), 075125.",
+      "note": "Abstract and introduction inspected. Matrix-product, edge and symmetry viewpoints do not prove the pure Heisenberg gap.",
+      "kind": "primary"
+    },
+    {
+      "id": "tasaki-2018",
+      "title": "Topological phase transition and a Z₂ index for spin-one chains",
+      "url": "https://arxiv.org/html/1804.04337v5",
+      "citation": "Hal Tasaki, arXiv:1804.04337 (first posted 12 April 2018); Physical Review Letters 121 (2018), 140604.",
+      "note": "Abstract and index formulation inspected; symmetry and gap assumptions are essential.",
+      "kind": "primary"
+    },
+    {
+      "id": "tasaki-2024",
+      "title": "The Heisenberg chain is topologically nontrivial if gapped",
+      "url": "https://arxiv.org/html/2407.17041v3",
+      "citation": "Hal Tasaki, arXiv:2407.17041 (first posted 24 July 2024); Physical Review Letters 134 (2025), 076602; inspected version 3.",
+      "note": "Equation (2), Assumption 2 and Theorem 3 inspected. Uses a uniform boundary-field gap assumption. Archive history establishes dates; generated HTML document date is not used.",
+      "kind": "primary"
     }
   ],
   "events": [
     {
+      "id": "half-spin",
+      "date": {
+        "precision": "exact",
+        "year": 1961,
+        "label": "1961"
+      },
+      "title": "A low-energy obstruction for spin one-half",
+      "type": "predecessor",
+      "description": "Lieb, Schultz and Mattis establish a spin-one-half low-energy result. Integer spin is not forced into the same obstruction.",
+      "sourceIds": [
+        "lsm-1961"
+      ],
+      "follows": [],
+      "relationNote": "A precursor to the contrast, not a proof of an integer-spin gap.",
+      "uncertainty": "Full original proof not reviewed."
+    },
+    {
+      "id": "haldane-preprint",
+      "date": {
+        "precision": "exact",
+        "year": 1981,
+        "label": "July 1981 · preprint preserved in 2016"
+      },
+      "title": "Haldane predicts the integer-spin gap",
+      "type": "formulation",
+      "description": "The preserved July 1981 preprint predicts a singlet ground state with gapped excitations for integer spin, contrasting with half-integer behavior.",
+      "sourceIds": [
+        "haldane-1981"
+      ],
+      "follows": [
+        "half-spin"
+      ],
+      "relationNote": "The continuum argument supplies the integer-spin prediction.",
+      "uncertainty": "Date supplied by the later transcription."
+    },
+    {
+      "id": "haldane-publication",
+      "date": {
+        "precision": "exact",
+        "year": 1983,
+        "label": "1983"
+      },
+      "title": "The prediction reaches print",
+      "type": "formulation",
+      "description": "Haldane’s published field-theory paper connects spin chains to a nonlinear sigma model and distinguishes integer from half-integer behavior.",
+      "sourceIds": [
+        "haldane-1983"
+      ],
+      "follows": [
+        "haldane-preprint"
+      ],
+      "relationNote": "Published development of the earlier prediction.",
+      "uncertainty": "The 1981 text is an earlier identified formulation."
+    },
+    {
+      "id": "half-integer-extension",
+      "date": {
+        "precision": "exact",
+        "year": 1986,
+        "label": "1986"
+      },
+      "title": "Affleck and Lieb prove the other branch",
+      "type": "partial-result",
+      "description": "Their theorem excludes a unique gapped infinite-chain ground state for half-odd-integer spin under the paper’s assumptions.",
+      "sourceIds": [
+        "affleck-lieb-1986"
+      ],
+      "follows": [
+        "half-spin",
+        "haldane-publication"
+      ],
+      "relationNote": "Extends the rigorous obstruction; does not settle spin one.",
+      "uncertainty": ""
+    },
+    {
+      "id": "aklt",
+      "date": {
+        "precision": "exact",
+        "year": 1987,
+        "label": "1987"
+      },
+      "title": "A related spin-one model has a rigorous gap",
+      "type": "partial-result",
+      "description": "Affleck, Kennedy, Lieb and Tasaki construct a valence-bond model with a spectral gap. The extended 1988 account develops the rigorous example. Its interaction differs from the pure Heisenberg bond.",
+      "sourceIds": [
+        "aklt-1987",
+        "aklt-1988"
+      ],
+      "follows": [
+        "haldane-publication"
+      ],
+      "relationNote": "A rigorous realization of gapped integer-spin behavior for a related Hamiltonian.",
+      "uncertainty": ""
+    },
+    {
+      "id": "numerics",
+      "date": {
+        "precision": "exact",
+        "year": 1993,
+        "label": "1993"
+      },
+      "title": "Numerical evidence sharpens the pure-model picture",
+      "type": "partial-result",
+      "description": "White and Huse estimate the bulk gap as 0.41050(2) and identify effective spin-one-half degrees of freedom at open ends.",
+      "sourceIds": [
+        "white-huse-1993"
+      ],
+      "follows": [
+        "haldane-publication"
+      ],
+      "relationNote": "Studies the pure-model spectrum and boundary behavior.",
+      "uncertainty": "A numerical estimate does not establish a uniform rigorous lower bound."
+    },
+    {
+      "id": "stability",
+      "date": {
+        "precision": "exact",
+        "year": 2006,
+        "label": "2006"
+      },
+      "title": "The AKLT gap survives small perturbations",
+      "type": "partial-result",
+      "description": "Yarotsky’s perturbation theory establishes stability around the AKLT interaction, rather than a complete path to the pure Heisenberg point.",
+      "sourceIds": [
+        "yarotsky-2006"
+      ],
+      "follows": [
+        "aklt"
+      ],
+      "relationNote": "Extends the rigorously controlled model neighborhood.",
+      "uncertainty": "First preprint 2004; timeline uses the journal year."
+    },
+    {
+      "id": "symmetry",
+      "date": {
+        "precision": "exact",
+        "year": 2012,
+        "label": "2012"
+      },
+      "title": "Symmetry explains a topological distinction",
+      "type": "reformulation",
+      "description": "Pollmann, Berg, Turner and Oshikawa describe how particular symmetries protect the odd-spin Haldane phase.",
+      "sourceIds": [
+        "pollmann-2012"
+      ],
+      "follows": [
+        "aklt",
+        "numerics"
+      ],
+      "relationNote": "Adds a phase-classification question alongside the gap question.",
+      "uncertainty": "First preprint 2009; timeline uses the journal year."
+    },
+    {
+      "id": "twist-index",
+      "date": {
+        "precision": "exact",
+        "year": 2018,
+        "label": "2018"
+      },
+      "title": "A local twist gives a rigorous index",
+      "type": "reformulation",
+      "description": "Tasaki defines a Z₂ index for unique gapped spin-one ground states with specified symmetries, invariant under smooth deformation.",
+      "sourceIds": [
+        "tasaki-2018"
+      ],
+      "follows": [
+        "symmetry"
+      ],
+      "relationNote": "A rigorous index framework distinguishes AKLT and trivial phases.",
+      "uncertainty": ""
+    },
+    {
+      "id": "conditional-topology",
+      "date": {
+        "precision": "exact",
+        "year": 2024,
+        "label": "2024"
+      },
+      "title": "For the pure chain, topology follows if the gap holds",
+      "type": "partial-result",
+      "description": "Tasaki proves index −1 for the boundary-selected infinite-chain state, assuming a uniform gap on odd open chains with endpoint fields.",
+      "sourceIds": [
+        "tasaki-2024"
+      ],
+      "follows": [
+        "twist-index",
+        "numerics"
+      ],
+      "relationNote": "The boundary gap becomes a precise sufficient hypothesis.",
+      "uncertainty": "First posted July 2024; journal publication 2025."
+    },
+    {
       "id": "release-2026",
       "date": {
         "precision": "exact",
-        "label": "6 October 2026",
         "year": 2026,
+        "label": "6 October 2026 · public release",
         "iso": "2026-10-06"
       },
+      "title": "The OpenAI release: periodic and boundary gap claims",
       "type": "ai-claim",
-      "title": "The OpenAI release",
-      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "description": "OpenAI reports a uniform gap for even periodic spin-one rings and, separately, odd open chains with endpoint field h = 3/5. The companion applies Tasaki’s theorem to boundary-selected local limits.",
       "sourceIds": [
-        "openai-catalogue"
+        "openai-catalogue",
+        "openai-periodic",
+        "openai-boundary",
+        "openai-topology"
       ],
-      "follows": [],
-      "relationNote": "Connections to earlier work await historical research.",
-      "uncertainty": "This records a reported result, without independent proof assessment."
+      "follows": [
+        "haldane-publication",
+        "conditional-topology"
+      ],
+      "relationNote": "The periodic theorem addresses the original gap prediction in a fixed formulation; the companion supplies the boundary hypothesis.",
+      "uncertainty": "Statement scope reviewed; proofs and certificates not independently assessed."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-09"
 }
