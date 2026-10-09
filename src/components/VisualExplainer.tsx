@@ -4,6 +4,7 @@ import { useClientReady } from '../useClientReady';
 import { latticePoints, unitEdges, squareVertices, polarVertices, spinBonds, triangleEnergy } from './geometry';
 import { DirectFinitenessGraphic } from './DirectFinitenessGraphic';
 import HaldaneGapGraphic from './HaldaneGapGraphic';
+import HilbertSmithGraphic from './HilbertSmithGraphic';
 type Kind=NonNullable<CaseRecord['visualExplainer']>;
 const colors=['#18528a','#a34e25','#47694d'];
 const names=['A','B','C'];
@@ -82,6 +83,7 @@ export default function VisualExplainer({kind,thumbnail=false}:{kind:Kind;thumbn
   const [spins,setSpins]=useState([1,-1,1]);
   const [reverse,setReverse]=useState(false);
   if(kind==='haldane-gap')return <HaldaneGapGraphic thumbnail={thumbnail}/>;
+  if(kind==='hilbert-smith')return <HilbertSmithGraphic thumbnail={thumbnail}/>;
   const graphic=kind==='direct-finiteness'?<DirectFinitenessGraphic reverse={reverse} thumbnail={thumbnail}/>:kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:kind==='arithmetic-progressions'?<ProgressionGraphic longer={longer} thumbnail={thumbnail}/>:kind==='spin-glass'?<SpinGraphic spins={spins} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
   if(thumbnail)return <div className={`visual-thumbnail motif-${kind}`}>{graphic}</div>;
   return <div className={`explainer motif-${kind}`}>

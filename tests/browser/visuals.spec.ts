@@ -1,6 +1,36 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test('Hilbert–Smith distinguishes a small rotation from its entire subgroup',async({page},testInfo)=>{
+  await page.goto('/problems/304');
+  await expect(page.locator('.status-chip')).toHaveText('Historical account available');
+  await expect(page.locator('.hilbert-smith-graphic [data-step]')).toHaveCount(2);
+  const subgroup=page.getByRole('button',{name:'The generated subgroup',exact:true});
+  await subgroup.focus();await page.keyboard.press('Enter');
+  await expect(subgroup).toHaveAttribute('aria-pressed','true');
+  await expect(page.locator('.hilbert-smith-graphic [data-step]')).toHaveCount(16);
+  await expect(page.locator('.rotation-half-turn')).toHaveAttribute('data-step','8');
+  expect(Number(await page.locator('.rotation-half-turn').getAttribute('data-x'))).toBeCloseTo(-1);
+  await page.getByRole('button',{name:'Halve the step',exact:true}).click();
+  await expect(page.locator('.hilbert-smith-graphic [data-step]')).toHaveCount(32);
+  await expect(page.locator('.rotation-half-turn')).toHaveAttribute('data-step','16');
+  await expect(page.locator('.figure-feedback')).toContainText('after 32 it returns');
+  await page.getByRole('button',{name:'One small rotation',exact:true}).click();
+  await expect(page.locator('.hilbert-smith-graphic [data-step]')).toHaveCount(2);
+  await expect(page.locator('.hilbert-smith-graphic')).toContainText('11.25°');
+  await page.getByRole('button',{name:'Halve the step',exact:true}).click();
+  await expect(page.locator('.hilbert-smith-graphic')).toContainText('22.5°');
+  await expect(page.locator('.figure-insight')).toContainText('Faithful means only the identity fixes every point');
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-error')).toHaveCount(0);
+  await page.locator('.time-row').last().click();
+  await expect(page.locator('.event-detail .event-sources a')).toHaveCount(2);
+  const violations=(await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations;
+  expect(violations).toEqual([]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+  await page.screenshot({path:'screenshots/hilbert-smith-'+testInfo.project.name+'.png',fullPage:true});
+});
+
 test('one-sided inverses show the changed coordinate when operation order is reversed',async({page},testInfo)=>{
   await page.goto('/problems/197');
   const output=()=>page.locator('.inverse-graphic [data-row="2"]').evaluateAll(nodes=>nodes.map(n=>Number(n.getAttribute('data-value'))));
@@ -127,7 +157,7 @@ test('exact examples are operable by keyboard and chronology reveals sources',as
 
 test('main pages and expanded explanations pass automated accessibility checks',async({page})=>{
   test.setTimeout(90000);
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/problems/268','/about','/article']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/problems/268','/problems/304','/about','/article']){
     await page.goto(route);await page.evaluate(()=>document.fonts.ready);
     if(route.startsWith('/problems/')){
       await page.locator('#question summary').click();
@@ -141,7 +171,7 @@ test('main pages and expanded explanations pass automated accessibility checks',
 
 test('enlarged text and reduced motion remain usable',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/problems/268']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/problems/268','/problems/304']){
     await page.goto(route);
     await page.evaluate(()=>document.documentElement.style.fontSize='200%');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route).toBeTruthy();

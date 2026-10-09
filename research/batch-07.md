@@ -1,0 +1,25 @@
+# Before the Proof — batch 07 research note
+
+Research date: 9 October 2026. Family **304**, the Hilbert–Smith conjecture. Nine accounts now have researched histories; family 102 remains pending. The page uses the existing editorial layout, a sourced branching timeline and an exact plane-rotation illustration. Local `published` status makes the historical account available in the collection; it does not validate the reported proof.
+
+## Evidence inspected
+
+- [Hilbert’s address in English transcription](https://www.astro.puc.cl/~rparra/tools/PAPERS/hilbert_1900.pdf): address date, translation note and Problem 5 inspected. The conceptual milestone uses 1900; the English publication was in 1902. The original problem concerns the removal of differentiability assumptions, rather than the exact modern locally compact group hypotheses.
+- [Newman’s publisher record](https://academic.oup.com/qjmath/article-abstract/os-2/1/1/1565849): title, author, journal and 1931 date inspected. The theorem itself was read in [Pardon’s 2018 author manuscript](https://www.math.stonybrook.edu/~jpardon/manuscripts/13_hs2d.pdf), which also cites Smith’s 1941 treatment. The original Newman and Smith proofs were not inspected.
+- Pardon’s 2018 manuscript: opening survey, locally compact no-small-subgroups criterion, reduction to additive p-adic groups, distinction between Lie structure and smoothability of an action, Newman statement and credit to Montgomery–Zippin for dimension two inspected. Original 1952–1953 proofs were not read. The combined structure milestone uses a date range, rather than placing Yamabe’s work in 1952.
+- [Williams’s bibliography](https://celebratio.org/Williams_RF/article/962/): the original 1961 abstract of Bredon–Raymond–Williams explicitly states the compact-action conjecture, recalls the p-adic reduction and attributes the integral-cohomological dimension increase to Yang’s 1960 work. Original complete proofs were not inspected. This is an explicit formulation on record, not a claim of first priority.
+- [Repovš–Ščepin publisher record](https://link.springer.com/article/10.1007/s002080050080): authors, title, June 1997 publication and pagination inspected. Lipschitz/Riemannian scope corroborated by the pinned introduction. The full original proof was not inspected.
+- [Pardon’s three-manifold author manuscript](https://www.math.stonybrook.edu/~jpardon/manuscripts/08_hilbertsmith.pdf): abstract, conjectures and Theorem 1.5 inspected. [Archive record](https://arxiv.org/abs/1112.2324) establishes first posting in December 2011 and journal publication in 2013. The milestone uses the journal year with the preprint date shown separately.
+- Pinned OpenAI `build/sections/01-introduction.tex`, `build/sections/02-categories.tex` and `build/references.bib` retrieved at commit `fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`. Main theorems, hypotheses and claimed signature-lattice mechanism inspected. No proof verification performed. The snapshot can include changes later than the manuscript’s September 23 date.
+
+## Unknown formulation date
+
+The original Smith lecture text was not obtained. The 1941 paper on Newman’s theorem was identified bibliographically from Pardon’s primary author manuscript, but cannot establish the first conjecture formulation. The account therefore leaves `firstFormulation` explicitly unknown. It does not convert a commonly cited 1941 publication or an unverified 1939 lecture into an exact priority date. The 1961 abstract supplies an inspected explicit compact-action formulation, already called a conjecture there.
+
+## Scope and illustration
+
+The reported main theorem requires a locally compact second-countable Hausdorff group and a faithful jointly continuous action on a connected Hausdorff second-countable finite-dimensional topological manifold without boundary. It allows arbitrary stabilizers, noncompactness, nonorientability and nontriangulability. Faithful is not free. The connected zero-dimensional case is a point. The conclusion gives Lie structure to the group, not smoothness of its action. The companion p-adic statement asserts nonzero kernel and hence factorization through a finite quotient.
+
+The illustration takes an ordinary plane rotation through 2π/N, with N = 16 or 32. A unit-circle point has single-step displacement 2 sin(π/N), but the generated subgroup includes a half-turn with displacement 2. Matrix-composition checks establish closure and the drawn orbit; browser checks cover both orders, keyboard interaction and source selection. The origin stays fixed, providing a faithful but nonfree example. This illustrates a Lie group and the distinction between small elements and small subgroups; it does not construct a p-adic action or prove the general no-small-subgroups theorem.
+
+The history selects the group-structure, periodic-rigidity, dimension-theory, Lipschitz and three-manifold branches. Hölder, quasiconformal, quasisymmetric and symplectic developments are not exhaustively covered. Imported catalogue metadata is unchanged. No independent acceptance assessment is claimed.

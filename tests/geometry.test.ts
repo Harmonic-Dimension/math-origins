@@ -4,6 +4,28 @@ import {latticePoints,unitEdges,squareVertices,polarVertices,triangleEnergy} fro
 import {dateExtent,datePosition} from '../src/components/date-scale.ts';
 import {insertZero,removeFirst} from '../src/components/DirectFinitenessGraphic.tsx';
 import {spinOneBondLevels} from '../src/components/HaldaneGapGraphic.tsx';
+import {rotationOrbit} from '../src/components/HilbertSmithGraphic.tsx';
+
+test('a small rotation generates a full finite subgroup containing a half-turn',()=>{
+  for(const order of [16,32]){
+    const orbit=rotationOrbit(order);
+    assert.equal(orbit.length,order);
+    assert.ok(Math.abs(orbit[order/2].x+1)<1e-12);
+    assert.ok(Math.abs(orbit[order/2].y)<1e-12);
+    const step=orbit[1];
+    let point={x:1,y:0};
+    // Independently compose the rotation matrix, including its return to identity.
+    for(let i=0;i<=order;i++){
+      const drawn=orbit[i%order];
+      assert.ok(Math.hypot(point.x-drawn.x,point.y-drawn.y)<1e-12);
+      assert.ok(Math.abs(Math.hypot(drawn.x,drawn.y)-1)<1e-12);
+      point={x:step.x*point.x-step.y*point.y,y:step.y*point.x+step.x*point.y};
+    }
+    const displacement=Math.hypot(step.x-1,step.y);
+    assert.ok(Math.abs(displacement-2*Math.sin(Math.PI/order))<1e-12);
+    assert.ok(displacement<0.4);
+  }
+});
 
 test('the two-spin spectrum matches the independent spin-one matrix interaction',()=>{
   const basis=Array.from({length:9},(_,i)=>[Math.floor(i/3)-1,i%3-1]);

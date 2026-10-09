@@ -1,55 +1,348 @@
 {
   "familyId": "304",
-  "status": "research-pending",
-  "displayTitle": null,
-  "discipline": null,
+  "status": "published",
+  "displayTitle": "The Hilbert–Smith conjecture",
+  "discipline": "Topology",
   "scope": {
     "types": [
       "full-resolution"
     ],
-    "note": "Reported resolution in all finite dimensions for the group actions and manifolds specified in the catalogue.",
-    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-    "classificationStatus": "provisional"
+    "note": "Statement scope reviewed against the pinned introduction: locally compact second-countable Hausdorff groups acting faithfully and jointly continuously on connected Hausdorff second-countable finite-dimensional topological manifolds without boundary. No smoothness, orientability, compactness or triangulability assumption on the manifold; arbitrary stabilizers allowed. Dimension zero is the trivial connected-point case. This is a statement review, not proof verification.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Hilbert-Smith-conjecture-in-every-finite-dimension-September-23-2026/build/sections/01-introduction.tex",
+    "classificationStatus": "reviewed"
   },
-  "originalQuestion": null,
-  "modernQuestion": null,
-  "questionDifference": null,
-  "conceptualOrigins": null,
-  "firstFormulation": null,
-  "attribution": null,
-  "contributors": [],
-  "tags": [],
-  "confidence": "unresearched",
-  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "originalQuestion": "Hilbert’s 1900 fifth problem asked how far differentiability assumptions could be removed from continuous transformation groups. The compact-manifold-action conjecture is explicitly stated in the inspected 1961 abstract of Bredon, Raymond and Williams; the earliest modern formulation has not been established here.",
+  "modernQuestion": "Must every locally compact second-countable Hausdorff group with a faithful jointly continuous action on a connected Hausdorff second-countable finite-dimensional topological manifold without boundary be a Lie group?",
+  "questionDifference": "One formulation of Hilbert’s fifth problem assumes that the group itself is locally Euclidean. Hilbert–Smith instead assumes that a space on which the group acts is a manifold. It asks whether that faithful action forces Lie structure on the group. Even a Lie group may act in ways that cannot be made smooth; Lie structure of the group does not assert smoothness of the given action.",
+  "questionPlainLanguage": "If a well-behaved topological group moves points continuously on a space that locally looks like ordinary Euclidean space, and each nonidentity symmetry moves some point, must the group itself have the smooth structure of a Lie group?",
+  "questionSummary": "Does a space’s local geometry force its symmetry group to have Lie structure?",
+  "claimSummary": "Lie structure for faithful manifold actions in all finite dimensions",
+  "questionFormal": "Let $G$ be a locally compact, second-countable Hausdorff topological group, and let $M$ be a connected Hausdorff second-countable topological $n$-manifold without boundary, with $1\\le n<\\infty$. Suppose the action\n\n$$\n\\alpha:G\\times M\\longrightarrow M\n$$\n\nis jointly continuous and **faithful**:\n\n$$\ng\\ne e\\ \\Longrightarrow\\ \\exists x\\in M:\\ g\\cdot x\\ne x.\n$$\n\nMust $G$ be a Lie group, with its given topology? A Lie group is a finite-dimensional smooth manifold whose group operations are smooth. The question does not require the given action on $M$ to be smooth, or even $M$ to have a smooth structure.\n\nThe classical reduction asks whether the additive group $\\mathbb Z_p=\\varprojlim_k\\mathbb Z/p^k\\mathbb Z$ can act faithfully on such an $M$, for any prime $p$. Here $\\mathbb Z_p$ means the infinite group of p-adic integers, not the finite group $\\mathbb Z/p\\mathbb Z$. Faithful does not mean free: individual points may have nontrivial stabilizers.",
+  "whyItMatters": "Lie groups make symmetry accessible to geometry and calculus. The conjecture asks when that structure is forced by continuity and by the local shape of the space being moved. It connects topological transformation groups to dimension theory and to the structure of locally compact groups.\n\nThe difficult case is the infinite group of p-adic integers. Its neighborhoods of zero contain smaller copies of the whole group. A faithful manifold action would turn this hierarchy into whole subgroups of increasingly small motions on compact sets. Ruling that out demands more than ruling out a single small movement. Results for Lipschitz actions or in dimension three show how metric control and local topology can answer parts of the question.",
+  "illustrativeExample": "Let $r$ rotate the plane by $2\\pi/N$, for $N=16$ or $32$. Its generated subgroup contains all powers $r^j$, including the half-turn $r^{N/2}$. A point on the unit circle moves only $2\\sin(\\pi/N)$ under one step, but moves distance $2$ under that half-turn. This finite example illustrates the distinction between a small element and an entire small subgroup. The action is faithful even though every rotation fixes the origin.",
+  "historicalHook": "Hilbert asked what remains of Lie’s theory without differentiability. The harder descendant asks what the space being moved can force on the group.",
+  "visualExplainer": "hilbert-smith",
+  "explanationSourceIds": [
+    "hilbert-1900",
+    "pardon-2018",
+    "repovs-scepin-1997"
+  ],
+  "claimSourceIds": [
+    "openai-introduction",
+    "openai-catalogue"
+  ],
+  "whatAIClaims": "The manuscript reports that every group satisfying the stated local compactness, countability and separation assumptions is a Lie group whenever it acts faithfully and jointly continuously on the specified connected manifold. The manifold can be noncompact, nonorientable or nontriangulable; fixed points and arbitrary stabilizers are allowed.\n\nIts p-adic theorem reports that every such $\\mathbb Z_p$ action has nonzero kernel and therefore factors through a finite quotient. The introduction describes a signature obstruction: a fixed lattice is claimed to prevent the equal subdivisions forced by a hypothetical faithful action. These are the manuscript’s claims; the proof has not been independently assessed here.",
+  "whatRemainsOpen": "If correct, the stated theorem settles the conjecture in all finite dimensions under its explicit hypotheses. This page does not claim a theorem for arbitrary spaces, groups without local compactness, or infinite-dimensional manifolds; manifolds with boundary are outside the displayed statement. The zero-dimensional connected case is a point and permits only the trivial faithful group.\n\nThe conclusion concerns the group’s Lie structure. It does not assert that the given continuous action is smooth or can be conjugated to a smooth action. Publication and inclusion in this collection do not establish independent acceptance of the reported proof.",
+  "conceptualOrigins": {
+    "precision": "exact",
+    "year": 1900,
+    "label": "1900: Hilbert’s fifth problem"
+  },
+  "firstFormulation": {
+    "precision": "unknown",
+    "label": "Earliest modern formulation not established; explicit compact version inspected in 1961"
+  },
+  "attribution": "David Hilbert supplied the differentiability question behind the name. Paul A. Smith developed the topology of periodic transformations, including a treatment of Newman’s theorem. The locally compact structure theory belongs to a separate contribution by Gleason, Montgomery, Zippin and Yamabe. Yang and Bredon–Raymond–Williams developed the dimension obstruction; Repovš–Ščepin and Pardon resolved different restricted cases. This selected history does not assign an unverified first formulation date to Smith or attribute all these developments to one originator.",
+  "contributors": [
+    {
+      "name": "David Hilbert",
+      "contribution": "Posed the fifth problem on continuous transformation groups and differentiability in 1900.",
+      "sourceIds": [
+        "hilbert-1900"
+      ]
+    },
+    {
+      "name": "M. H. A. Newman and Paul A. Smith",
+      "contribution": "Developed periodic-transformation rigidity that supplies a background tool for the manifold-action question.",
+      "sourceIds": [
+        "newman-1931",
+        "smith-1941",
+        "pardon-2018"
+      ]
+    },
+    {
+      "name": "Andrew M. Gleason, Deane Montgomery, Leo Zippin and Hidehiko Yamabe",
+      "contribution": "Established the locally Euclidean and locally compact group structure results used in reducing the action question.",
+      "sourceIds": [
+        "pardon-2018",
+        "openai-introduction"
+      ]
+    },
+    {
+      "name": "Chung-Tao Yang; Glen E. Bredon, Frank Raymond and R. F. Williams",
+      "contribution": "Developed and reformulated the integral-cohomology dimension obstruction for hypothetical p-adic manifold actions.",
+      "sourceIds": [
+        "bredon-1961"
+      ]
+    },
+    {
+      "name": "Dušan Repovš and Evgenij V. Ščepin",
+      "contribution": "Proved the Lipschitz case on Riemannian manifolds in 1997.",
+      "sourceIds": [
+        "repovs-scepin-1997",
+        "openai-introduction"
+      ]
+    },
+    {
+      "name": "John Pardon",
+      "contribution": "Proved the three-manifold case, first posted in 2011 and published in 2013; later supplied a proof and historical account of the two-dimensional case.",
+      "sourceIds": [
+        "pardon-2013",
+        "pardon-posting",
+        "pardon-2018"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The earliest explicit modern formulation has not been established. Smith’s 1941 article is identified from a later primary author manuscript, not reviewed in full; neither a 1939 lecture date nor first conjecture priority is asserted. Hilbert’s English transcription, original abstracts reproduced in Williams’s bibliography, publisher metadata and Pardon’s author manuscripts were inspected. Original 1931, 1941, 1952–1953, 1960–1961 and 1997 proofs were not independently reviewed. The 2026 main statements and introduction were checked for scope, without verification of the proof or independent acceptance. The timeline selects two principal branches and omits many regularity and symplectic developments.",
   "sources": [
     {
       "id": "openai-catalogue",
       "title": "OpenAI manuscript map",
       "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-      "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
-      "kind": "upstream",
-      "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+      "citation": "OpenAI, mathematics manuscript collection, commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "note": "Release metadata and family grouping; not independent verification.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-introduction",
+      "title": "The all-dimensional claim: introduction and main theorems",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/The-Hilbert-Smith-conjecture-in-every-finite-dimension-September-23-2026/build/sections/01-introduction.tex",
+      "citation": "OpenAI, The Hilbert–Smith conjecture in every finite dimension, manuscript dated 23 September 2026; pinned introduction.",
+      "note": "Main statements, hypotheses, p-adic exclusion and claimed mechanism inspected. Statement scope reviewed; proof not assessed.",
+      "kind": "upstream"
+    },
+    {
+      "id": "hilbert-1900",
+      "title": "Hilbert’s fifth problem in the 1900 address",
+      "url": "https://www.astro.puc.cl/~rparra/tools/PAPERS/hilbert_1900.pdf",
+      "citation": "David Hilbert, Mathematical Problems, Paris address (1900); English translation by Mary Winston Newson, Bulletin of the AMS 8 (1902), 437–479, Problem 5; doi:10.1090/S0002-9904-1902-00923-3.",
+      "note": "English transcription, address date and Problem 5 inspected. The problem predates the modern locally compact action formulation.",
+      "kind": "primary"
+    },
+    {
+      "id": "newman-1931",
+      "title": "A theorem on periodic transformations of spaces",
+      "url": "https://academic.oup.com/qjmath/article-abstract/os-2/1/1/1565849",
+      "citation": "M. H. A. Newman, Quarterly Journal of Mathematics os-2 (1931), 1–8; doi:10.1093/qmath/os-2.1.1-a.",
+      "note": "Publisher bibliography inspected. The theorem’s content is supported by Pardon’s later statement and proof; original full proof not inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "smith-1941",
+      "title": "Smith’s treatment of Newman’s theorem",
+      "url": "https://www.math.stonybrook.edu/~jpardon/manuscripts/13_hs2d.pdf",
+      "citation": "P. A. Smith, Transformations of finite period. III. Newman’s theorem, Annals of Mathematics (2) 42 (1941), 446–458.",
+      "note": "Bibliographic citation appears in Pardon’s 2018 author manuscript. Original article not inspected; no claim that this is the first conjecture formulation.",
+      "kind": "primary"
+    },
+    {
+      "id": "bredon-1961",
+      "title": "The compact-action question and Yang’s dimension obstruction",
+      "url": "https://celebratio.org/Williams_RF/article/962/",
+      "citation": "G. E. Bredon, Frank Raymond and R. F. Williams, p-Adic Groups of Transformations, Transactions of the AMS 99 (1961), 488–498; doi:10.1090/S0002-9947-1961-0142682-8; original abstract reproduced in Williams’s bibliography.",
+      "note": "Original abstract inspected in the bibliography: compact-action conjecture, reduction to p-adic groups and Yang’s integral-cohomology dimension increase. Full original proof not inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "repovs-scepin-1997",
+      "title": "The Lipschitz case",
+      "url": "https://link.springer.com/article/10.1007/s002080050080",
+      "citation": "Dušan Repovš and Evgenij V. Ščepin, A proof of the Hilbert-Smith conjecture for actions by Lipschitz maps, Mathematische Annalen 308 (June 1997), 361–364.",
+      "note": "Publisher title, authors and date inspected; Riemannian scope corroborated by the pinned introduction. Full proof not inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "pardon-2013",
+      "title": "The three-manifold theorem",
+      "url": "https://www.math.stonybrook.edu/~jpardon/manuscripts/08_hilbertsmith.pdf",
+      "citation": "John Pardon, The Hilbert–Smith conjecture for three-manifolds, Journal of the AMS 26 (2013), 879–899; doi:10.1090/S0894-0347-2013-00766-3; author manuscript revised 22 January 2013.",
+      "note": "Abstract, Conjectures 1.1–1.2 and Theorem 1.5 inspected. Local incompressible-surface argument; full proof not independently reviewed.",
+      "kind": "primary"
+    },
+    {
+      "id": "pardon-posting",
+      "title": "Pardon’s preprint chronology",
+      "url": "https://arxiv.org/abs/1112.2324",
+      "citation": "John Pardon, arXiv:1112.2324, first submitted 11 December 2011; journal reference Journal of the AMS 26 (2013), 879–899.",
+      "note": "Archive submission history inspected; the 2013 journal milestone is distinguished from the earlier preprint.",
+      "kind": "primary"
+    },
+    {
+      "id": "pardon-2018",
+      "title": "Small subgroups and the two-dimensional case",
+      "url": "https://www.math.stonybrook.edu/~jpardon/manuscripts/13_hs2d.pdf",
+      "citation": "John Pardon, Totally disconnected groups (not) acting on two-manifolds, author manuscript dated 6 July 2018; Breadth in Contemporary Topology, Proceedings of Symposia in Pure Mathematics 102 (2019), 187–193.",
+      "note": "Opening survey, no-small-subgroups criterion, p-adic reduction, Newman statement and attribution of the two-dimensional result inspected. This is a retrospective account, not the original publication of those earlier results.",
+      "kind": "primary"
     }
   ],
   "events": [
     {
+      "id": "hilbert",
+      "date": {
+        "precision": "exact",
+        "year": 1900,
+        "label": "1900 · address; translation 1902"
+      },
+      "title": "Can continuity replace differentiability?",
+      "type": "predecessor",
+      "description": "Hilbert’s fifth problem asks how far Lie’s theory of continuous transformation groups can dispense with differentiability assumptions. It supplies the conceptual starting point, before the modern hypotheses were fixed.",
+      "sourceIds": [
+        "hilbert-1900"
+      ],
+      "follows": [],
+      "relationNote": "The action question develops from this broad program, rather than repeating its original wording.",
+      "uncertainty": ""
+    },
+    {
+      "id": "newman",
+      "date": {
+        "precision": "exact",
+        "year": 1931,
+        "label": "1931"
+      },
+      "title": "Periodic symmetries cannot all stay tiny",
+      "type": "background",
+      "description": "Newman’s periodic-transformation theorem supplies a rigidity input for manifold actions. Pardon’s later account states the compact Lie-group form: a nontrivial action cannot move every point in a fixed open set arbitrarily little.",
+      "sourceIds": [
+        "newman-1931",
+        "pardon-2018"
+      ],
+      "follows": [
+        "hilbert"
+      ],
+      "relationNote": "This controls a class of manifold actions; it does not itself exclude p-adic groups.",
+      "uncertainty": "The original proof was not inspected; the theorem was read in Pardon’s later account."
+    },
+    {
+      "id": "smith",
+      "date": {
+        "precision": "exact",
+        "year": 1941,
+        "label": "1941"
+      },
+      "title": "Smith develops periodic-transformation theory",
+      "type": "background",
+      "description": "Smith’s third paper on transformations of finite period treats Newman’s theorem. This is a documented part of the transformation-group background associated with Smith’s name.",
+      "sourceIds": [
+        "smith-1941",
+        "pardon-2018"
+      ],
+      "follows": [
+        "newman"
+      ],
+      "relationNote": "A contribution to the periodic-transformation branch, not a dated claim of first formulation.",
+      "uncertainty": "Original article not inspected; bibliographic record checked in the later author manuscript."
+    },
+    {
+      "id": "group-structure",
+      "date": {
+        "precision": "range",
+        "start": 1952,
+        "end": 1953,
+        "label": "1952–1953"
+      },
+      "title": "The group itself acquires Lie structure",
+      "type": "partial-result",
+      "description": "Gleason and Montgomery–Zippin resolve the locally Euclidean group formulation in 1952. Yamabe’s 1953 work extends the locally compact structure theory. The manifold-action question still requires additional restrictions on the acting group.",
+      "sourceIds": [
+        "pardon-2018",
+        "openai-introduction"
+      ],
+      "follows": [
+        "hilbert"
+      ],
+      "relationNote": "The structural branch helps reduce the action question to the additive p-adic integers.",
+      "uncertainty": "Original 1952–1953 proofs not inspected; dates and scope corroborated by the inspected later manuscripts."
+    },
+    {
+      "id": "compact-formulation",
+      "date": {
+        "precision": "exact",
+        "year": 1961,
+        "label": "1961"
+      },
+      "title": "The compact-action question is explicit",
+      "type": "formulation",
+      "description": "Bredon, Raymond and Williams state the conjecture that every compact group acting effectively on a manifold is a Lie group. Their abstract also recalls Yang’s 1960 result: a hypothetical effective p-adic action raises integral cohomological dimension by two in the orbit space.",
+      "sourceIds": [
+        "bredon-1961"
+      ],
+      "follows": [
+        "group-structure",
+        "smith"
+      ],
+      "relationNote": "The abstract joins the compact-action formulation to the p-adic and dimension-theory branches.",
+      "uncertainty": "This is an explicit formulation inspected here, not an assertion of first historical priority."
+    },
+    {
+      "id": "lipschitz",
+      "date": {
+        "precision": "exact",
+        "year": 1997,
+        "label": "1997"
+      },
+      "title": "A positive result with controlled distortion",
+      "type": "partial-result",
+      "description": "Repovš and Ščepin establish the conjecture for actions by Lipschitz maps on Riemannian manifolds. The added metric control permits a dimension comparison; arbitrary continuous actions have no such Lipschitz assumption.",
+      "sourceIds": [
+        "repovs-scepin-1997",
+        "openai-introduction"
+      ],
+      "follows": [
+        "compact-formulation"
+      ],
+      "relationNote": "The dimension-obstruction branch yields a result under additional regularity.",
+      "uncertainty": "Original proof not inspected."
+    },
+    {
+      "id": "three-manifolds",
+      "date": {
+        "precision": "exact",
+        "year": 2013,
+        "label": "2013 · preprint 2011"
+      },
+      "title": "Topology handles every three-manifold",
+      "type": "partial-result",
+      "description": "Pardon excludes faithful p-adic actions on connected three-manifolds using incompressible surfaces and surface mapping class groups. His result places no smoothness or Lipschitz condition on the action.",
+      "sourceIds": [
+        "pardon-2013",
+        "pardon-posting"
+      ],
+      "follows": [
+        "compact-formulation"
+      ],
+      "relationNote": "This branch removes action-regularity assumptions by using geometry specific to dimension three.",
+      "uncertainty": "Timeline uses the journal year; the preprint was first posted in December 2011."
+    },
+    {
       "id": "release-2026",
       "date": {
         "precision": "exact",
-        "label": "6 October 2026",
         "year": 2026,
+        "label": "6 October 2026 · public release",
         "iso": "2026-10-06"
       },
+      "title": "The release reports all finite dimensions",
       "type": "ai-claim",
-      "title": "The OpenAI release",
-      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "description": "OpenAI’s September 23 manuscript reports p-adic exclusion and the Hilbert–Smith conclusion for the specified groups and connected manifolds without boundary. It appears in the October 6 release; the pinned text incorporates the snapshot’s updates.",
       "sourceIds": [
-        "openai-catalogue"
+        "openai-catalogue",
+        "openai-introduction"
       ],
-      "follows": [],
-      "relationNote": "Connections to earlier work await historical research.",
-      "uncertainty": "This records a reported result, without independent proof assessment."
+      "follows": [
+        "lipschitz",
+        "three-manifolds"
+      ],
+      "relationNote": "The reported theorem removes the dimension-three and Lipschitz restrictions of these selected predecessors.",
+      "uncertainty": "Statement scope reviewed; no independent proof verification or acceptance assessment."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-09"
 }
