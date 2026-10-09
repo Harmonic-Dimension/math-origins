@@ -167,3 +167,28 @@ test('the main surfaces fit the viewport',async({page},testInfo)=>{
   await page.goto('/');
   await page.screenshot({path:'test-results/landing-'+testInfo.project.name+'.png',fullPage:true});
 });
+
+
+test('landing page tells diverse origin stories and exposes the published collection',async({page},testInfo)=>{
+  await page.goto('/');
+  await page.evaluate(()=>document.fonts.ready);
+  await expect(page.locator('h1')).toHaveText('The histories behind the questions.');
+  await expect(page.locator('.landing-hero .button')).toHaveAttribute('href','/explorer');
+  await expect(page.locator('.mathematical-atlas svg')).toHaveAccessibleName('An atlas of mathematical questions');
+  await expect(page.locator('.mathematical-atlas svg')).toHaveAccessibleDescription(/not a proof or historical artifact/);
+  await expect(page.locator('.origin-story')).toHaveCount(3);
+  for(const id of ['158','268','004'])await expect(page.locator('.origin-story a[href="/problems/'+id+'"]')).toBeVisible();
+  await expect(page.locator('.collection-story')).toHaveCount(published.length);
+  await expect(page.locator('.collection-section .eyebrow').first()).toContainText(published.length+' published histories');
+  for(const record of published)await expect(page.locator('.collection-story[href="/problems/'+record.familyId+'"]')).toHaveCount(1);
+  const words=await page.locator('.motivation-prose').innerText();
+  expect(words.split(/\s+/).length).toBeGreaterThanOrEqual(150);
+  expect(words.split(/\s+/).length).toBeLessThanOrEqual(200);
+  await expect(page.locator('.release-note')).toContainText('independently verified');
+  await expect(page.getByRole('link',{name:'Suggest a correction or addition'})).toHaveAttribute('href','https://github.com/Harmonic-Dimension/math-origins/issues/new');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+  const heading=await page.locator('.landing-hero h1').boundingBox();
+  if(testInfo.project.name==='mobile')expect(heading!.height).toBeLessThan(120);
+  await page.screenshot({path:'screenshots/landing-redesign-'+testInfo.project.name+'.png',fullPage:true});
+  await page.screenshot({path:'screenshots/landing-redesign-'+testInfo.project.name+'-hero.png'});
+});

@@ -178,7 +178,7 @@ test('enlarged text and reduced motion remain usable',async({page})=>{
     await expect(page.locator('h1')).toBeVisible();
   }
   await page.goto('/');
-  expect(await page.locator('.case-card').first().evaluate(n=>getComputedStyle(n).transitionDuration)).toBe('0s');
+  expect(await page.locator('.collection-story').first().evaluate(n=>getComputedStyle(n).transitionDuration)).toBe('0s');
 });
 
 test('Haldane bond spectra preserve energies and counts and state the chain-level limitation',async({page},testInfo)=>{
