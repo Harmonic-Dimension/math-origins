@@ -1,0 +1,30 @@
+# Before the Proof — batch 03 research note
+
+Research date: 9 October 2026. Family: **159**, Erdős’s reciprocal-sum conjecture. Five of the ten selected accounts now have researched histories; five remain pending.
+
+The paired JSON and Markdown use the existing editorial layout, with a registered React/SVG explainer for arithmetic progressions. Local `published` status makes the history available to the collection; it does not certify a mathematical proof. Historical confidence is **moderate**. Scope is **reviewed** against the main theorem and reciprocal-sum corollary in the pinned manuscript’s introduction.
+
+## Evidence inspected
+
+- Original [Erdős–Turán 1936 scan](https://users.renyi.hu/~p_erdos/1936-05.pdf), pp. 263–264, visually inspected after Poppler rendering. The explicit conjecture is the three-term estimate r(N)=o(N). Its connections to primes and finite colorings are present, but the reciprocal-sum conjecture is not printed there. The page does not assign the stronger formulation to 1936.
+- Original [Erdős 1974 scan](https://users.renyi.hu/~p_erdos/1974-27.pdf), pp. 203–204, visually inspected after Poppler rendering. Problem 4.33.6 on p. 204 is the reciprocal-sum conjecture; the preceding page’s footnote records presentation on **28 June 1974**. The problem already reports Szemerédi’s positive-density result as proved and awaiting publication. The archive file also includes *Remarks on some problems in number theory*, pp. 197–202; that neighboring paper is not the conjecture citation. The date records the presentation, not a publication day or established first priority.
+- Szemerédi’s [publisher record](https://doi.org/10.4064/aa-27-1-199-245), for the 1975 full publication, inspected. The publisher title omits “no,” although later bibliographies sometimes include it. Original full text was unavailable. The density conclusion is independently documented by Furstenberg’s primary introduction and Leng–Sah–Sawhney.
+- [Furstenberg’s original introduction](https://www.cs.umd.edu/~gasarch/TOPICS/vdw/furstenbergsz.pdf) inspected through indexed text, with the institutional bibliographic record checked. It describes the multiple-recurrence reformulation and the distinct earlier analytic and combinatorial methods. The page does not characterize recurrence as a sparse-set theorem.
+- Gowers’s [2001 publisher record](https://link.springer.com/article/10.1007/s00039-001-0332-9), inspected; full text unavailable. His higher-order method and quantitative bound were checked in the later primary Leng–Sah–Sawhney introduction.
+- Green–Tao’s [publisher abstract and milestones](https://annals.math.princeton.edu/2008/167-2/p03), inspected. The selected timeline year is the 2008 journal volume; the publisher separately records receipt in 2004 and online publication in 2009. The prime theorem is a particular sparse-set result, not the general reciprocal-sum conjecture.
+- [Bloom–Sisask](https://arxiv.org/html/2007.03528v2), introduction, theorem 1.1 and corollary 1.2: the first preprint is from 2020; the inspected revision is from September 2021. Their logarithmic bound establishes the three-term reciprocal-sum case.
+- [Kelley–Meka](https://arxiv.org/html/2302.05537v5), introduction and theorems 1.1–1.2, inspected. Their 2023 work gives stretched-exponential saving in log N for three terms; the inspected version is dated January 2024. The introduction documents Roth’s 1953 result. Later improvements to the three-term exponent are outside this selected timeline; no current-best-exponent claim is made.
+- [Leng–Sah–Sawhney](https://arxiv.org/html/2402.17995v2), introduction and theorem 1.1, inspected. Version 2 is dated **29 February 2024**. For each fixed k≥5 their saving is exp(−(log log N)^c_k), with 0<c_k<1. This does not supply the dyadic summability needed for the reciprocal-sum implication. The timeline is selective and does not claim to exhaust every subsequent bound.
+- OpenAI’s pinned [introduction](https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/build/sections/00-introduction.tex), consequences section and bibliography retrieved through the GitHub connector. The main theorem and corollary were read for scope and quantifiers.
+
+## Scope and remaining limits
+
+For each fixed k≥3, the reported theorem gives positive constants C_k, c_k, ε_k and r_k(N)≤C_k N exp(−c_k(log N)^ε_k). Summing over dyadic intervals yields convergence of the reciprocal sum of any set avoiding that length, proving the divergent-sum implication if the reported theorem holds. The finite counting estimate is stronger than the qualitative density theorem. Constants depend on k; the manuscript does not optimize the exponent. Different finite lengths may use different starting points and differences. No infinite progression follows from the statement.
+
+The 1974 formulation is directly inspected, but earliest printed or private priority was not established. Roth’s full original text was not obtained; his result is documented in later primary papers. No manuscript proof or independent acceptance was assessed.
+
+## Illustration and verification
+
+The original SVG marks exactly the primes up to 24 on a uniformly spaced integer number line. Keyboard-accessible controls highlight 3,5,7 (difference 2) or 5,11,17,23 (difference 6), with equal-gap brackets and a textual explanation. Other primes may lie between highlighted terms. The caption and insight text explicitly distinguish a finite example from divergence and the theorem for every length. The default four-term drawing also supplies the explorer thumbnail.
+
+Browser checks verify all marked primes independently, exact common differences and drawing scale, keyboard operation, sourced release selection, formal math rendering, reading without JavaScript, desktop/tablet/mobile layout, enlarged text and automated accessibility. Existing schema checks cover the new source references and historical account requirements.

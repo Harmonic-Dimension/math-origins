@@ -1,27 +1,110 @@
 {
   "familyId": "159",
-  "status": "research-pending",
-  "displayTitle": null,
-  "discipline": null,
+  "status": "published",
+  "displayTitle": "Erdős’s reciprocal-sum conjecture",
+  "discipline": "Combinatorics",
   "scope": {
     "types": [
       "full-resolution",
       "quantitative-improvement"
     ],
-    "note": "Reported resolution of the divergent reciprocal-sum conjecture, with quantitative progression-free bounds for each fixed length.",
-    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-    "classificationStatus": "provisional"
+    "note": "Reviewed against the pinned introduction’s main theorem and corollary: for each fixed k≥3, r_k(N)≤C_k N exp(−c_k(log N)^ε_k), with positive constants depending on k. Dyadic summation implies every positive-integer set with divergent reciprocal sum contains progressions of every finite length. No infinite progression, uniform-in-k constants or optimal exponent is asserted. This is a statement-scope review, not a proof assessment.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/build/sections/00-introduction.tex",
+    "classificationStatus": "reviewed"
   },
-  "originalQuestion": null,
-  "modernQuestion": null,
-  "questionDifference": null,
-  "conceptualOrigins": null,
-  "firstFormulation": null,
-  "attribution": null,
-  "contributors": [],
-  "tags": [],
-  "confidence": "unresearched",
-  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "originalQuestion": "In Problem 4.33.6 of his 1974 problem list, Erdős asks whether an increasing integer sequence whose reciprocal sum diverges must contain arbitrarily long arithmetic progressions.",
+  "modernQuestion": "For A⊆ℕ with ∑_{a∈A}1/a=∞, must every finite k admit positive integers a,d with {a,a+d,…,a+(k−1)d}⊆A? Quantitatively, how large can a subset of {1,…,N} be if it has no nonconstant k-term progression?",
+  "questionDifference": "The reciprocal-sum question retains its original content. The extremal function r_k(N) supplies a finite quantitative route to it. Szemerédi’s positive-density theorem gives r_k(N)=o(N), but convergence of ∑_m r_k(2^m)/2^m requires a stronger rate. Every finite length means a different progression may be chosen for each k; it does not mean one infinite progression.",
+  "conceptualOrigins": {
+    "precision": "exact",
+    "year": 1936,
+    "label": "1936: inspected three-term density precursor"
+  },
+  "firstFormulation": {
+    "precision": "exact",
+    "year": 1974,
+    "iso": "1974-06-28",
+    "label": "28 June 1974: congress presentation recorded in the published problem list"
+  },
+  "attribution": "Erdős explicitly states the reciprocal-sum conjecture in the inspected 1974 problem list. Erdős and Turán jointly developed its density predecessor; their 1936 paper explicitly conjectures the three-term estimate, so the later stronger conjecture should not simply be assigned that date. Roth, Szemerédi, Furstenberg and Gowers supplied distinct results and methods. Green and Tao established the prime case; Bloom and Sisask established the three-term reciprocal-sum case. Kelley and Meka, and Leng, Sah and Sawhney, sharpened different quantitative branches. This is a selected history, not an exhaustive priority account.",
+  "contributors": [
+    {
+      "name": "Paul Erdős and Pál Turán",
+      "contribution": "Studied extremal progression-free sets together; Erdős later explicitly posed the stronger reciprocal-sum conjecture.",
+      "sourceIds": [
+        "erdos-turan-1936",
+        "erdos-1974"
+      ]
+    },
+    {
+      "name": "Klaus Roth",
+      "contribution": "Proved the three-term positive-density case in 1953 using Fourier analysis and density increments.",
+      "sourceIds": [
+        "kelley-meka-2023",
+        "furstenberg-1977"
+      ]
+    },
+    {
+      "name": "Endre Szemerédi",
+      "contribution": "Proved the positive-density theorem for every finite progression length; the full paper appeared in 1975.",
+      "sourceIds": [
+        "szemeredi-1975",
+        "furstenberg-1977"
+      ]
+    },
+    {
+      "name": "Hillel Furstenberg",
+      "contribution": "Recast the density theorem as multiple recurrence in a measure-preserving dynamical system.",
+      "sourceIds": [
+        "furstenberg-1977"
+      ]
+    },
+    {
+      "name": "Timothy Gowers",
+      "contribution": "Developed higher-order Fourier methods and quantitative bounds for longer progressions.",
+      "sourceIds": [
+        "gowers-2001",
+        "leng-sah-sawhney-2024"
+      ]
+    },
+    {
+      "name": "Ben Green and Terence Tao",
+      "contribution": "Proved that the primes contain arbitrarily long finite arithmetic progressions through transference.",
+      "sourceIds": [
+        "green-tao-2008"
+      ]
+    },
+    {
+      "name": "Thomas F. Bloom and Olof Sisask",
+      "contribution": "Crossed the logarithmic density threshold and proved the reciprocal-sum conjecture for three terms.",
+      "sourceIds": [
+        "bloom-sisask-2020"
+      ]
+    },
+    {
+      "name": "Zander Kelley and Raghu Meka",
+      "contribution": "Obtained a stretched-exponential bound in log N for three-term progression-free sets.",
+      "sourceIds": [
+        "kelley-meka-2023"
+      ]
+    },
+    {
+      "name": "James Leng, Ashwin Sah and Mehtaab Sawhney",
+      "contribution": "Improved bounds for all fixed lengths k≥5 using quantitative higher-order structure.",
+      "sourceIds": [
+        "leng-sah-sawhney-2024"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "changing-formulations",
+    "cross-disciplinary",
+    "stronger-bounds",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "The 1936 density precursor and the 1974 reciprocal-sum statement were checked in original scans. The latter’s footnote records the presentation date; earlier private or printed priority is not established. Szemerédi’s and Gowers’s full papers were unavailable; their roles were checked through later primary papers and publisher records. Furstenberg’s introduction was inspected through indexed text. The timeline selects methodological milestones and does not enumerate every bound or imply uninterrupted progress. OpenAI’s pinned main theorem and reciprocal-sum corollary were inspected for scope; no proof review or assessment of independent acceptance was performed.",
   "sources": [
     {
       "id": "openai-catalogue",
@@ -30,27 +113,328 @@
       "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
       "kind": "upstream",
       "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+    },
+    {
+      "id": "openai-introduction",
+      "title": "Quasipolynomial Bounds for Arithmetic Progressions: introduction",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/build/sections/00-introduction.tex",
+      "citation": "OpenAI, manuscript dated 23 September 2026, introduction, main theorem and reciprocal-sum corollary; pinned catalogue commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "kind": "upstream",
+      "note": "Main theorem, corollary and prior-work discussion inspected. Scope review concerns statements and quantifiers; the proof was not independently assessed."
+    },
+    {
+      "id": "erdos-turan-1936",
+      "title": "On some sequences of integers",
+      "url": "https://users.renyi.hu/~p_erdos/1936-05.pdf",
+      "citation": "Paul Erdős and Pál Turán, Journal of the London Mathematical Society 11 (1936), 261–264; DOI 10.1112/jlms/s1-11.4.261.",
+      "kind": "primary",
+      "note": "Original pp. 263–264 visually inspected. The explicit conjecture r(N)=o(N) concerns three terms; this paper does not print the reciprocal-sum conjecture."
+    },
+    {
+      "id": "erdos-1974",
+      "title": "Problems, Problem 4.33.6",
+      "url": "https://users.renyi.hu/~p_erdos/1974-27.pdf",
+      "citation": "Paul Erdős, Mathematica Balkanica 4 (1974), 203–204, p. 204, Problem 4.33.6; congress presentation recorded as 28 June 1974.",
+      "kind": "primary",
+      "note": "Original pp. 203–204 visually inspected. The archive also contains a neighboring paper. The date is the presentation recorded in the footnote, not a publication day or first-private-formulation claim."
+    },
+    {
+      "id": "szemeredi-1975",
+      "title": "On sets of integers containing k elements in arithmetic progression",
+      "url": "https://doi.org/10.4064/aa-27-1-199-245",
+      "citation": "Endre Szemerédi, Acta Arithmetica 27 (1975), 199–245.",
+      "kind": "primary",
+      "note": "Publisher citation inspected; the original full text was not retrieved. The positive-density conclusion is independently documented in Furstenberg’s original introduction and the Leng–Sah–Sawhney paper. The publisher title omits “no”; some later bibliographies include it."
+    },
+    {
+      "id": "furstenberg-1977",
+      "title": "Ergodic behavior of diagonal measures and a theorem of Szemerédi on arithmetic progressions",
+      "url": "https://www.cs.umd.edu/~gasarch/TOPICS/vdw/furstenbergsz.pdf",
+      "citation": "Hillel (Harry) Furstenberg, Journal d’Analyse Mathématique 31 (1977), 204–256; DOI 10.1007/BF02813304.",
+      "kind": "primary",
+      "note": "Original introduction inspected through indexed text; institutional publication record checked. It explains the passage from arithmetic progressions to multiple recurrence and distinguishes Roth’s analytic proof from Szemerédi’s combinatorial proof."
+    },
+    {
+      "id": "gowers-2001",
+      "title": "A new proof of Szemerédi’s theorem",
+      "url": "https://link.springer.com/article/10.1007/s00039-001-0332-9",
+      "citation": "W. T. Gowers, Geometric and Functional Analysis 11 (2001), 465–588.",
+      "kind": "primary",
+      "note": "Publisher record inspected; full text unavailable. The higher-order Fourier method and quantitative bound are documented in the later primary Leng–Sah–Sawhney introduction."
+    },
+    {
+      "id": "green-tao-2008",
+      "title": "The primes contain arbitrarily long arithmetic progressions",
+      "url": "https://annals.math.princeton.edu/2008/167-2/p03",
+      "citation": "Ben Green and Terence Tao, Annals of Mathematics 167(2) (2008), 481–547; DOI 10.4007/annals.2008.167.481.",
+      "kind": "primary",
+      "note": "Publisher abstract and submission milestones inspected. The paper transfers Szemerédi’s theorem to sufficiently pseudorandom majorants; its prime conclusion is a particular sparse-set result."
+    },
+    {
+      "id": "bloom-sisask-2020",
+      "title": "Breaking the logarithmic barrier in Roth’s theorem on arithmetic progressions",
+      "url": "https://arxiv.org/html/2007.03528v2",
+      "citation": "Thomas F. Bloom and Olof Sisask, arXiv:2007.03528, first posted 2020; version 2, 1 September 2021.",
+      "kind": "primary",
+      "note": "Introduction, theorem 1.1 and corollary 1.2 inspected. The bound N/(log N)^(1+c) implies the three-term reciprocal-sum case, not all lengths."
+    },
+    {
+      "id": "kelley-meka-2023",
+      "title": "Strong Bounds for 3-Progressions",
+      "url": "https://arxiv.org/html/2302.05537v5",
+      "citation": "Zander Kelley and Raghu Meka, FOCS 2023, 933–973; arXiv:2302.05537, first posted 10 February 2023; version 5, 5 January 2024.",
+      "kind": "primary",
+      "note": "Introduction and theorems 1.1–1.2 inspected. The stretched-exponential density bound concerns three terms. The introduction also documents Roth’s 1953 theorem and Behrend’s 1946 lower bound."
+    },
+    {
+      "id": "leng-sah-sawhney-2024",
+      "title": "Improved Bounds for Szemerédi’s Theorem",
+      "url": "https://arxiv.org/html/2402.17995v2",
+      "citation": "James Leng, Ashwin Sah and Mehtaab Sawhney, arXiv:2402.17995, first posted 2024; version 2, 29 February 2024.",
+      "kind": "primary",
+      "note": "Introduction and theorem 1.1 inspected. For fixed k≥5 the saving is exp(−(log log N)^c_k), with 0<c_k<1; its scale differs from a saving in log N. This is a selected milestone, not a claim to exhaust all subsequent improvements."
     }
   ],
   "events": [
     {
+      "id": "density-precursor",
+      "date": {
+        "precision": "exact",
+        "year": 1936,
+        "label": "1936"
+      },
+      "type": "predecessor",
+      "title": "Erdős and Turán ask how dense avoidance can be",
+      "description": "Their original paper studies the maximum size of a three-term-progression-free set up to N and proposes r(N)=o(N). It also connects stronger extremal questions to prime progressions and finite colorings.",
+      "sourceIds": [
+        "erdos-turan-1936"
+      ],
+      "follows": [],
+      "relationNote": "A finite density precursor to the stronger reciprocal-sum problem.",
+      "uncertainty": "The inspected paper explicitly states the three-term density conjecture, not the reciprocal-sum conjecture."
+    },
+    {
+      "id": "roth",
+      "date": {
+        "precision": "exact",
+        "year": 1953,
+        "label": "1953"
+      },
+      "type": "partial-result",
+      "title": "Roth forces three equally spaced terms",
+      "description": "Roth proves that every positive-density integer set contains a nonconstant three-term progression, using an analytic density-increment method. This controls length three, rather than every length or every divergent reciprocal sum.",
+      "sourceIds": [
+        "kelley-meka-2023",
+        "furstenberg-1977"
+      ],
+      "follows": [
+        "density-precursor"
+      ],
+      "relationNote": "This settles the explicit three-term density question.",
+      "uncertainty": "Original Roth full text unavailable; result and year checked in later primary accounts."
+    },
+    {
+      "id": "reciprocal-formulation",
+      "date": {
+        "precision": "exact",
+        "year": 1974,
+        "iso": "1974-06-28",
+        "label": "28 June 1974: congress presentation recorded in the published problem list"
+      },
+      "type": "formulation",
+      "title": "Erdős asks for a weaker notion of size",
+      "description": "Problem 4.33.6 asks whether divergence of the reciprocal sum forces arbitrarily long finite arithmetic progressions. The same paragraph records Szemerédi’s positive-density result as already proved and awaiting publication.",
+      "sourceIds": [
+        "erdos-1974"
+      ],
+      "follows": [
+        "density-precursor"
+      ],
+      "relationNote": "The reciprocal-sum condition reaches beyond positive density.",
+      "uncertainty": "The exact day refers to the congress presentation. This is an identified printed formulation, not established first priority."
+    },
+    {
+      "id": "szemeredi",
+      "date": {
+        "precision": "exact",
+        "year": 1975,
+        "label": "1975 publication; announced in the 1974 problem list"
+      },
+      "type": "partial-result",
+      "title": "Positive density forces every finite length",
+      "description": "Szemerédi’s full combinatorial proof appears in Acta Arithmetica. In finite form it gives r_k(N)=o(N) for every fixed k. That qualitative decay alone does not supply the summability needed for the stronger conjecture.",
+      "sourceIds": [
+        "szemeredi-1975",
+        "furstenberg-1977"
+      ],
+      "follows": [
+        "roth"
+      ],
+      "relationNote": "Extends the positive-density conclusion from three terms to every fixed length.",
+      "uncertainty": "The 1974 primary problem list already reports the result; 1975 dates the full publication."
+    },
+    {
+      "id": "recurrence",
+      "date": {
+        "precision": "exact",
+        "year": 1977,
+        "label": "1977"
+      },
+      "type": "reformulation",
+      "title": "Furstenberg turns patterns into recurrence",
+      "description": "Furstenberg gives another proof through a measure-preserving system: a positive-measure set overlaps several equally spaced iterates. This opens an ergodic-theory branch for the same positive-density conclusion.",
+      "sourceIds": [
+        "furstenberg-1977"
+      ],
+      "follows": [
+        "szemeredi"
+      ],
+      "relationNote": "A new mathematical language for the density theorem, not a solution of the sparse-set conjecture.",
+      "uncertainty": ""
+    },
+    {
+      "id": "higher-order",
+      "date": {
+        "precision": "exact",
+        "year": 2001,
+        "label": "2001"
+      },
+      "type": "partial-result",
+      "title": "Gowers measures higher-order structure",
+      "description": "Gowers’s new proof supplies quantitative control for longer progressions using higher-order uniformity. The general saving is a power of log log N, substantially weaker than the summable saving reported in 2026.",
+      "sourceIds": [
+        "gowers-2001",
+        "leng-sah-sawhney-2024"
+      ],
+      "follows": [
+        "szemeredi"
+      ],
+      "relationNote": "Develops a quantitative branch of the all-length density theorem.",
+      "uncertainty": "Publication record and later primary description checked; the original full text was unavailable."
+    },
+    {
+      "id": "primes",
+      "date": {
+        "precision": "exact",
+        "year": 2008,
+        "label": "2008 journal volume; received in 2004"
+      },
+      "type": "partial-result",
+      "title": "Green and Tao reach the primes",
+      "description": "Green and Tao prove arbitrarily long finite progressions in the primes via transference to a pseudorandom majorant. This settles a central sparse example without proving the reciprocal-sum statement for all integer sets.",
+      "sourceIds": [
+        "green-tao-2008"
+      ],
+      "follows": [
+        "reciprocal-formulation",
+        "szemeredi"
+      ],
+      "relationNote": "Connects the conjecture’s prime motivation with the density theorem.",
+      "uncertainty": "The date is the journal volume year, not the first announcement or online-publication day."
+    },
+    {
+      "id": "three-term-reciprocal",
+      "date": {
+        "precision": "exact",
+        "year": 2020,
+        "label": "2020 preprint; 2021 revision inspected"
+      },
+      "type": "partial-result",
+      "title": "Bloom and Sisask cross a summability threshold",
+      "description": "The bound r_3(N)≪N/(log N)^(1+c), with c>0, implies that every divergent-reciprocal-sum set contains infinitely many nonconstant three-term progressions. Lengths beyond three remain separate.",
+      "sourceIds": [
+        "bloom-sisask-2020"
+      ],
+      "follows": [
+        "roth",
+        "reciprocal-formulation"
+      ],
+      "relationNote": "Quantitative decay now reaches the reciprocal-sum condition for length three.",
+      "uncertainty": ""
+    },
+    {
+      "id": "three-term-stretched",
+      "date": {
+        "precision": "exact",
+        "year": 2023,
+        "label": "2023 preprint and FOCS paper; January 2024 version inspected"
+      },
+      "type": "partial-result",
+      "title": "Kelley and Meka sharpen the three-term bound",
+      "description": "Kelley and Meka obtain r_3(N)≤N exp(−c(log N)^β) up to a constant factor, for an absolute β>0. This is a stronger scale of saving for three terms.",
+      "sourceIds": [
+        "kelley-meka-2023"
+      ],
+      "follows": [
+        "three-term-reciprocal"
+      ],
+      "relationNote": "Sharpens the three-term quantitative branch; it does not automatically handle longer progressions.",
+      "uncertainty": ""
+    },
+    {
+      "id": "longer-bounds",
+      "date": {
+        "precision": "exact",
+        "year": 2024,
+        "label": "2024 preprint; 29 February revision inspected"
+      },
+      "type": "partial-result",
+      "title": "Longer progressions gain better quantitative bounds",
+      "description": "Leng, Sah and Sawhney prove, for each fixed k≥5, a saving exp(−(log log N)^c_k) with 0<c_k<1. Their result improves the longer-length branch but does not give convergence of the dyadic reciprocal-sum bound.",
+      "sourceIds": [
+        "leng-sah-sawhney-2024"
+      ],
+      "follows": [
+        "higher-order"
+      ],
+      "relationNote": "Higher-order structure improves long-progression bounds on a different scale from the three-term branch.",
+      "uncertainty": ""
+    },
+    {
       "id": "release-2026",
       "date": {
         "precision": "exact",
-        "label": "6 October 2026",
         "year": 2026,
+        "label": "6 October 2026 release; manuscript dated 23 September",
         "iso": "2026-10-06"
       },
       "type": "ai-claim",
-      "title": "The OpenAI release",
-      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "title": "The release reports a summable bound for every fixed length",
+      "description": "OpenAI reports stretched-exponential decay in log N for every fixed k≥3. Its reciprocal-sum corollary then forces progressions of every finite length in any set with divergent reciprocal sum.",
       "sourceIds": [
-        "openai-catalogue"
+        "openai-catalogue",
+        "openai-introduction"
       ],
-      "follows": [],
-      "relationNote": "Connections to earlier work await historical research.",
-      "uncertainty": "This records a reported result, without independent proof assessment."
+      "follows": [
+        "reciprocal-formulation",
+        "three-term-stretched",
+        "longer-bounds"
+      ],
+      "relationNote": "The reported all-length bound joins the quantitative branches at a scale sufficient for the infinite-set consequence.",
+      "uncertainty": "Reported claim; scope checked against the pinned introduction, without independent proof assessment."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-09",
+  "questionPlainLanguage": "Take a set of positive integers and add their reciprocals: 1/a for each number a. If that sum grows without bound, must the set contain equally spaced runs of every finite length, however sparse the set becomes?",
+  "questionSummary": "When must a sparse set of integers contain equally spaced patterns?",
+  "claimSummary": "every finite length, with stronger density bounds",
+  "questionFormal": "For $A\\subseteq\\mathbb N$, the conjecture is\n\n$$\n\\begin{gathered}\n\\sum_{n\\in A}\\frac1n=\\infty\\\\\n\\Longrightarrow\\quad\\forall k\\geq3\\;\\exists a,d\\in\\mathbb N:\\\\\na,a+d,\\ldots,a+(k-1)d\\in A.\n\\end{gathered}\n$$\n\nHere $d>0$: repeating one number is excluded. The starting point and common difference may depend on $k$.\n\nLet $r_k(N)$ be the largest size of a subset of $\\{1,\\ldots,N\\}$ containing no nonconstant $k$-term progression. For each fixed $k\\geq3$, the reported theorem gives $C_k,c_k,\\varepsilon_k>0$ such that, for every $N\\geq2$,\n\n$$\n\\frac{r_k(N)}{N}\\leq C_k e^{-c_k(\\log N)^{\\varepsilon_k}}.\n$$\n\nThese constants depend on the fixed length. Summing the bound over intervals $[2^m,2^{m+1})$ makes the reciprocal sum of a progression-free set finite.",
+  "whyItMatters": "An arithmetic progression is a simple form of order: equally spaced integers, such as 5, 11, 17, 23. Szemerédi’s theorem guarantees such patterns in sets occupying a positive proportion of the integers. But some thinner sets still carry an infinite reciprocal sum, so a density theorem alone does not reach them. The conjecture asks whether this weaker form of size still forces patterns of every finite length.\n\nThe quantitative version explains why rates matter. It is not enough for the proportion of a progression-free set merely to tend to zero; it must fall quickly enough across successive scales. The problem connects finite counting, infinite series and several different ways of detecting hidden arithmetic structure.",
+  "illustrativeExample": "The filled dots are the primes up to 24. Highlighting $3,5,7$ gives a three-term progression with gap 2; highlighting $5,11,17,23$ gives four terms with gap 6. Other primes may lie between the highlighted terms. This finite example explains a progression, not divergence or the all-length theorem.",
+  "visualExplainer": "arithmetic-progressions",
+  "historicalImages": [],
+  "historicalHook": "A set can become thinner and thinner while its reciprocal sum still grows without bound.",
+  "whatAIClaims": "OpenAI reports the bound\n\n$$\nr_k(N)\\leq C_kN\\exp\\!\\bigl(-c_k(\\log N)^{\\varepsilon_k}\\bigr)\n$$\n\nfor every fixed $k\\geq3$, with positive constants depending on $k$. The pinned introduction then derives Erdős’s reciprocal-sum conjecture by summing over dyadic intervals. If a set avoided one fixed length, its reciprocal contributions would be summable, contradicting divergence.\n\nThe manuscript describes a density-increment argument using higher-order structure and control of the size lost at each step. Its reported advance is a summable bound for all fixed lengths; it does not claim to optimize the three-term exponent.",
+  "whatRemainsOpen": "Under the reported theorem, the reciprocal-sum conjecture itself would be resolved. The statement does not determine the optimal bounds for r_k(N), give constants uniform as k grows, or promise one infinite arithmetic progression. A convergent reciprocal sum does not rule out long finite progressions either: divergence is a sufficient condition, not a characterization. Independent assessment and acceptance of the 2026 proof are outside this historical account.",
+  "explanationSourceIds": [
+    "erdos-1974",
+    "furstenberg-1977",
+    "green-tao-2008",
+    "bloom-sisask-2020",
+    "kelley-meka-2023"
+  ],
+  "claimSourceIds": [
+    "openai-catalogue",
+    "openai-introduction"
+  ]
 }

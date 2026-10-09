@@ -67,7 +67,7 @@ test('an offline refresh is reproducible and never overwrites curated content',(
 });
 
 test('published introductions require sourced explanations and valid diagram references',()=>{
-  for(const id of ['004','087','158','084']){
+  for(const id of ['004','087','158','084','159']){
     const r=JSON.parse(readFileSync('content/cases/'+id+'.json','utf8'));
     assert.ok(r.whyItMatters.split(/\s+/).length>=80 && r.whyItMatters.split(/\s+/).length<=150);
     const missing=structuredClone(r); delete missing.questionPlainLanguage; assert.throws(()=>caseSchema.parse(missing));

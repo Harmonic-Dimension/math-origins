@@ -4,6 +4,7 @@ const records=readdirSync('content/cases').filter(f=>f.endsWith('.json')).map(f=
 const catalogue=JSON.parse(readFileSync('data/catalogue.json','utf8'));
 const total=records.length;
 const published=records.filter(r=>r.status==='published');
+const pending=records.filter(r=>r.status==='research-pending');
 const pendingCount=records.filter(r=>r.status==='research-pending').length;
 const combinatoricsCount=records.filter(r=>(r.discipline||catalogue.families.find((f:any)=>f.familyId===r.familyId).discipline)==='Combinatorics').length;
 test('explorer prioritizes histories, offers upcoming cases, preserves filters and resets',async({page})=>{
@@ -22,7 +23,8 @@ test('explorer prioritizes histories, offers upcoming cases, preserves filters a
   await page.getByRole('button',{name:'Browse upcoming histories'}).click();
   await expect(page.locator('.case-card')).toHaveCount(pendingCount);
   await expect(page).toHaveURL(/status=research-pending/);
-  await page.getByLabel('Search the collection').fill('reciprocal-sum');
+  await expect(page.getByLabel('Collection',{exact:true})).toHaveValue('research-pending');
+  await page.getByLabel('Search the collection').fill(catalogue.families.find((f:any)=>f.familyId===pending[0].familyId).title);
   await expect(page.locator('.case-card')).toHaveCount(1);
   await page.getByLabel('Collection',{exact:true}).selectOption('');
   await expect(page).toHaveURL(/status=all/);
@@ -110,6 +112,15 @@ test('static pages have individual metadata and remain readable without JavaScri
   await expect(page.locator('#question .katex').first()).toBeVisible();
   await page.getByText('Read all milestones and their sources',{exact:true}).click();
   await expect(page.locator('.static-milestone').nth(1)).toContainText('Erdős asks whether every infinite pattern can be avoided');
+  await page.goto('http://127.0.0.1:4173/problems/159/');
+  await expect(page.locator('h1')).toHaveText('Erdős’s reciprocal-sum conjecture');
+  await expect(page.locator('#history')).toContainText('Quantitative decay became decisive');
+  await expect(page.locator('.progression-graphic')).toBeVisible();
+  await expect(page.getByRole('button',{name:'Four terms',exact:true})).toBeDisabled();
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-display')).toHaveCount(2);
+  await page.getByText('Read all milestones and their sources',{exact:true}).click();
+  await expect(page.locator('.static-milestone')).toHaveCount(11);
   await page.goto('http://127.0.0.1:4173/explorer/');
   await expect(page.locator('.case-card')).toHaveCount(published.length);
   await page.goto('http://127.0.0.1:4173/article/');

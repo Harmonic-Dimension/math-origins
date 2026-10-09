@@ -49,13 +49,34 @@ function GeometricGraphic({placement=0,thumbnail=false}:{placement?:number;thumb
     <text x="240" y="231" textAnchor="middle" className="visual-label">One translation. One scale. Infinitely many terms.</text>
   </svg>;
 }
+function ProgressionGraphic({longer=false,thumbnail=false}) {
+  const primes=[2,3,5,7,11,13,17,19,23];
+  const terms=longer?[5,11,17,23]:[3,5,7];
+  const gap=longer?6:2;
+  const x=(n:number)=>36+(n-1)*17;
+  return <svg className="visual-explainer progression-graphic" viewBox="0 0 480 250" role={thumbnail?undefined:'img'} aria-hidden={thumbnail||undefined} aria-label={thumbnail?undefined:`The primes up to 24 are marked on a number line. Highlighted terms ${terms.join(', ')} form a ${longer?'four':'three'}-term arithmetic progression with common difference ${gap}. Other primes may lie between the terms. This finite example does not establish a theorem for every length.`}>
+    <text x="240" y="37" textAnchor="middle" className="visual-equation">{terms.join(', ')} · equal gaps</text>
+    <path d="M36 144H427" className="visual-line"/>
+    {Array.from({length:24},(_,i)=>i+1).map(n=><path key={n} d={`M${x(n)} 139V149`} className="visual-axis"/>)}
+    {primes.map(n=><circle key={n} cx={x(n)} cy="144" r={terms.includes(n)?8:4} className={terms.includes(n)?'progression-term visual-solution':'visual-integer'} data-value={n}/>)}
+    {terms.map(n=><text key={n} x={x(n)} y="122" textAnchor="middle" className="visual-label">{n}</text>)}
+    {terms.slice(1).map((n,i)=><g key={n}><path d={`M${x(terms[i])} 174V184H${x(n)}V174`} className="visual-line"/><text x={(x(terms[i])+x(n))/2} y="210" textAnchor="middle" className="visual-label">+{gap}</text></g>)}
+    <text x="36" y="166" textAnchor="middle" className="coordinate-label">1</text><text x="427" y="166" textAnchor="middle" className="coordinate-label">24</text>
+    <text x="240" y="239" textAnchor="middle" className="visual-label">Primes up to 24 · a finite example</text>
+  </svg>;
+}
 export default function VisualExplainer({kind,thumbnail=false}:{kind:Kind;thumbnail?:boolean}) {
   const ready=useClientReady();
-  const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false),[placement,setPlacement]=useState(0);
-  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
+  const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false),[placement,setPlacement]=useState(0),[longer,setLonger]=useState(true);
+  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:kind==='arithmetic-progressions'?<ProgressionGraphic longer={longer} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
   if(thumbnail)return <div className={`visual-thumbnail motif-${kind}`}>{graphic}</div>;
   return <div className={`explainer motif-${kind}`}>
-    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':kind==='arithmetic-progressions'?'Equal spacing in an irregular set':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    {kind==='arithmetic-progressions'&&<>
+      <div className="figure-controls" role="group" aria-label="Compare finite arithmetic progressions"><button disabled={!ready} aria-pressed={!longer} onClick={()=>setLonger(false)}>Three terms</button><button disabled={!ready} aria-pressed={longer} onClick={()=>setLonger(true)}>Four terms</button></div>
+      <p className="figure-feedback" aria-live="polite">{longer?'5, 11, 17, 23: add 6 each time. The intervening primes do not need to belong to this progression.':'3, 5, 7: add 2 each time. An arithmetic progression preserves one common difference.'}</p>
+      <div className="figure-insight"><strong>A different progression for each length</strong><p>The conjecture asks for equally spaced terms of every finite length. The starting point and gap can change when the length changes.</p><p>These examples show the rule. A finite drawing cannot establish that an infinite set has a divergent reciprocal sum, or that it contains progressions of every length.</p></div>
+    </>}
     {kind==='geometric-sequence'&&<>
       <div className="figure-controls" role="group" aria-label="Move the same infinite pattern">{['Original sequence','Move & shrink','Reflect'].map((label,i)=><button key={label} disabled={!ready} aria-pressed={placement===i} onClick={()=>setPlacement(i)}>{label}</button>)}</div>
       <p className="figure-feedback" aria-live="polite">{placement===0?'Each term is half the previous one. The hollow square marks 0, the limit; 0 is not part of this sequence.':placement===1?'Every term moves by the same rule: x ↦ ¼ + ½x. The sequence now approaches ¼.': 'Every term moves by the same rule: x ↦ ¾ − ½x. A negative scale reflects the pattern; its limit is now ¾.'}</p>
