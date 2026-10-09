@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { CaseRecord } from '../schema';
 import { useClientReady } from '../useClientReady';
 import { latticePoints, unitEdges, squareVertices, polarVertices, spinBonds, triangleEnergy } from './geometry';
+import { DirectFinitenessGraphic } from './DirectFinitenessGraphic';
 type Kind=NonNullable<CaseRecord['visualExplainer']>;
 const colors=['#18528a','#a34e25','#47694d'];
 const names=['A','B','C'];
@@ -78,10 +79,16 @@ export default function VisualExplainer({kind,thumbnail=false}:{kind:Kind;thumbn
   const ready=useClientReady();
   const [conflict,setConflict]=useState(false),[disk,setDisk]=useState(false),[placement,setPlacement]=useState(0),[longer,setLonger]=useState(true);
   const [spins,setSpins]=useState([1,-1,1]);
-  const graphic=kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:kind==='arithmetic-progressions'?<ProgressionGraphic longer={longer} thumbnail={thumbnail}/>:kind==='spin-glass'?<SpinGraphic spins={spins} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
+  const [reverse,setReverse]=useState(false);
+  const graphic=kind==='direct-finiteness'?<DirectFinitenessGraphic reverse={reverse} thumbnail={thumbnail}/>:kind==='unit-distance'?<ColoringGraphic conflict={conflict} thumbnail={thumbnail}/>:kind==='polar-dual'?<PolarGraphic disk={disk} thumbnail={thumbnail}/>:kind==='geometric-sequence'?<GeometricGraphic placement={placement} thumbnail={thumbnail}/>:kind==='arithmetic-progressions'?<ProgressionGraphic longer={longer} thumbnail={thumbnail}/>:kind==='spin-glass'?<SpinGraphic spins={spins} thumbnail={thumbnail}/>:<RationalGraphic thumbnail={thumbnail}/>;
   if(thumbnail)return <div className={`visual-thumbnail motif-${kind}`}>{graphic}</div>;
   return <div className={`explainer motif-${kind}`}>
-    <div className="figure-heading"><span className="eyebrow">{kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':kind==='arithmetic-progressions'?'Equal spacing in an irregular set':kind==='spin-glass'?'Competing local preferences':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    <div className="figure-heading"><span className="eyebrow">{kind==='direct-finiteness'?'An inverse with a direction':kind==='unit-distance'?'One rule. The whole plane.':kind==='polar-dual'?'A shape and its dual':kind==='geometric-sequence'?'A pattern that never ends':kind==='arithmetic-progressions'?'Equal spacing in an irregular set':kind==='spin-glass'?'Competing local preferences':'Same equation. Different domain.'}</span><span className="small">An exact example</span></div>{graphic}
+    {kind==='direct-finiteness'&&<>
+      <div className="figure-controls" role="group" aria-label="Compare operation order"><button disabled={!ready} aria-pressed={!reverse} onClick={()=>setReverse(false)}>Insert, then remove</button><button disabled={!ready} aria-pressed={reverse} onClick={()=>setReverse(true)}>Remove, then insert</button></div>
+      <p className="figure-feedback" aria-live="polite">{reverse?'T removes the first entry, 1. S puts a zero in its place. The highlighted coordinate has changed: the lost entry cannot be recovered.':'S inserts a zero at the beginning. T removes that zero. Every original entry returns to its place.'} Products act from right to left.</p>
+      <div className="figure-insight"><strong>Undoing one direction can leave the other broken</strong><p>On an infinite sequence, inserting zero has a left inverse: remove the first entry. Reversing the order loses information. The formulas give TS = I, but ST ≠ I.</p><p>These are linear operators on a one-sided sequence space. Its boundary matters. Kaplansky’s question asks whether finite sums of group symmetries can exhibit this behavior; that requires a separate construction.</p></div>
+    </>}
     {kind==='spin-glass'&&<>
       <div className="figure-controls" role="group" aria-label="Change individual spins">{names.map((name,i)=><button key={name} disabled={!ready} aria-pressed={spins[i]===1} onClick={()=>setSpins(current=>current.map((value,j)=>j===i?-value:value))}>Spin {name}: {spins[i]===1?'+1':'−1'}</button>)}</div>
       <p className="figure-feedback" aria-live="polite">{triangleEnergy(spins)===-1?'Two bonds are satisfied; one is frustrated. Flipping a spin can move the conflict, but no assignment satisfies all three.':'All three bonds are frustrated. Flipping any one spin satisfies two bonds and lowers the energy from 3 to −1.'} Solid lines connect opposite signs; dashed lines connect equal signs.</p>

@@ -1,37 +1,441 @@
 {
   "familyId": "197",
-  "status": "research-pending",
-  "displayTitle": null,
-  "discipline": null,
+  "status": "published",
+  "displayTitle": "Kaplansky’s direct finiteness conjecture",
+  "discipline": "Algebra",
   "scope": {
     "types": [
       "counterexample"
     ],
-    "note": "Reported counterexamples to direct finiteness and related conjectures. The family includes several related constructions; its current overview and map have different breadth.",
-    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-    "classificationStatus": "provisional"
+    "note": "Statement scope reviewed against all four pinned introductions and main theorems. The 4 October manuscript claims a finitely presented torsion-free group with ab = 1 and ba ≠ 1 over the prime field F₂, admitting a finite two-dimensional classifying complex. The 23 September scalar construction uses a finite characteristic-two field and a finitely presented group with odd-order torsion. The 26 September construction concerns one specified odd prime, a field of order p⁴ and a finitely generated group with torsion. The determinant companion uses a separate finitely generated group and an integral square matrix invertible over its rational group ring. These are distinct hypotheses; no all-odd-prime or odd-characteristic torsion-free claim is made. Statement review only.",
+    "sourceUrl": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Torsion-Free-Group-Algebra-That-Is-Not-Directly-Finite-October-4-2026/build/sections/introduction.tex",
+    "classificationStatus": "reviewed"
   },
-  "originalQuestion": null,
-  "modernQuestion": null,
-  "questionDifference": null,
-  "conceptualOrigins": null,
-  "firstFormulation": null,
-  "attribution": null,
-  "contributors": [],
-  "tags": [],
-  "confidence": "unresearched",
-  "uncertainty": "Historical research has not yet been supplied. Origins, attribution and relationships between earlier formulations remain unassessed. The result classification is provisional and based on the upstream release summary; publication is not independent validation.",
+  "originalQuestion": "For every field K and every group G, must ab = 1 imply ba = 1 for finite sums a,b in the group algebra K[G]? Kaplansky proved the characteristic-zero case; positive characteristic is the unresolved extension in the historical formulation.",
+  "modernQuestion": "Can one produce finite sums a,b in F₂[G] with ab = 1 but ba ≠ 1 for a finitely presented torsion-free group G? How do such finite-field failures relate to injective nonsurjective cellular automata and nonsofic groups?",
+  "questionDifference": "The torsion-free F₂ target is a particularly restrictive counterexample to the unrestricted direct-finiteness statement. Stable finiteness asks the same implication for every finite square matrix size; a matrix pair is not automatically a scalar pair in the same algebra. Surjunctivity and the determinant conjecture are related statements, with their own objects and hypotheses.",
+  "questionPlainLanguage": "Suppose two finite combinations of a group’s symmetries undo each other in one order. Must they undo each other in the opposite order? For ordinary numbers and finite square matrices, they do. Kaplansky asked whether this remains true in every group algebra, even when the group is infinite.",
+  "questionSummary": "If an inverse works in one order, must it work in the other?",
+  "claimSummary": "one-sided inverses in group algebras, including a torsion-free example",
+  "questionFormal": "For a field $K$ and group $G$, the group algebra consists of finite sums\n\n$$a=\\sum_{g\\in G}a_g g,\\qquad a_g\\in K,$$\n\nwith multiplication extending the group law by distributivity. **Direct finiteness** asks whether\n\n$$a,b\\in K[G],\\quad ab=1\\quad\\Longrightarrow\\quad ba=1.$$\n\n**Stable finiteness** requires this at every finite square matrix size. The reported torsion-free construction claims $a,b,c\\in\\mathbb F_2[G]$ with $ab=1$, $ac=0$ and $c\\ne0$. If $ba=1$, then $c=(ba)c=b(ac)=0$, a contradiction. These are scalar elements, not merely matrices.\n\nThe parallel dynamical question asks whether every injective cellular automaton $\\tau:A^G\\to A^G$ on a finite alphabet is surjective. Here $A^G$ includes all configurations, not just those with finite support.",
+  "whyItMatters": "Finite-dimensional linear algebra gives a reassuring rule: a left inverse of a square matrix is automatically a right inverse. An infinite group algebra can lose finite dimension, yet every element still involves only finitely many group elements. Does that remaining finiteness preserve the rule?\n\nThe question reaches beyond ring theory. Finite-field group-algebra elements act as local linear rules on configurations. A one-sided inverse can therefore describe a rule that retains enough information to be undone, yet misses some possible outputs. Sofic groups admit finite approximate models of multiplication; established theorems protect both algebraic and dynamical finiteness there. A failure of direct finiteness would expose a group beyond that approximation class.",
+  "illustrativeExample": "**Order matters on an infinite sequence.** Let $S(x_0,x_1,\\ldots)=(0,x_0,x_1,\\ldots)$ and $T(x_0,x_1,\\ldots)=(x_1,x_2,\\ldots)$. Then $TS=I$, while $ST$ erases the first entry. The dots stand for infinitely many coordinates. This familiar linear-operator example is on a one-sided sequence space with a boundary; it is not the reported group-algebra construction or a shift-equivariant automaton on a group.",
+  "historicalHook": "Finite support looked like a surviving trace of finite dimension. The question was whether it was enough.",
+  "whatAIClaims": "The 4 October manuscript reports a finitely presented **torsion-free** group $G$ and scalar elements in $\\mathbb F_2[G]$ satisfying $ab=1$ but $ba\\ne1$. It also claims a finite two-dimensional classifying complex. By Elek–Szabó’s established theorem, this failure would force $G$ to be nonsofic.\n\nA separate 23 September construction uses a finite field of characteristic two and a group with odd-order torsion. The 26 September companion gives a different construction for **one specified odd prime** and a field of order $p^4$, again with torsion. Their scalar pairs define injective nonsurjective linear cellular automata on all configurations.\n\nThe determinant companion reports an integral square matrix over another finitely generated group, invertible over its rational group ring, with Fuglede–Kadison determinant strictly between zero and one. It uses the characteristic-two companion as an input.",
+  "whatRemainsOpen": "The characteristic-zero direct-finiteness theorem and the positive results for sofic groups retain their stated scope. The odd-characteristic manuscript does not settle every odd prime or the torsion-free odd-characteristic question. The determinant example is a separate construction; it is not a violation of characteristic-zero direct finiteness.\n\nThese manuscripts describe existence arguments and finite prescriptions, not practical computations of the enormous examples. This account reviews their statements and historical connections; it does not assess the proofs or establish independent acceptance.",
+  "visualExplainer": "direct-finiteness",
+  "explanationSourceIds": [
+    "kaplansky-book",
+    "openai-characteristic-two",
+    "elek-szabo-2004",
+    "berlai-2015"
+  ],
+  "claimSourceIds": [
+    "openai-torsion-free",
+    "openai-characteristic-two",
+    "openai-odd",
+    "openai-determinant"
+  ],
+  "conceptualOrigins": {
+    "precision": "unknown",
+    "label": "Finite-dimensional inversion; earliest origin date not established"
+  },
+  "firstFormulation": {
+    "precision": "exact",
+    "year": 1972,
+    "label": "1972: explicit question in the inspected second edition; 1969 first edition cited"
+  },
+  "attribution": "The name credits Irving Kaplansky’s group-algebra question and his characteristic-zero theorem. Susan Montgomery supplied a different operator-algebra proof. Gottschalk posed the parallel dynamical conjecture; Gromov developed the finite-approximation bridge, and Weiss named and studied sofic groups. Ara, O’Meara and Perera, followed by Elek and Szabó, proved broad positive cases. Dykema, Heister and Juschenko pursued cancellation patterns; Berlai extended positive results through group extensions. These are selected contributions to several connected questions, not an exhaustive priority account.",
+  "contributors": [
+    {
+      "name": "Irving Kaplansky",
+      "contribution": "Formulated the group-algebra finiteness question and established the characteristic-zero case.",
+      "sourceIds": [
+        "kaplansky-book",
+        "berlai-2015"
+      ]
+    },
+    {
+      "name": "Susan Montgomery",
+      "contribution": "Gave an alternative C*-algebra proof for complex group algebras and their finite square matrices.",
+      "sourceIds": [
+        "montgomery-1969",
+        "openai-characteristic-two"
+      ]
+    },
+    {
+      "name": "Walter H. Gottschalk",
+      "contribution": "Posed the injective-to-surjective question for group configuration spaces.",
+      "sourceIds": [
+        "gottschalk-1973",
+        "elek-szabo-2004"
+      ]
+    },
+    {
+      "name": "Mikhail Gromov and Benjamin Weiss",
+      "contribution": "Connected surjunctivity to finite approximation; Weiss introduced the name “sofic”.",
+      "sourceIds": [
+        "gromov-1999",
+        "weiss-2000",
+        "elek-szabo-2004"
+      ]
+    },
+    {
+      "name": "Pere Ara, Kevin C. O’Meara and Francesc Perera",
+      "contribution": "Proved stable finiteness in arbitrary characteristic for free-by-amenable groups over division rings.",
+      "sourceIds": [
+        "ara-2002",
+        "openai-torsion-free"
+      ]
+    },
+    {
+      "name": "Gábor Elek and Endre Szabó",
+      "contribution": "Proved the sofic direct/stable-finiteness case and, in separate work, the sofic determinant bound.",
+      "sourceIds": [
+        "elek-szabo-2004",
+        "elek-szabo-determinant"
+      ]
+    },
+    {
+      "name": "Ken Dykema, Timo Heister and Kate Juschenko",
+      "contribution": "Reduced finite cancellation patterns to universal groups and verified selected small-support cases.",
+      "sourceIds": [
+        "dykema-heister-juschenko"
+      ]
+    },
+    {
+      "name": "Federico Berlai",
+      "contribution": "Proved positive cases for finitely-generated-residually-finite-by-sofic groups over noetherian rings.",
+      "sourceIds": [
+        "berlai-2015"
+      ]
+    }
+  ],
+  "tags": [
+    "conceptual-development",
+    "multiple-origins",
+    "cross-disciplinary",
+    "counterexample",
+    "named-conjecture"
+  ],
+  "confidence": "moderate",
+  "uncertainty": "Kaplansky’s original problem 2 on pp. 122–123 of the 1972 second edition was visually inspected. The 1969 first-edition date is bibliographically established, but its problem pages and earlier lecture-note priority were not checked. The Elek–Szabó direct-finiteness introduction and theorem, Berlai’s introduction and main statement, Dykema–Heister–Juschenko’s abstract, and all four pinned 2026 introductions and main theorems were inspected. Montgomery’s full original paper, Gottschalk’s original text and the Gromov/Weiss proofs were not obtained; their roles are documented in later primary research. The determinant precursor was checked at abstract level. Conceptual origin remains undated. This selected history does not assess any manuscript proof or independent acceptance.",
   "sources": [
     {
       "id": "openai-catalogue",
       "title": "OpenAI manuscript map",
       "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/CONTENTS.md",
-      "citation": "OpenAI, Mathematics manuscript collection, imported at commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
-      "kind": "upstream",
-      "note": "Evidence for what OpenAI reports, not for independent validation or historical priority."
+      "citation": "OpenAI, mathematics manuscript collection, commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb.",
+      "note": "Preserves the four manuscripts in this family and the broader overview wording.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-torsion-free",
+      "title": "A torsion-free group algebra that is not directly finite",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Torsion-Free-Group-Algebra-That-Is-Not-Directly-Finite-October-4-2026/build/sections/introduction.tex",
+      "citation": "OpenAI, manuscript dated 4 October 2026, introduction and main theorem; pinned release commit.",
+      "note": "Statement inspected: finitely presented torsion-free group, prime field of two elements, ab = 1, ac = 0, c ≠ 0, and finite two-dimensional classifying complex.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-characteristic-two",
+      "title": "The characteristic-two counterexample and cellular automata",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026/build/sections/01-introduction.tex",
+      "citation": "OpenAI, manuscript dated 23 September 2026, introduction and Theorem 1.1; pinned release commit.",
+      "note": "Finite characteristic-two field, finitely presented group with odd-order torsion, scalar one-sided inverse and automaton on all configurations. The finite prescription is not reported as executed.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-odd",
+      "title": "The separate odd-characteristic construction",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Odd-Characteristic-September-26-2026/build/sections/01-introduction.tex",
+      "citation": "OpenAI, manuscript dated 26 September 2026, introduction and main theorem; pinned release commit.",
+      "note": "One specified odd prime p, field of order p⁴ and finitely generated group with torsion. Does not claim every odd prime or torsion-free groups in odd characteristic.",
+      "kind": "upstream"
+    },
+    {
+      "id": "openai-determinant",
+      "title": "The group-ring determinant counterexample",
+      "url": "https://github.com/openai/math/blob/fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb/preprints/A-Counterexample-to-the-Group-Ring-Determinant-Conjecture-September-23-2026/build/main.tex",
+      "citation": "OpenAI, manuscript dated 23 September 2026, introduction and Theorem 1.1; pinned release commit.",
+      "note": "Separate finitely generated group and integral square matrix invertible over its rational group ring; determinant strictly between zero and one. Depends on the characteristic-two companion.",
+      "kind": "upstream"
+    },
+    {
+      "id": "kaplansky-book",
+      "title": "Fields and Rings",
+      "url": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/kapfield.pdf",
+      "citation": "Irving Kaplansky, Fields and Rings, University of Chicago Press, 1969; second edition, 1972, Part II, §3, pp. 122–123.",
+      "note": "Second-edition scan, Part II, §3, problem 2 on pp. 122–123, visually inspected. Explicitly separates the characteristic-zero matrix theorem from the positive-characteristic question. The 1969 first edition is documented bibliographically; its problem pages were not separately inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "montgomery-1969",
+      "title": "Left and right inverses in group algebras",
+      "url": "https://doi.org/10.1090/S0002-9904-1969-12234-2",
+      "citation": "M. Susan Montgomery, Bulletin of the American Mathematical Society 75(3) (1969), 539–540.",
+      "note": "Original full text unavailable from the publisher in this research session. Its complex matrix-algebra result and alternative C*-algebra proof are documented in the inspected pinned introductions.",
+      "kind": "primary"
+    },
+    {
+      "id": "gottschalk-1973",
+      "title": "Some general dynamical notions",
+      "url": "https://doi.org/10.1007/BFb0061728",
+      "citation": "Walter H. Gottschalk, in Recent Advances in Topological Dynamics, Lecture Notes in Mathematics 318 (1973), 120–125.",
+      "note": "Original full text not inspected. The conjecture and bibliographic attribution are explicitly recorded in Elek–Szabó’s primary paper.",
+      "kind": "primary"
+    },
+    {
+      "id": "gromov-1999",
+      "title": "Endomorphisms of symbolic algebraic varieties",
+      "url": "https://doi.org/10.1007/PL00011162",
+      "citation": "Misha Gromov, Journal of the European Mathematical Society 1(2) (1999), 109–197.",
+      "note": "Publisher record checked; original proof not inspected. Its sofic surjunctivity result is documented in Elek–Szabó’s introduction.",
+      "kind": "primary"
+    },
+    {
+      "id": "weiss-2000",
+      "title": "Sofic groups and dynamical systems",
+      "url": "https://cris.huji.ac.il/en/publications/sofic-groups-and-dynamical-systems/",
+      "citation": "Benjamin Weiss, Sankhyā, Series A 62(3) (2000), 350–359.",
+      "note": "Author’s institutional publication record checked. Naming credit and the dynamical role are documented in Elek–Szabó; original full text not inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "ara-2002",
+      "title": "Stable finiteness of group rings in arbitrary characteristic",
+      "url": "https://doi.org/10.1006/aima.2002.2075",
+      "citation": "Pere Ara, Kevin C. O’Meara and Francesc Perera, Advances in Mathematics 170(2) (2002), 224–238.",
+      "note": "Original full text not obtained. The free-by-amenable scope is documented in the pinned manuscript; the residually amenable consequence is stated in Elek–Szabó and Berlai.",
+      "kind": "primary"
+    },
+    {
+      "id": "elek-szabo-2004",
+      "title": "Sofic groups and direct finiteness",
+      "url": "https://arxiv.org/html/math/0305440v2",
+      "citation": "Gábor Elek and Endre Szabó, arXiv:math/0305440, first posted 30 May 2003; Journal of Algebra 280(2) (2004), 426–434; inspected version 2.",
+      "note": "Introduction, theorem and direct/stable distinction inspected. Records the finite-field link to surjunctivity and the earlier contributors. The archive’s rendered heading and version date are inconsistent; timeline uses journal year.",
+      "kind": "primary"
+    },
+    {
+      "id": "elek-szabo-determinant",
+      "title": "Hyperlinearity, essentially free actions and L²-invariants. The sofic property",
+      "url": "https://arxiv.org/abs/math/0408400",
+      "citation": "Gábor Elek and Endre Szabó, arXiv:math/0408400, first posted 29 August 2004; Mathematische Annalen 332 (2005), 421–441.",
+      "note": "Archive abstract and posting history inspected: determinant conjecture for sofic groups. Full proof not inspected.",
+      "kind": "primary"
+    },
+    {
+      "id": "dykema-heister-juschenko",
+      "title": "Finitely presented groups related to Kaplansky’s direct finiteness conjecture",
+      "url": "https://arxiv.org/abs/1112.1790",
+      "citation": "Ken Dykema, Timo Heister and Kate Juschenko, arXiv:1112.1790, first posted 8 December 2011; Experimental Mathematics 24(3) (2015), 326–338.",
+      "note": "Primary abstract inspected: universal groups for cancellation patterns and finite-support cases over the field of two elements. It is a reduction and selected positive cases, not a general counterexample.",
+      "kind": "primary"
+    },
+    {
+      "id": "berlai-2015",
+      "title": "Groups satisfying Kaplansky’s stable finiteness conjecture",
+      "url": "https://arxiv.org/html/1501.02893v1",
+      "citation": "Federico Berlai, arXiv:1501.02893v1, 13 January 2015.",
+      "note": "Introduction, main theorem and bibliography inspected. Supplies the Kaplansky attribution and characteristic-zero context, and proves a residually-finite-by-sofic extension under its stated finiteness assumptions.",
+      "kind": "primary"
     }
   ],
   "events": [
+    {
+      "id": "finite-dimension",
+      "date": {
+        "precision": "unknown",
+        "label": "Classical finite-dimensional precursor; origin date not established"
+      },
+      "type": "background",
+      "title": "In finite dimension, one inverse works both ways",
+      "description": "A linear endomorphism of a finite-dimensional vector space with a left inverse is bijective. For finite groups, this proves direct and stable finiteness of every group algebra. Infinite groups leave finite support in place but remove finite dimension.",
+      "sourceIds": [
+        "openai-characteristic-two"
+      ],
+      "follows": [],
+      "relationNote": "",
+      "uncertainty": "A conceptual precursor, without an asserted historical priority date."
+    },
+    {
+      "id": "complex-trace",
+      "date": {
+        "precision": "exact",
+        "label": "1969",
+        "year": 1969
+      },
+      "type": "partial-result",
+      "title": "Montgomery gives a C*-algebra proof",
+      "description": "Montgomery supplies an alternative proof of the complex group-algebra result, including finite square matrices. A finite trace replaces elementary finite-dimensional counting.",
+      "sourceIds": [
+        "montgomery-1969",
+        "openai-characteristic-two"
+      ],
+      "follows": [
+        "finite-dimension"
+      ],
+      "relationNote": "A positive branch establishes the complex case; finite coefficient subfields extend it to characteristic zero.",
+      "uncertainty": "Original full text unavailable; statement and method checked through the pinned introduction."
+    },
+    {
+      "id": "kaplansky-question",
+      "date": {
+        "precision": "exact",
+        "year": 1972,
+        "label": "1972: inspected second edition"
+      },
+      "type": "formulation",
+      "title": "Kaplansky’s question in Fields and Rings",
+      "description": "Problem 2 on pp. 122–123 states the characteristic-zero theorem for group algebras and their square matrices, then explicitly asks whether one-sided inverses are two-sided in positive characteristic. The first edition appeared in 1969.",
+      "sourceIds": [
+        "kaplansky-book",
+        "berlai-2015"
+      ],
+      "follows": [
+        "finite-dimension"
+      ],
+      "relationNote": "Extends the finite-dimensional implication to group algebras of arbitrary groups.",
+      "uncertainty": "The inspected text is the 1972 edition; the 1969 edition and earlier lecture-note priority were not separately checked."
+    },
+    {
+      "id": "gottschalk-question",
+      "date": {
+        "precision": "exact",
+        "label": "1973",
+        "year": 1973
+      },
+      "type": "formulation",
+      "title": "Gottschalk asks whether injectivity forces surjectivity",
+      "description": "For a finite alphabet and countable group, must every continuous shift-equivariant self-map of the full configuration space be onto if it is one-to-one? This is the separate surjunctivity question.",
+      "sourceIds": [
+        "gottschalk-1973",
+        "elek-szabo-2004"
+      ],
+      "follows": [],
+      "relationNote": "A parallel dynamical question, later connected to group algebras.",
+      "uncertainty": "Original full text not inspected; formulation checked in Elek–Szabó."
+    },
+    {
+      "id": "sofic-dynamics",
+      "date": {
+        "precision": "exact",
+        "label": "1999",
+        "year": 1999
+      },
+      "type": "partial-result",
+      "title": "Finite approximations enter the dynamical question",
+      "description": "Gromov proves surjunctivity for the groups now called sofic, using finite approximations. Weiss names the class and gives a finite-alphabet treatment in 2000.",
+      "sourceIds": [
+        "gromov-1999",
+        "weiss-2000",
+        "elek-szabo-2004"
+      ],
+      "follows": [
+        "gottschalk-question"
+      ],
+      "relationNote": "Finite models protect injectivity-to-surjectivity for a large class of groups.",
+      "uncertainty": "Selected bridge only; original Gromov and Weiss proofs were not inspected."
+    },
+    {
+      "id": "amenable-rank",
+      "date": {
+        "precision": "exact",
+        "label": "2002",
+        "year": 2002
+      },
+      "type": "partial-result",
+      "title": "Rank methods handle broad positive-characteristic classes",
+      "description": "Ara, O’Meara and Perera prove stable finiteness over division rings for free-by-amenable groups. This includes the residually amenable consequence recorded by later primary authors.",
+      "sourceIds": [
+        "ara-2002",
+        "openai-torsion-free",
+        "berlai-2015"
+      ],
+      "follows": [
+        "kaplansky-question"
+      ],
+      "relationNote": "Provides an algebraic substitute for the complex trace argument.",
+      "uncertainty": "Original full text unavailable; precise class checked in the pinned introduction."
+    },
+    {
+      "id": "sofic-algebra",
+      "date": {
+        "precision": "exact",
+        "label": "2004",
+        "year": 2004
+      },
+      "type": "partial-result",
+      "title": "Elek and Szabó establish the sofic case",
+      "description": "Their theorem embeds sofic group algebras over division rings in an appropriate continuous regular ring. Direct and stable finiteness follow. Their introduction also explains how surjunctivity implies direct finiteness over finite fields.",
+      "sourceIds": [
+        "elek-szabo-2004"
+      ],
+      "follows": [
+        "amenable-rank",
+        "sofic-dynamics"
+      ],
+      "relationNote": "The algebra and dynamics branches meet through finite approximation and convolution.",
+      "uncertainty": "Uses journal year; first preprint posted in 2003."
+    },
+    {
+      "id": "sofic-determinant",
+      "date": {
+        "precision": "exact",
+        "label": "2005",
+        "year": 2005
+      },
+      "type": "partial-result",
+      "title": "A related determinant bound holds for sofic groups",
+      "description": "Elek and Szabó also prove the group-ring determinant conjecture for sofic groups. This brings a separate operator-algebra bound into the finite-approximation picture.",
+      "sourceIds": [
+        "elek-szabo-determinant"
+      ],
+      "follows": [
+        "sofic-dynamics"
+      ],
+      "relationNote": "The shared sofic hypothesis connects the determinant branch without identifying it with direct finiteness.",
+      "uncertainty": "Uses journal year; first preprint posted in 2004. Abstract inspected, not the proof."
+    },
+    {
+      "id": "support-patterns",
+      "date": {
+        "precision": "exact",
+        "label": "2011",
+        "year": 2011
+      },
+      "type": "reformulation",
+      "title": "Finite cancellation patterns become universal groups",
+      "description": "Dykema, Heister and Juschenko organize one-sided inverse equations into finitely presented universal groups and verify selected small-support cases over the field of two elements.",
+      "sourceIds": [
+        "dykema-heister-juschenko"
+      ],
+      "follows": [
+        "kaplansky-question"
+      ],
+      "relationNote": "Turns finite coefficient cancellation into concrete group presentations, a complementary approach to approximation.",
+      "uncertainty": "First preprint posting; journal version appeared in 2015. Only selected support sizes are covered."
+    },
+    {
+      "id": "berlai-extension",
+      "date": {
+        "precision": "exact",
+        "label": "2015",
+        "year": 2015
+      },
+      "type": "partial-result",
+      "title": "Positive results extend beyond known sofic examples",
+      "description": "Berlai proves direct and stable finiteness over noetherian rings for groups with a finitely generated residually finite normal subgroup and sofic quotient. His examples include groups whose soficity was undecided.",
+      "sourceIds": [
+        "berlai-2015"
+      ],
+      "follows": [
+        "sofic-algebra"
+      ],
+      "relationNote": "Extends the positive algebraic branch without assuming the whole group is already known to be sofic.",
+      "uncertainty": "Does not say all groups outside a known sofic class are counterexamples."
+    },
     {
       "id": "release-2026",
       "date": {
@@ -41,15 +445,24 @@
         "iso": "2026-10-06"
       },
       "type": "ai-claim",
-      "title": "The OpenAI release",
-      "description": "OpenAI includes this result family in its October 2026 mathematics collection. The summary shown here comes from the pinned catalogue snapshot, which includes updates after the initial release. Manuscript dates may differ from the public release date.",
+      "title": "The OpenAI release reports four related counterexamples",
+      "description": "The pinned family groups a torsion-free example over the field of two elements, separate characteristic-two and odd-characteristic constructions with torsion, and a determinant counterexample. The finite-field pairs also yield failures of surjunctivity; a scalar direct-finiteness failure implies nonsoficity by the earlier theorem.",
       "sourceIds": [
-        "openai-catalogue"
+        "openai-catalogue",
+        "openai-torsion-free",
+        "openai-characteristic-two",
+        "openai-odd",
+        "openai-determinant"
       ],
-      "follows": [],
-      "relationNote": "Connections to earlier work await historical research.",
-      "uncertainty": "This records a reported result, without independent proof assessment."
+      "follows": [
+        "sofic-algebra",
+        "sofic-determinant",
+        "support-patterns",
+        "berlai-extension"
+      ],
+      "relationNote": "Targets the boundaries protected by the earlier positive results. The manuscript methods and hypotheses differ.",
+      "uncertainty": "Public release date; manuscript dates are 23 and 26 September and 4 October. Statement review does not establish proof correctness."
     }
   ],
-  "lastEditorialUpdate": "2026-10-08"
+  "lastEditorialUpdate": "2026-10-09"
 }

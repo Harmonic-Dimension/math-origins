@@ -2,6 +2,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {latticePoints,unitEdges,squareVertices,polarVertices,triangleEnergy} from '../src/components/geometry.ts';
 import {dateExtent,datePosition} from '../src/components/date-scale.ts';
+import {insertZero,removeFirst} from '../src/components/DirectFinitenessGraphic.tsx';
+
+test('infinite sequence shifts have a left inverse and a reverse defect on the first basis vector',()=>{
+  // Test basis vectors at different positions, including beyond the five drawn
+  // coordinates. Trailing zeros represent the rest of the infinite sequence.
+  for(let k=0;k<12;k++){
+    const basis=Array.from({length:k+1},(_,i)=>Number(i===k));
+    const ts=removeFirst(insertZero(basis));
+    const st=insertZero(removeFirst(basis));
+    for(let i=0;i<14;i++){
+      assert.equal(ts[i]||0,Number(i===k));
+      assert.equal(st[i]||0,Number(k>0&&i===k));
+    }
+  }
+});
 
 test('the frustrated triangle has six low-energy states and the displayed partition function',()=>{
   const energies=Array.from({length:8},(_,bits)=>{

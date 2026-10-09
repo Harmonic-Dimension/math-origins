@@ -1,6 +1,26 @@
 import {test,expect} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+test('one-sided inverses show the changed coordinate when operation order is reversed',async({page},testInfo)=>{
+  await page.goto('/problems/197');
+  const output=()=>page.locator('.inverse-graphic [data-row="2"]').evaluateAll(nodes=>nodes.map(n=>Number(n.getAttribute('data-value'))));
+  expect(await output()).toEqual([1,0,1,1,0]);
+  const reverse=page.getByRole('button',{name:'Remove, then insert',exact:true});
+  await reverse.focus();await page.keyboard.press('Enter');
+  await expect(reverse).toHaveAttribute('aria-pressed','true');
+  expect(await output()).toEqual([0,0,1,1,0]);
+  await expect(page.locator('.figure-feedback')).toContainText('lost entry cannot be recovered');
+  await expect(page.locator('.figure-insight')).toContainText('one-sided sequence space');
+  await page.getByRole('button',{name:'Insert, then remove',exact:true}).click();
+  expect(await output()).toEqual([1,0,1,1,0]);
+  await page.locator('#question summary').click();
+  await expect(page.locator('#question .katex-error')).toHaveCount(0);
+  await page.locator('.time-row').last().click();
+  await expect(page.locator('.event-detail .event-sources a')).toHaveCount(5);
+  await expect(page.locator('.claim-panel')).toContainText('one specified odd prime');
+  await page.screenshot({path:'screenshots/direct-finiteness-'+testInfo.project.name+'.png',fullPage:true});
+});
+
 test('spin controls show every assignment and keep the energy and bonds consistent',async({page},testInfo)=>{
   await page.goto('/problems/221');
   let previous=[1,-1,1];
@@ -107,7 +127,7 @@ test('exact examples are operable by keyboard and chronology reveals sources',as
 
 test('main pages and expanded explanations pass automated accessibility checks',async({page})=>{
   test.setTimeout(90000);
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/221','/about','/article']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221','/about','/article']){
     await page.goto(route);await page.evaluate(()=>document.fonts.ready);
     if(route.startsWith('/problems/')){
       await page.locator('#question summary').click();
@@ -121,7 +141,7 @@ test('main pages and expanded explanations pass automated accessibility checks',
 
 test('enlarged text and reduced motion remain usable',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
-  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/221']){
+  for(const route of ['/','/explorer','/problems/158','/problems/087','/problems/004','/problems/084','/problems/159','/problems/197','/problems/221']){
     await page.goto(route);
     await page.evaluate(()=>document.documentElement.style.fontSize='200%');
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route).toBeTruthy();
